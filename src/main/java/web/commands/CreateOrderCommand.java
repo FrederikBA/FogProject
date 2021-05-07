@@ -26,6 +26,7 @@ public class CreateOrderCommand extends CommandUnprotectedPage {
             session.setAttribute("cart", bom);
         }
 
+
         
 
         //Get value from dropdowns and parse to Integer
@@ -38,6 +39,8 @@ public class CreateOrderCommand extends CommandUnprotectedPage {
 
         //Place order
         if (request.getParameter("create") != null) {
+
+
             return "checkout";
         }
 

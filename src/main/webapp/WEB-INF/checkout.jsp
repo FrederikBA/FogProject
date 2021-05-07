@@ -17,5 +17,13 @@
             <h3>Din valgte bredde: ${sessionScope.width}</h3>
             <h3>Din valgte højde: ${sessionScope.length}</h3>
         </div>
+        <br>
+        <div class="row">
+            <div class="col-md"></div>
+            <div class="col-md center">
+                <button type="submit" class="btn btn-primary">Bestil</button>
+            </div>
+            <div class="col-md"></div>
+        </div>
     </jsp:body>
 </t:genericpage>

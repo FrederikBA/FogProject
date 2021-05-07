@@ -9,6 +9,8 @@ public class BomLine {
     private String description;
     private double price;
 
+
+
     public int getBomLineId() {
         return bomLineId;
     }
