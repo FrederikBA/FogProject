@@ -2,14 +2,18 @@ package web.commands;
 
 import business.entities.Bom;
 import business.exceptions.UserException;
+import business.services.BomService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 public class CreateOrderCommand extends CommandUnprotectedPage {
+    BomService bomService;
+
     public CreateOrderCommand(String pageToShow) {
         super(pageToShow);
+        bomService = new BomService(database);
     }
 
     @Override
@@ -23,11 +27,9 @@ public class CreateOrderCommand extends CommandUnprotectedPage {
         Bom bom = (Bom) session.getAttribute("bom");
         if (bom == null) {
             bom = new Bom();
-            session.setAttribute("cart", bom);
+            session.setAttribute("bom", bom);
         }
 
-
-        
 
         //Get value from dropdowns and parse to Integer
         if (request.getParameter("width") != null || request.getParameter("length") != null) {
@@ -37,9 +39,16 @@ public class CreateOrderCommand extends CommandUnprotectedPage {
             session.setAttribute("length", length);
         }
 
+
         //Place order
         if (request.getParameter("create") != null) {
+            //Add to Bill of Materials
 
+            //Add posts
+            bom.addToBill(bomService.calculatePostsFromMeasurements(width, length));
+
+            //Add Rafters
+            bom.addToBill(bomService.calculateRaftersFromMeasurements(width, length));
 
             return "checkout";
         }

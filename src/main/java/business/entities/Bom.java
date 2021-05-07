@@ -13,4 +13,8 @@ public class Bom {
     public List<BomLine> getBomLines() {
         return bomLines;
     }
+
+    public void addToBill(BomLine bomLine) {
+        bomLines.add(bomLine);
+    }
 }

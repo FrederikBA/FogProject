@@ -1,30 +1,18 @@
 package business.entities;
 
 public class BomLine {
-    private int bomLineId;
-    private int orderId;
     private int materialId;
     private int quantity;
     private int length;
     private String description;
     private double price;
 
-
-
-    public int getBomLineId() {
-        return bomLineId;
-    }
-
-    public void setBomLineId(int bomLineId) {
-        this.bomLineId = bomLineId;
-    }
-
-    public int getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
+    public BomLine(int materialId, int quantity, int length, String description, double price) {
+        this.materialId = materialId;
+        this.quantity = quantity;
+        this.length = length;
+        this.description = description;
+        this.price = price;
     }
 
     public int getMaterialId() {
