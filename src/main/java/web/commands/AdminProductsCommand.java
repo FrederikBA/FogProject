@@ -3,8 +3,8 @@ package web.commands;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class adminProductsCommand extends CommandProtectedPage{
-    public adminProductsCommand(String pageToShow, String role) {
+public class AdminProductsCommand extends CommandProtectedPage{
+    public AdminProductsCommand(String pageToShow, String role) {
         super(pageToShow, role);
     }
 
