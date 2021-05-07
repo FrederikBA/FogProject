@@ -29,7 +29,6 @@
                 <th scope="col">Id</th>
                 <th scope="col">Beskrivelse(navn)</th>
                 <th scope="col">Længde</th>
-                <th scope="col">Antal</th>
                 <th scope="col">Enhed</th>
                 <th scope="col">Beskrivelse</th>
                 <th scope="col">Pris pr</th>
@@ -41,7 +40,6 @@
                 <td>${material.materialId}</td>
                 <td>${material.name}</td>
                 <td>${material.length}</td>
-                <td>${material.amount}</td>
                 <td>${material.unit}</td>
                 <td>${material.description}</td>
                 <td>${material.pricePerUnit}</td>

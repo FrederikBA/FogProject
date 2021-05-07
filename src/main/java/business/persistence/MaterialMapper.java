@@ -28,12 +28,11 @@ public class MaterialMapper {
                     int id = rs.getInt(1);
                     String name = rs.getString(2);
                     int length = rs.getInt(3);
-                    int amount = rs.getInt(4);
-                    String unit = rs.getString(5);
-                    String description = rs.getString(6);
-                    double pricePerUnit = rs.getDouble(7);
+                    String unit = rs.getString(4);
+                    String description = rs.getString(5);
+                    double pricePerUnit = rs.getDouble(6);
 
-                    Material tmpMaterial = new Material(id, name, length, amount, unit, description, pricePerUnit);
+                    Material tmpMaterial = new Material(id, name, length, unit, description, pricePerUnit);
                     materialList.add(tmpMaterial);
                 }
                 return materialList;
