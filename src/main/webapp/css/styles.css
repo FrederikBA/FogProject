@@ -3,7 +3,11 @@
     The file is included in the genericpage.tag template
  */
 
-#topmenu_login_dialogue
-{
+#topmenu_login_dialogue {
     font-size: smaller;
 }
+
+.center {
+    text-align: center;
+}
+
