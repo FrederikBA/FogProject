@@ -14,18 +14,38 @@
 
     <jsp:body>
         <div class="row">
-            <h3>Din valgte bredde: ${sessionScope.width}</h3>
-            <h3>Din valgte højde: ${sessionScope.length}</h3>
-        </div>
 
+        </div>
+        <div class="col-md center">
+
+
+            <h1>Din ordre er registreret.</h1>
+            <br> <br><br> <br>
+
+            <h3>Din valgte Bredde: ${sessionScope.width}</h3>
+            <h3>Din valgte Længde: ${sessionScope.length}</h3>
+            <br> <br><br> <br>
+
+            <h2>Din pris</h2>
+            <h3>25.000.- DKK</h3>
+            <br> <br><br> <br>
+
+            <h2>Din tegning:</h2>
+            <h3>  <img src="img/carport.PNG"> </h3>
+
+        </div>
         <br>
 
         <div class="row">
             <div class="col-md"></div>
             <div class="col-md center">
-                <a href="${pageContext.request.contextPath}/fc/receipt">
-                <button type="submit" class="btn btn-primary">Bestil</button>
+                <a href="${pageContext.request.contextPath}/fc/carport">
+                    <button type="submit" class="btn btn-primary">Tilbage til carport</button>
                 </a>
+                <a href="${pageContext.request.contextPath}/fc/receipt">
+                <button type="submit" class="btn btn-primary">Bestil carport</button>
+                </a>
+
             </div>
             <div class="col-md"></div>
         </div>
@@ -34,28 +54,7 @@
 
         <div class="row">
             <!--public BomLine(int materialId, int quantity, int length, String description, double price) -->
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Antal</th>
-                    <th>Længde</th>
-                    <th>Beskrivelse</th>
-                    <th>Pris</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach var="bomLine" items="${sessionScope.bom.bomLines}">
-                    <tr>
-                        <td>${bomLine.materialId}</td>
-                        <td>${bomLine.quantity}</td>
-                        <td>${bomLine.length}</td>
-                        <td>${bomLine.description}</td>
-                        <td>${bomLine.price}</td>
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
+
 
         </div>
     </jsp:body>

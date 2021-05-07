@@ -14,42 +14,57 @@
 
     <jsp:body>
         <form method="post" action="${pageContext.request.contextPath}/fc/carport">
-<div>
-</div>
+
+        <div class="row"></div>
+
+
+        <div class="col-md center">
+
+        <h1>KVITTERING</h1>
+        <h2>Carport:</h2>
+        <h6>Din valgte Bredde: ${sessionScope.width}</h6>
+        <h6>Din valgte Længde: ${sessionScope.length}</h6>
+        tag: fladt<br>
+        skur: ingen<br>
+        <br><br><br>
+
+        TEGNING
+        <img src="img/carport.PNG">
+        <br><br><br>
+
+        Pris: 25.000Kr
+        <br><br><br>
+        <h1> Stykliste</h1>
+
         <div class="row">
 
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Antal</th>
+                    <th scope="col">Længde</th>
+                    <th scope="col">Beskrivelse(navn)</th>
 
-            <div class="col-md">
-                <h1>KVITTERING</h1>
-                <h3>Carport:</h3>
-                580 cm Længde <br>
-                240 cm bredde<br>
-                tag: fladt<br>
-                skur: ingen<br>
-                <br><br><br>
-
-                TEGNING
-                <img src="img/carport.PNG">
-                <br><br><br>
-
-                Pris: 25.000Kr
-                <br><br><br>
-
-                Stykliste:
-
-            </div>
-            <div class="col-md center">
-            <div class="col-md"></div>
-
-
-
-            </div>
-
+                    <th scope="col">Enhed</th>
+                    <th scope="col">Beskrivelse</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach var="bomLine" items="${sessionScope.bom.bomLines}">
+                    <tr>
+                        <td>${bomLine.materialId}</td>
+                        <td>${bomLine.quantity}</td>
+                        <td>${bomLine.length}</td>
+                        <td>${bomLine.description}</td>
+                        <td>${bomLine.price}</td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
         </div>
+        <div class="col-md"></div>
 
-
-
-        </form>
 
     </jsp:body>
 </t:genericpage>
