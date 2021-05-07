@@ -13,7 +13,10 @@
     </jsp:attribute>
 
     <jsp:body>
+        <form method="post" action="${pageContext.request.contextPath}/fc/carport">
+            <div class="row">
 
+<<<<<<< HEAD
 
         </p>
         <div class="row">
@@ -26,10 +29,22 @@
             <div class="col center">
 
         <button type="button" class="btn btn-primary">Bestil Carport</button>
+=======
+                <div class="col"></div>
+                <div class="col center">
 
+                    <button type="submit" class="btn btn-primary">Skræddersy din Carport</button>
+>>>>>>> ddcb551bb705f842572f954d4fce1abc4bdcfe86
+
+                </div>
+                <div class="col"></div>
             </div>
+<<<<<<< HEAD
             <div class="col"></div>
 
 
+=======
+        </form>
+>>>>>>> ddcb551bb705f842572f954d4fce1abc4bdcfe86
     </jsp:body>
 </t:genericpage>
