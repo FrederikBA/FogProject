@@ -31,11 +31,12 @@
     </div>
     <nav class="my-2 my-md-0 me-md-3">
         <c:if test="${addHomeLink == null }">
-            <a class="p-2 text-dark" href="<%=request.getContextPath()%>">Home</a>
+            <a class="p-2 text-dark" href="<%=request.getContextPath()%>">Forside</a>
         </c:if>
-        <a class="p-2 text-dark" href="#">Orders</a>
-        <a class="p-2 text-dark" href="#">Profile</a>
-        <a class="p-2 text-dark" href="#">About</a>
+        <a class="p-2 text-dark" href="#">Kunder</a>
+        <a class="p-2 text-dark" href="#">Ordrer</a>
+        <a class="p-2 text-dark" href="#">Produkter</a>
+        <a class="p-2 text-dark" href="#">Bestil Carport</a>
     </nav>
 
     <div>
