@@ -19,7 +19,15 @@
             Men garager er ikke bare til biler, men også til din drøm af en motorcykel, alle ungernes cykler eller værksted. <BR>
             Køb nu, men få leveret senere når det passer dig.
         </p>
+        <div class="row">
 
+            <div class="col"></div>
+            <div class="col center">
+
+                <button type="button" class="btn btn-primary">Bestil Carport</button>
+
+            </div>
+            <div class="col"></div>
         </div>
 
     </jsp:body>
