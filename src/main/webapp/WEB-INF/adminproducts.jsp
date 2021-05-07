@@ -34,19 +34,19 @@
                 <th scope="col">Pris pr</th>
             </tr>
             </thead>
-        <tbody>
-        <c:forEach var="material" items="${sessionScope.materials}">
-            <tr>
-                <td>${material.materialId}</td>
-                <td>${material.name}</td>
-                <td>${material.length}</td>
-                <td>${material.unit}</td>
-                <td>${material.description}</td>
-                <td>${material.pricePerUnit}</td>
-            </tr>
+            <tbody>
+            <c:forEach var="material" items="${sessionScope.materials}">
+                <tr>
+                    <td>${material.materialId}</td>
+                    <td>${material.name}</td>
+                    <td>${material.length}</td>
+                    <td>${material.unit}</td>
+                    <td>${material.description}</td>
+                    <td>${material.pricePerUnit}</td>
+                </tr>
 
-        </c:forEach>
-        </tbody>
+            </c:forEach>
+            </tbody>
         </table>
         <div class="row">
 
@@ -73,13 +73,6 @@
 
             <div class="col-md">
                 <div class="form-group">
-                    <label for="amount">Antal:</label>
-                    <input class="form-control" type="text" id="amount" name="amount">
-                </div>
-            </div>
-
-            <div class="col-md">
-                <div class="form-group">
                     <label for="unit">Enhed:</label>
                     <input class="form-control" type="text" id="unit" name="unit">
                 </div>
@@ -91,6 +84,13 @@
                     <input class="form-control" type="text" id="description" name="description">
                 </div>
             </div>
+
+            <div class="col-md">
+                <div class="form-group">
+                    <label for="length">Pris:</label>
+                    <input class="form-control" type="text" id="price" name="price">
+                </div>
+            </div>
         </div>
 
         <div class="row">
@@ -100,7 +100,6 @@
                         value="update">Tilføj
                 </button>
             </div>
-
 
             <div class="col-md">
                 <br>

@@ -23,7 +23,9 @@
         <div class="row">
             <div class="col-md"></div>
             <div class="col-md center">
+                <a href="${pageContext.request.contextPath}/fc/receipt">
                 <button type="submit" class="btn btn-primary">Bestil</button>
+                </a>
             </div>
             <div class="col-md"></div>
         </div>

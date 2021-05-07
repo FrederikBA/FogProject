@@ -23,6 +23,8 @@
                 værksted. <BR>
                 Køb nu, men få leveret senere når det passer dig.
 
+
+
         </div>
 
         <div class="row">
@@ -32,6 +34,8 @@
             </div>
             <div class="col-md"></div>
         </div>
+        </form>
+
     </jsp:body>
 </t:genericpage>
 
