@@ -3,7 +3,26 @@
     The file is included in the genericpage.tag template
  */
 
-#topmenu_login_dialogue
-{
+#topmenu_login_dialogue {
     font-size: smaller;
+}
+
+.center {
+    text-align: center;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+
+.helvetica {
+    font-family: Helvetica, sans-serif;
 }
