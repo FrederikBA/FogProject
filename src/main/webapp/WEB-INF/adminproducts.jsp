@@ -18,76 +18,105 @@
         <div class="row">
         </div>
 
-            <div class="col"></div>
+        <div class="col"></div>
 
 
         <h1 align="center">Velkommen til ADMIN PRODUCTS</h1>
 
         <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Beskrivelse(navn)</th>
-            <th scope="col">Længde</th>
-            <th scope="col">Antal</th>
-            <th scope="col">Enhed</th>
-            <th scope="col">Beskrivelse</th>
-        </tr>
-        </thead>
-        </table>
+            <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Beskrivelse(navn)</th>
+                <th scope="col">Længde</th>
+                <th scope="col">Antal</th>
+                <th scope="col">Enhed</th>
+                <th scope="col">Beskrivelse</th>
+                <th scope="col">Pris pr</th>
+            </tr>
+            </thead>
+        <tbody>
+        <c:forEach var="material" items="${sessionScope.materials}">
+            <tr>
+                <td>${material.materialId}</td>
+                <td>${material.name}</td>
+                <td>${material.length}</td>
+                <td>${material.amount}</td>
+                <td>${material.unit}</td>
+                <td>${material.description}</td>
+                <td>${material.pricePerUnit}</td>
+            </tr>
 
+        </c:forEach>
+        </tbody>
+        </table>
         <div class="row">
 
-        <div class="col-md">
-            <div class="form-group">
-                <label for="materialId">Materiale Id:</label>
-                <input class="form-control" type="text" id="materialId" name="materialId">
+            <div class="col-md">
+                <div class="form-group">
+                    <label for="materialId">Materiale Id:</label>
+                    <input class="form-control" type="text" id="materialId" name="materialId">
+                </div>
+            </div>
+
+            <div class="col-md">
+                <div class="form-group">
+                    <label for="name">Navn:</label>
+                    <input class="form-control" type="text" id="name" name="name">
+                </div>
+            </div>
+
+            <div class="col-md">
+                <div class="form-group">
+                    <label for="length">Længde:</label>
+                    <input class="form-control" type="text" id="length" name="length">
+                </div>
+            </div>
+
+            <div class="col-md">
+                <div class="form-group">
+                    <label for="amount">Antal:</label>
+                    <input class="form-control" type="text" id="amount" name="amount">
+                </div>
+            </div>
+
+            <div class="col-md">
+                <div class="form-group">
+                    <label for="unit">Enhed:</label>
+                    <input class="form-control" type="text" id="unit" name="unit">
+                </div>
+            </div>
+
+            <div class="col-md">
+                <div class="form-group">
+                    <label for="description">Beskrivelse:</label>
+                    <input class="form-control" type="text" id="description" name="description">
+                </div>
             </div>
         </div>
 
-        <div class="col-md">
-            <div class="form-group">
-                <label for="name">Navn:</label>
-                <input class="form-control" type="text" id="name" name="name">
-            </div>
-        </div>
-
-        <div class="col-md">
-            <div class="form-group">
-                <label for="length">Længde:</label>
-                <input class="form-control" type="text" id="length" name="length">
-            </div>
-        </div>
-
-        <div class="col-md">
-            <div class="form-group">
-                <label for="amount">Antal:</label>
-                <input class="form-control" type="text" id="amount" name="amount">
-            </div>
-        </div>
-
-        <div class="col-md">
-            <div class="form-group">
-                <label for="unit">Enhed:</label>
-                <input class="form-control" type="text" id="unit" name="unit">
-            </div>
-        </div>
-
-        <div class="col-md">
-            <div class="form-group">
-                <label for="description">Beskrivelse:</label>
-                <input class="form-control" type="text" id="description" name="description">
-            </div>
-        </div>
-
-        <div class="col-md">
-            <div class="form-group">
+        <div class="row">
+            <div class="col-md">
                 <br>
-                <button style="width:100%;" type="submit" class="btn btn-secondary" name="update"
-                        value="update">Opdater Balance
+                <button style="width:100%;" type="submit" class="btn btn-secondary" name="addMaterial"
+                        value="update">Tilføj
                 </button>
             </div>
-        </div>
+
+
+            <div class="col-md">
+                <br>
+                <button style="width:100%;" type="submit" class="btn btn-secondary" name="update"
+                        value="update">Opdater Materiale
+                </button>
+            </div>
+
+            <div class="col-md">
+                <br>
+                <button style="width:100%;" type="submit" class="btn btn-secondary" name="deleteMaterial"
+                        value="update">Slet
+                </button>
+            </div>
         </div>
 
     </jsp:body>
