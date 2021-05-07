@@ -11,3 +11,18 @@
     text-align: center;
 }
 
+.bold {
+    font-weight: bold;
+}
+
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+
+.helvetica {
+    font-family: Helvetica, sans-serif;
+}

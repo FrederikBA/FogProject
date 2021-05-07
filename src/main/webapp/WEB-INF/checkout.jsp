@@ -13,17 +13,9 @@
     </jsp:attribute>
 
     <jsp:body>
-        <form method="post" action="${pageContext.request.contextPath}/fc/carport">
-            <div class="row">
-
-                <div class="col"></div>
-                <div class="col center">
-
-                    <button type="submit" class="btn btn-primary">Skræddersy din Carport</button>
-
-                </div>
-                <div class="col"></div>
-            </div>
-        </form>
+        <div class="row">
+            <h3>Din valgte bredde: ${sessionScope.width}</h3>
+            <h3>Din valgte højde: ${sessionScope.length}</h3>
+        </div>
     </jsp:body>
 </t:genericpage>
