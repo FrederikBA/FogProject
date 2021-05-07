@@ -36,7 +36,6 @@
                         <option value="690">690 cm</option>
                         <option value="720">720 cm</option>
                         <option value="750">750 cm</option>
-                        <option value="audi">Audi TT</option>
                     </select>
                 </div>
             </div>
