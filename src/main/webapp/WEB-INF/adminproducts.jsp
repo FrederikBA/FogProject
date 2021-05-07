@@ -16,6 +16,7 @@
 
 
         <div class="row">
+        </div>
 
             <div class="col"></div>
 
@@ -33,38 +34,49 @@
             <th scope="col">Beskrivelse</th>
         </tr>
         </thead>
+        </table>
+
+        <div class="row">
+
         <div class="col-md">
             <div class="form-group">
-                <label for="userId">Materiale Id:</label>
-                <input class="form-control" type="text" id="userId" name="userId">
+                <label for="materialId">Materiale Id:</label>
+                <input class="form-control" type="text" id="materialId" name="materialId">
             </div>
         </div>
 
         <div class="col-md">
             <div class="form-group">
-                <label for="balance">Balance:</label>
-                <input class="form-control" type="text" id="balance" name="balance">
+                <label for="name">Navn:</label>
+                <input class="form-control" type="text" id="name" name="name">
             </div>
         </div>
 
         <div class="col-md">
             <div class="form-group">
-                <label for="balance">Balance:</label>
-                <input class="form-control" type="text" id="balance" name="balance">
+                <label for="length">Længde:</label>
+                <input class="form-control" type="text" id="length" name="length">
             </div>
         </div>
 
         <div class="col-md">
             <div class="form-group">
-                <label for="balance">Balance:</label>
-                <input class="form-control" type="text" id="balance" name="balance">
+                <label for="amount">Antal:</label>
+                <input class="form-control" type="text" id="amount" name="amount">
             </div>
         </div>
 
         <div class="col-md">
             <div class="form-group">
-                <label for="balance">Balance:</label>
-                <input class="form-control" type="text" id="balance" name="balance">
+                <label for="unit">Enhed:</label>
+                <input class="form-control" type="text" id="unit" name="unit">
+            </div>
+        </div>
+
+        <div class="col-md">
+            <div class="form-group">
+                <label for="description">Beskrivelse:</label>
+                <input class="form-control" type="text" id="description" name="description">
             </div>
         </div>
 
@@ -75,6 +87,7 @@
                         value="update">Opdater Balance
                 </button>
             </div>
+        </div>
         </div>
 
     </jsp:body>
