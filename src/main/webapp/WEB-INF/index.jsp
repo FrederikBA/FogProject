@@ -14,21 +14,22 @@
 
     <jsp:body>
 
-        <h1 align="center">Velkommen til Fog</h1>
-        <p align="center">Byg din egen trægarage efter dine ønsker – så kan bilen opholde sig inde i en robust og samtidigt elegant bygning.<BR>
-            Men garager er ikke bare til biler, men også til din drøm af en motorcykel, alle ungernes cykler eller værksted. <BR>
-            Køb nu, men få leveret senere når det passer dig.
+
         </p>
         <div class="row">
 
             <div class="col"></div>
+            <h1 align="center">Velkommen til Fog</h1>
+            <p align="center">Byg din egen trægarage efter dine ønsker – så kan bilen opholde sig inde i en robust og samtidigt elegant bygning.<BR>
+                Men garager er ikke bare til biler, men også til din drøm af en motorcykel, alle ungernes cykler eller værksted. <BR>
+                Køb nu, men få leveret senere når det passer dig.
             <div class="col center">
 
-                <button type="button" class="btn btn-primary">Bestil Carport</button>
+        <button type="button" class="btn btn-primary">Bestil Carport</button>
 
             </div>
             <div class="col"></div>
-        </div>
+
 
     </jsp:body>
 </t:genericpage>

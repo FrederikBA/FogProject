@@ -33,10 +33,14 @@
         <c:if test="${addHomeLink == null }">
             <a class="p-2 text-dark" href="<%=request.getContextPath()%>">Forside</a>
         </c:if>
-        <a class="p-2 text-dark" href="#">Kunder</a>
         <a class="p-2 text-dark" href="#">Ordrer</a>
         <a class="p-2 text-dark" href="#">Produkter</a>
         <a class="p-2 text-dark" href="#">Bestil Carport</a>
+
+
+            <c:if test="${sessionScope.user.role.equals('employee')}">
+            <a class="p-2 text-dark" href="${pageContext.request.contextPath}/fc/adminproducts">Kunder</a>
+            </c:if>
     </nav>
 
     <div>
@@ -60,6 +64,7 @@
                 <a type="button" class="btn btn-sm  btn-outline-secondary"
                    href="${pageContext.request.contextPath}/fc/registerpage">Sign up</a>
             </c:if>
+
     </div>
     </c:if>
 </header>
@@ -74,7 +79,10 @@
     <hr>
     <br>
     <jsp:invoke fragment="footer"/>
+
 </div>
+
+
 
 </body>
 </html>
