@@ -10,26 +10,36 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-public class ReceiptCommand extends CommandUnprotectedPage {
-    BomFacade bomFacade;
+public class ConfirmOrderCommand extends CommandUnprotectedPage {
     OrderFacade orderFacade;
+    BomFacade bomFacade;
 
-    public ReceiptCommand(String pageToShow) {
+    public ConfirmOrderCommand(String pageToShow) {
         super(pageToShow);
-        bomFacade = new BomFacade(database);
         orderFacade = new OrderFacade(database);
+        bomFacade = new BomFacade(database);
     }
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
         HttpSession session = request.getSession();
+
         //Show Bill of Materials from latest order
         int orderId = orderFacade.getOrderIdByTimestamp();
         List<BomLine> billOfMaterials = bomFacade.getBomByOrderId(orderId);
 
-        session.setAttribute("billOfMaterials", billOfMaterials);
+        //Confirm order
+        if (request.getParameter("confirm") != null) {
+            orderFacade.updateOrderStatus(orderId);
+            session.setAttribute("billOfMaterials", billOfMaterials);
+            return "receipt";
+        }
+
+        if (request.getParameter("return") != null) {
+            return "carport";
+        }
+
 
         return pageToShow;
     }
-
 }

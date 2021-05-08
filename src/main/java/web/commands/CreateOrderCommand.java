@@ -52,10 +52,6 @@ public class CreateOrderCommand extends CommandUnprotectedPage {
             session.setAttribute("length", length);
         }
 
-        //Get total price of latest Carport order
-        double totalPrice = orderFacade.getOrderPriceByTimestamp();
-        session.setAttribute("totalPrice", totalPrice);
-
         //Place order
         if (request.getParameter("create") != null) {
             //Add to Bill of Materials
@@ -71,6 +67,10 @@ public class CreateOrderCommand extends CommandUnprotectedPage {
 
             //Clear Bill of Materials
             bom.getBomLines().clear();
+
+            //Get total price of latest Carport order
+            double totalPrice = orderFacade.getOrderPriceByTimestamp();
+            session.setAttribute("totalPrice", totalPrice);
 
             return "checkout";
         }

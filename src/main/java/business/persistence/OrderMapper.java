@@ -16,7 +16,7 @@ public class OrderMapper {
     public void createOrder(int userId, int length, int width, List<BomLine> bomLines) throws UserException {
         double orderPrice = 0;
         int orderId = 0;
-        String status = "negative";
+        String status = "incomplete";
 
         for (BomLine bl : bomLines) {
             orderPrice += bl.getPrice();
@@ -102,6 +102,21 @@ public class OrderMapper {
                 throw new UserException(ex.getMessage());
             }
         } catch (SQLException | UserException ex) {
+            throw new UserException("Connection to database could not be established");
+        }
+    }
+
+    public void updateOrderStatus(int orderId) throws UserException {
+        try (Connection connection = database.connect()) {
+            String sql = "UPDATE orders SET status = \"complete\" WHERE order_id = ?";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, orderId);
+                ps.executeUpdate();
+            } catch (SQLException ex) {
+                throw new UserException(ex.getMessage());
+            }
+        } catch (SQLException ex) {
             throw new UserException("Connection to database could not be established");
         }
     }

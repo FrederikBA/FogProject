@@ -25,4 +25,8 @@ public class OrderFacade {
     public double getOrderPriceByTimestamp() throws UserException {
         return orderMapper.getOrderPriceByTimestamp();
     }
+
+    public void updateOrderStatus(int orderId) throws UserException {
+        orderMapper.updateOrderStatus(orderId);
+    }
 }

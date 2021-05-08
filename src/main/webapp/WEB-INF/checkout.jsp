@@ -13,41 +13,35 @@
     </jsp:attribute>
 
     <jsp:body>
-        <div class="row">
-
-        </div>
-        <div class="col-md center">
-
-
-            <h1>Din ordre er registreret.</h1>
-            <br> <br><br> <br>
-
-            <h3>Din valgte Bredde: ${sessionScope.width}</h3>
-            <h3>Din valgte Længde: ${sessionScope.length}</h3>
-            <br> <br><br> <br>
-
-            <h2>Din pris</h2>
-            <h3>${sessionScope.totalPrice}</h3>
-            <br> <br><br> <br>
-
-            <h2>Din tegning:</h2>
-            <img src="${pageContext.request.contextPath}/img/carport.PNG">
-
-        </div>
-        <br>
-
-        <div class="row">
-            <div class="col-md"></div>
-            <div class="col-md center">
-                <a href="${pageContext.request.contextPath}/fc/carport">
-                    <button type="submit" class="btn btn-primary">Tilbage</button>
-                </a>
-                <a href="${pageContext.request.contextPath}/fc/receipt">
-                    <button type="submit" class="btn btn-primary">Bestil carport</button>
-                </a>
+        <form method="post" action="${pageContext.request.contextPath}/fc/checkout">
+            <div class="row">
 
             </div>
-            <div class="col-md"></div>
-        </div>
+            <div class="col-md center">
+
+
+                <h1>Din ordre er registreret.</h1>
+                <br> <br><br> <br>
+
+                <h3>Din valgte Bredde: ${sessionScope.width}</h3>
+                <h3>Din valgte Længde: ${sessionScope.length}</h3>
+                <br> <br><br> <br>
+
+                <h2>Din pris</h2>
+                <h3>${sessionScope.totalPrice}</h3>
+
+                <h2>Din tegning:</h2>
+                <img class="responsive drawing" src="${pageContext.request.contextPath}/img/tegning.PNG">
+            </div>
+
+            <div class="row">
+                <div class="col-md"></div>
+                <div class="col-md center">
+                    <button name="return" type="submit" class="btn btn-primary checkoutbtn">Tilbage</button>
+                    <button name="confirm" type="submit" class="btn btn-primary checkoutbtn">Bestil carport</button>
+                </div>
+                <div class="col-md"></div>
+            </div>
+        </form>
     </jsp:body>
 </t:genericpage>
