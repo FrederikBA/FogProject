@@ -63,7 +63,10 @@ public class CreateOrderCommand extends CommandUnprotectedPage {
             bom.addToBill(bomService.calculateRaftersFromMeasurements(width, length));
 
             //Save order
-            orderFacade.createOrder(userId,length,width,bom.getBomLines());
+            orderFacade.createOrder(userId, length, width, bom.getBomLines());
+
+            //Clear Bill of Materials
+            bom.getBomLines().clear();
 
             return "checkout";
         }

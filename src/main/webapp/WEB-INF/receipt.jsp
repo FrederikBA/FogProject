@@ -51,7 +51,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach var="bomLine" items="${sessionScope.bom.bomLines}">
+                    <c:forEach var="bomLine" items="${sessionScope.billOfMaterials}">
                         <tr>
                             <td>${bomLine.materialId}</td>
                             <td>${bomLine.quantity}</td>
