@@ -26,8 +26,42 @@
 .helvetica {
     font-family: Helvetica, sans-serif;
 }
+
 .top-left {
     position: absolute;
     top: 8px;
     left: 16px;
+}
+
+.nav-item {
+    padding-right: 30px;
+    font-weight: bold;
+    font-size: 14pt;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+}
+
+.logo {
+    height: 125px;
+    padding-right: 30px;
+}
+
+.navbar {
+    background-color: #0C2069;
+    color: white;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar-toggler {
+    margin-right: 10px;
+}
+
+.username {
+    font-weight: bold;
+    font-size: 14pt;
+    margin-top: 5px;
 }

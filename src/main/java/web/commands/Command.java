@@ -30,8 +30,8 @@ public abstract class Command {
         commands.put("carport", new CreateOrderCommand("carport"));
         commands.put("checkout", new ConfirmOrderCommand("checkout"));
         commands.put("receipt", new ReceiptCommand("receipt"));
-        commands.put("admincustomerpage", new ReceiptCommand("admincustomerpage"));
-        commands.put("adminorderpage", new ReceiptCommand("adminorderpage"));
+        commands.put("admincustomerpage", new AdminCustomerCommand("admincustomerpage","employee"));
+        commands.put("adminorderpage", new AdminOrderCommand("adminorderpage","employee"));
     }
 
     public static Command fromPath(

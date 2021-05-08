@@ -31,7 +31,7 @@
             <br> <br><br> <br>
 
             <h2>Din tegning:</h2>
-            <h3>  <img src="img/carport.PNG"> </h3>
+            <img src="${pageContext.request.contextPath}/img/carport.PNG">
 
         </div>
         <br>
@@ -40,22 +40,14 @@
             <div class="col-md"></div>
             <div class="col-md center">
                 <a href="${pageContext.request.contextPath}/fc/carport">
-                    <button type="submit" class="btn btn-primary">Tilbage til carport</button>
+                    <button type="submit" class="btn btn-primary">Tilbage</button>
                 </a>
                 <a href="${pageContext.request.contextPath}/fc/receipt">
-                <button type="submit" class="btn btn-primary">Bestil carport</button>
+                    <button type="submit" class="btn btn-primary">Bestil carport</button>
                 </a>
 
             </div>
             <div class="col-md"></div>
-        </div>
-
-        <br>
-
-        <div class="row">
-            <!--public BomLine(int materialId, int quantity, int length, String description, double price) -->
-
-
         </div>
     </jsp:body>
 </t:genericpage>
