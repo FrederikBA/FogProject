@@ -69,6 +69,7 @@ public class OrderMapper {
             throw new UserException(ex.getMessage());
         }
     }
+
     public int getOrderIdByTimestamp() throws UserException {
         int id = 0;
         try (Connection connection = database.connect()) {
@@ -83,6 +84,24 @@ public class OrderMapper {
                 throw new UserException(ex.getMessage());
             }
         } catch (SQLException ex) {
+            throw new UserException("Connection to database could not be established");
+        }
+    }
+
+    public double getOrderPriceByTimestamp() throws UserException {
+        double price = 0;
+        try (Connection connection = database.connect()) {
+            String sql = "SELECT price FROM orders ORDER BY timestamp DESC";
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
+                    price = rs.getDouble("price");
+                }
+                return price;
+            } catch (SQLException ex) {
+                throw new UserException(ex.getMessage());
+            }
+        } catch (SQLException | UserException ex) {
             throw new UserException("Connection to database could not be established");
         }
     }

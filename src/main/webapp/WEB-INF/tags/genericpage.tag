@@ -81,9 +81,7 @@ example: https://getbootstrap.com/docs/5.0/examples/pricing/
 
 <!-- Footer -->
 <div class="container">
-    <br>
-    <hr>
-    <br>
+
     <jsp:invoke fragment="footer"/>
 
 </div>

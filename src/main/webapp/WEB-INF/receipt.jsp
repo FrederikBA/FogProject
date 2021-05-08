@@ -33,7 +33,7 @@
 
             <br>
 
-            <h3>Pris: 25.000Kr</h3>
+            <h3>Pris: ${sessionScope.totalPrice}</h3>
 
             <br>
             <h1> Stykliste</h1>

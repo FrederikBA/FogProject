@@ -27,7 +27,7 @@
             <br> <br><br> <br>
 
             <h2>Din pris</h2>
-            <h3>25.000.- DKK</h3>
+            <h3>${sessionScope.totalPrice}</h3>
             <br> <br><br> <br>
 
             <h2>Din tegning:</h2>

@@ -1,6 +1,7 @@
 package web.commands;
 
 import business.entities.Bom;
+import business.entities.BomLine;
 import business.entities.User;
 import business.exceptions.UserException;
 import business.services.BomService;
@@ -51,6 +52,9 @@ public class CreateOrderCommand extends CommandUnprotectedPage {
             session.setAttribute("length", length);
         }
 
+        //Get total price of latest Carport order
+        double totalPrice = orderFacade.getOrderPriceByTimestamp();
+        session.setAttribute("totalPrice", totalPrice);
 
         //Place order
         if (request.getParameter("create") != null) {

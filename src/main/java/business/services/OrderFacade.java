@@ -21,4 +21,8 @@ public class OrderFacade {
     public int getOrderIdByTimestamp() throws UserException {
         return orderMapper.getOrderIdByTimestamp();
     }
+
+    public double getOrderPriceByTimestamp() throws UserException {
+        return orderMapper.getOrderPriceByTimestamp();
+    }
 }
