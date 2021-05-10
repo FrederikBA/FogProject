@@ -3,15 +3,13 @@ package business.entities;
 public class Material {
     private int materialId;
     private String name;
-    private int length;
     private String unit;
     private String description;
     private double pricePerUnit;
 
-    public Material(int materialId, String name, int length, String unit, String description, double pricePerUnit) {
+    public Material(int materialId, String name, String unit, String description, double pricePerUnit) {
         this.materialId = materialId;
         this.name = name;
-        this.length = length;
         this.unit = unit;
         this.description = description;
         this.pricePerUnit = pricePerUnit;
@@ -31,14 +29,6 @@ public class Material {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getLength() {
-        return length;
-    }
-
-    public void setLength(int length) {
-        this.length = length;
     }
 
     public String getUnit() {

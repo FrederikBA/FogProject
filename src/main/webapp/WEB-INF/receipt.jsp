@@ -43,7 +43,7 @@
                         <table class="table">
                             <thead>
                             <tr>
-                                <th scope="col">Materiale ID</th>
+                                <th scope="col">Beskrivelse</th>
                                 <th scope="col">Antal</th>
                                 <th scope="col">Længde</th>
                                 <th scope="col">Beskrivelse</th>
@@ -53,7 +53,7 @@
                             <tbody>
                             <c:forEach var="bomLine" items="${sessionScope.billOfMaterials}">
                                 <tr>
-                                    <td>${bomLine.materialId}</td>
+                                    <td>${bomLine.name}</td>
                                     <td>${bomLine.quantity}</td>
                                     <td>${bomLine.length}</td>
                                     <td>${bomLine.description}</td>

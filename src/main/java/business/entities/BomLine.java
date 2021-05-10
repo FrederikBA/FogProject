@@ -2,13 +2,15 @@ package business.entities;
 
 public class BomLine {
     private int materialId;
+    private String name;
     private int quantity;
     private int length;
     private String description;
     private double price;
 
-    public BomLine(int materialId, int quantity, int length, String description, double price) {
+    public BomLine(int materialId, String name, int quantity, int length, String description, double price) {
         this.materialId = materialId;
+        this.name = name;
         this.quantity = quantity;
         this.length = length;
         this.description = description;
@@ -21,6 +23,14 @@ public class BomLine {
 
     public void setMaterialId(int materialId) {
         this.materialId = materialId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getQuantity() {
