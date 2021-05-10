@@ -21,18 +21,31 @@
 
 
                 <h1>Din ordre er registreret.</h1>
-                <br> <br><br> <br>
+
+                <br>
 
                 <h3>Din valgte Bredde: ${sessionScope.width}</h3>
                 <h3>Din valgte Længde: ${sessionScope.length}</h3>
-                <br> <br><br> <br>
 
-                <h2>Din pris</h2>
+                <br>
+
+                <h2>Din pris:</h2>
                 <h3>${sessionScope.totalPrice}</h3>
-
-                <h2>Din tegning:</h2>
-                <img class="responsive drawing" src="${pageContext.request.contextPath}/img/tegning.PNG">
             </div>
+            <br>
+            <div class="row">
+
+                <div class="col-md"></div>
+                <div class="col-md-6 center">
+
+                    <h2>Din tegning:</h2>
+                    <img class="responsive drawing" src="${pageContext.request.contextPath}/img/carport.PNG">
+
+                </div>
+                <div class="col-md"></div>
+
+            </div>
+
 
             <div class="row">
                 <div class="col-md"></div>
