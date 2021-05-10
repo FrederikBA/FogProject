@@ -71,6 +71,7 @@ public class BomService {
         }
 
         BomLine tmpBomLine = new BomLine(materialId, name, quantity, materialLength, description, price);
+        
         return tmpBomLine;
     }
 }
