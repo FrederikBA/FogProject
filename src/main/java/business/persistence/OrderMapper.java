@@ -1,9 +1,11 @@
 package business.persistence;
 
 import business.entities.BomLine;
+import business.entities.Order;
 import business.exceptions.UserException;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrderMapper {
@@ -121,4 +123,34 @@ public class OrderMapper {
             throw new UserException("Connection to database could not be established");
         }
     }
+
+    //Get orders from database
+    public List<Order> getAllOrders() throws UserException {
+        List<Order> orderList = new ArrayList<>();
+        try (Connection connection = database.connect()) {
+            String sql = "SELECT * FROM fog_carport.orders";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    int orderId = rs.getInt("order_id");
+                    int userId = rs.getInt("user_id");
+                    Timestamp timestamp = rs.getTimestamp("timestamp");
+                    double price = rs.getDouble("price");
+                    String status = rs.getString("status");
+
+                    Order tmpOrder = new Order(orderId, userId, timestamp, price, status);
+                    orderList.add(tmpOrder);
+                }
+                return orderList;
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return orderList;
+    }
+
+
+
+
 }

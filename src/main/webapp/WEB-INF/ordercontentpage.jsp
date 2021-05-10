@@ -12,7 +12,7 @@
     </jsp:attribute>
 
     <jsp:body>
-        <form method="post" action="${pageContext.request.contextPath}/fc/carport">
+        <form method="post" action="${pageContext.request.contextPath}/fc/adminorderpage">
             <div class="row">
                 <div class="col-md"></div>
                 <div class="col-md-8 center">
@@ -27,6 +27,28 @@
             <div class="row">
                 <div class="col-md"></div>
                 <div class="col-md center">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Beskrivelse</th>
+                            <th scope="col">Antal</th>
+                            <th scope="col">Længde</th>
+                            <th scope="col">Beskrivelse</th>
+                            <th scope="col">Pris</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach var="bomLine" items="${sessionScope.billOfMaterials}">
+                            <tr>
+                                <td>${bomLine.name}</td>
+                                <td>${bomLine.quantity}</td>
+                                <td>${bomLine.length}</td>
+                                <td>${bomLine.description}</td>
+                                <td>${bomLine.price}</td>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
                 </div>
                 <div class="col-md"></div>
             </div>

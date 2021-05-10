@@ -24,10 +24,10 @@ public class AdminProductsCommand extends CommandProtectedPage{
 
         List<Material> materials = materialFacade.getAllMaterials();
 
-
         session.setAttribute("materials",materials);
         return pageToShow;
     }
+
 
 
 
