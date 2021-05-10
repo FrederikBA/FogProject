@@ -23,9 +23,9 @@
                 <tr>
                     <th scope="col">Bruger ID</th>
                     <th scope="col">Ordrer ID</th>
-                    <th scope="col">Indhold</th>
                     <th scope="col">Tidspunkt</th>
                     <th scope="col">Pris</th>
+                    <th scope="col">Indhold</th>
                     <th scope="col">Fjern</th>
                 </tr>
                 </thead>
@@ -33,25 +33,23 @@
                 <tr>
                     <td>1</td>
                     <td>8</td>
-                    <td>Se indhold</td>
+                    <td>24.999.- DKK</td>
                     <td>24:00</td>
-                    <td>24.999.- DKK</td>
-                    <td>Fjern</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>17</td>
+
                     <td>Se indhold</td>
-                    <td>18:57</td>
-                    <td>24.999.- DKK</td>
                     <td>Fjern</td>
                 </tr>
+
 
                 </tbody>
             </table>
 
         </div>
-
+            <a href="${pageContext.request.contextPath}/fc/ordercontentpage">
+                <button class="btn btn-primary btn-sm" type="submit" name="content">
+                    Se indhold
+                </button>
+            </a>
         <div class="row">
             <div class="col-md"></div>
             <div class="col-md center">
