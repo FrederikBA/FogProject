@@ -20,8 +20,9 @@ public class BomService {
     public BomLine calculatePostsFromMeasurements(int width, int length) throws UserException {
         Material material = materialFacade.getMaterialById(1);
         int materialId = material.getMaterialId();
+        String name = material.getName();
         int quantity = 4;
-        int materialLength = material.getLength();
+        int materialLength = 500;
         String description = material.getDescription();
         double price = 0;
 
@@ -29,7 +30,7 @@ public class BomService {
             price += material.getPricePerUnit();
         }
 
-        BomLine tmpBomLine = new BomLine(materialId, quantity, materialLength, description, price);
+        BomLine tmpBomLine = new BomLine(materialId, name, quantity, materialLength, description, price);
 
         return tmpBomLine;
     }
@@ -37,8 +38,9 @@ public class BomService {
     public BomLine calculateRaftersFromMeasurements(int width, int length) throws UserException {
         Material material = materialFacade.getMaterialById(2);
         int materialId = material.getMaterialId();
+        String name = material.getName();
         int quantity = 12;
-        int materialLength = material.getLength();
+        int materialLength = 500;
         String description = material.getDescription();
         double price = 0;
 
@@ -46,7 +48,7 @@ public class BomService {
             price += material.getPricePerUnit();
         }
 
-        BomLine tmpBomLine = new BomLine(materialId, quantity, materialLength, description, price);
+        BomLine tmpBomLine = new BomLine(materialId, name, quantity, materialLength, description, price);
 
         return tmpBomLine;
     }

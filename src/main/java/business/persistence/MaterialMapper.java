@@ -1,7 +1,6 @@
 package business.persistence;
 
 import business.entities.Material;
-import business.entities.Order;
 import business.exceptions.UserException;
 
 import java.sql.*;
@@ -25,12 +24,11 @@ public class MaterialMapper {
                 while (rs.next()) {
                     int id = rs.getInt(1);
                     String name = rs.getString(2);
-                    int length = rs.getInt(3);
-                    String unit = rs.getString(4);
-                    String description = rs.getString(5);
-                    double pricePerUnit = rs.getDouble(6);
+                    String unit = rs.getString(3);
+                    String description = rs.getString(4);
+                    double pricePerUnit = rs.getDouble(5);
 
-                    Material tmpMaterial = new Material(id, name, length, unit, description, pricePerUnit);
+                    Material tmpMaterial = new Material(id, name, unit, description, pricePerUnit);
                     materialList.add(tmpMaterial);
                 }
                 return materialList;
@@ -53,12 +51,11 @@ public class MaterialMapper {
                 if (rs.next()) {
                     int id = rs.getInt(1);
                     String name = rs.getString(2);
-                    int length = rs.getInt(3);
-                    String unit = rs.getString(4);
-                    String description = rs.getString(5);
-                    double pricePerUnit = rs.getDouble(6);
+                    String unit = rs.getString(3);
+                    String description = rs.getString(4);
+                    double pricePerUnit = rs.getDouble(5);
 
-                    tmpMaterial = new Material(id, name, length, unit, description, pricePerUnit);
+                    tmpMaterial = new Material(id, name, unit, description, pricePerUnit);
                 }
                 return tmpMaterial;
             } catch (SQLException ex) {

@@ -28,7 +28,6 @@
             <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Beskrivelse(navn)</th>
-                <th scope="col">Længde</th>
                 <th scope="col">Enhed</th>
                 <th scope="col">Beskrivelse</th>
                 <th scope="col">Pris pr</th>
@@ -39,7 +38,6 @@
                 <tr>
                     <td>${material.materialId}</td>
                     <td>${material.name}</td>
-                    <td>${material.length}</td>
                     <td>${material.unit}</td>
                     <td>${material.description}</td>
                     <td>${material.pricePerUnit}</td>
@@ -66,13 +64,6 @@
 
             <div class="col-md">
                 <div class="form-group">
-                    <label for="length">Længde:</label>
-                    <input class="form-control" type="text" id="length" name="length">
-                </div>
-            </div>
-
-            <div class="col-md">
-                <div class="form-group">
                     <label for="unit">Enhed:</label>
                     <input class="form-control" type="text" id="unit" name="unit">
                 </div>
@@ -87,7 +78,7 @@
 
             <div class="col-md">
                 <div class="form-group">
-                    <label for="length">Pris:</label>
+                    <label for="price">Pris:</label>
                     <input class="form-control" type="text" id="price" name="price">
                 </div>
             </div>
