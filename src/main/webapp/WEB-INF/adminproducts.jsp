@@ -19,7 +19,8 @@
         </div>
 
         <div class="col"></div>
-
+        <br>
+        <h3 class="center">Træ & Tagplader</h3>
         <table class="table">
             <thead>
             <tr>
@@ -27,17 +28,38 @@
                 <th scope="col">Beskrivelse</th>
                 <th scope="col">Enhed</th>
                 <th scope="col">Pris pr</th>
-                <th scope="col">Type</th>
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="material" items="${sessionScope.materials}">
+            <c:forEach var="material" items="${sessionScope.wood}">
                 <tr>
                     <td>${material.materialId}</td>
                     <td>${material.description}</td>
                     <td>${material.unit}</td>
                     <td>${material.pricePerUnit}</td>
-                    <td>${material.type}</td>
+                </tr>
+
+            </c:forEach>
+            </tbody>
+        </table>
+        <br>
+        <h3 class="center">Beslag & Skruer</h3>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Beskrivelse</th>
+                <th scope="col">Enhed</th>
+                <th scope="col">Pris pr</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach var="material" items="${sessionScope.accesories}">
+                <tr>
+                    <td>${material.materialId}</td>
+                    <td>${material.description}</td>
+                    <td>${material.unit}</td>
+                    <td>${material.pricePerUnit}</td>
                 </tr>
 
             </c:forEach>

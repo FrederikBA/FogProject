@@ -44,7 +44,7 @@
                                 </button>
                             </a></td>
 
-                                <td>Status</td>
+                                <td>${order.status}</td>
                                 <td>Fjern</td>
                         </tr>
 

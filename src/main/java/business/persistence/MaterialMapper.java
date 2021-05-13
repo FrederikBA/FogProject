@@ -39,6 +39,56 @@ public class MaterialMapper {
         }
     }
 
+    public List<Material> getAllWood() throws UserException {
+        List<Material> woodMaterials = new ArrayList<>();
+        try (Connection connection = database.connect()) {
+            String sql = "SELECT * FROM material WHERE type = \"wood\"";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    int id = rs.getInt(1);
+                    String description = rs.getString(2);
+                    String unit = rs.getString(3);
+                    double pricePerUnit = rs.getDouble(4);
+                    String type = rs.getString(5);
+                    Material tmpMaterial = new Material(id, description, unit, pricePerUnit, type);
+                    woodMaterials.add(tmpMaterial);
+                }
+                return woodMaterials;
+            } catch (SQLException ex) {
+                throw new UserException(ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            throw new UserException("Connection to database could not be established");
+        }
+    }
+
+    public List<Material> getAllAccesories() throws UserException {
+        List<Material> accesories = new ArrayList<>();
+        try (Connection connection = database.connect()) {
+            String sql = "SELECT * FROM material WHERE type = \"accesories\"";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    int id = rs.getInt(1);
+                    String description = rs.getString(2);
+                    String unit = rs.getString(3);
+                    double pricePerUnit = rs.getDouble(4);
+                    String type = rs.getString(5);
+                    Material tmpMaterial = new Material(id, description, unit, pricePerUnit, type);
+                    accesories.add(tmpMaterial);
+                }
+                return accesories;
+            } catch (SQLException ex) {
+                throw new UserException(ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            throw new UserException("Connection to database could not be established");
+        }
+    }
+
     public Material getMaterialById(int materialId) throws UserException {
         Material tmpMaterial = null;
         try (Connection connection = database.connect()) {

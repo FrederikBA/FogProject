@@ -9,13 +9,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-public class AdminProductsCommand extends CommandProtectedPage{
+public class AdminProductsCommand extends CommandProtectedPage {
 
     public MaterialFacade materialFacade;
 
     public AdminProductsCommand(String pageToShow, String role) {
         super(pageToShow, role);
-         materialFacade = new MaterialFacade(database);
+        materialFacade = new MaterialFacade(database);
     }
 
     @Override
@@ -23,12 +23,14 @@ public class AdminProductsCommand extends CommandProtectedPage{
         HttpSession session = request.getSession();
 
         List<Material> materials = materialFacade.getAllMaterials();
+        List<Material> wood = materialFacade.getAllWood();
+        List<Material> accesories = materialFacade.getAllAccesories();
 
-        session.setAttribute("materials",materials);
+        session.setAttribute("materials", materials);
+        session.setAttribute("wood", wood);
+        session.setAttribute("accesories", accesories);
         return pageToShow;
     }
-
-
 
 
 }
