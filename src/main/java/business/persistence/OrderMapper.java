@@ -4,7 +4,9 @@ import business.entities.BomLine;
 import business.entities.Order;
 import business.exceptions.UserException;
 
+import java.math.BigDecimal;
 import java.sql.*;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -98,7 +100,7 @@ public class OrderMapper {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery();
                 if (rs.next()) {
-                    price = rs.getDouble("price");
+                   price = rs.getDouble("price");
                 }
                 return price;
             } catch (SQLException ex) {

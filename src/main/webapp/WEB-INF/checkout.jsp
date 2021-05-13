@@ -29,7 +29,7 @@
 
                 <br>
 
-                <h2>Din pris:</h2>
+                <h2>Din pris DKK:</h2>
                 <h3>${sessionScope.totalPrice}</h3>
             </div>
             <br>

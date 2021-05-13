@@ -44,6 +44,7 @@
                                 </button>
                             </a></td>
 
+                                <td>Status</td>
                                 <td>Fjern</td>
                         </tr>
 

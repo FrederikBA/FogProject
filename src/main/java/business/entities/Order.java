@@ -1,17 +1,19 @@
 package business.entities;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.text.DecimalFormat;
 
 public class Order {
     private int orderId;
     private int userId;
-    private double price;
+    private Double price;
     private String status;
     private int length;
     private int width;
     private Timestamp timestamp;
 
-    public Order(int orderId, int userId, double price, String status, int length, int width, Timestamp timestamp) {
+    public Order(int orderId, int userId, Double price, String status, int length, int width, Timestamp timestamp) {
         this.orderId = orderId;
         this.userId = userId;
         this.price = price;
@@ -21,7 +23,7 @@ public class Order {
         this.timestamp = timestamp;
     }
 
-    public Order(int orderId, int userId, Timestamp timestamp, double price, String status) {
+    public Order(int orderId, int userId, Timestamp timestamp, Double price, String status) {
         this.orderId = orderId;
         this.userId = userId;
         this.timestamp = timestamp;
@@ -45,11 +47,11 @@ public class Order {
         this.userId = userId;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

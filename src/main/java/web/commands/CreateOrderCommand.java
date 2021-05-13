@@ -10,6 +10,7 @@ import business.services.OrderFacade;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.text.DecimalFormat;
 
 public class CreateOrderCommand extends CommandUnprotectedPage {
     BomService bomService;
@@ -67,7 +68,10 @@ public class CreateOrderCommand extends CommandUnprotectedPage {
 
             //Get total price of latest Carport order
             double totalPrice = orderFacade.getOrderPriceByTimestamp();
-            session.setAttribute("totalPrice", totalPrice);
+            DecimalFormat df = new DecimalFormat("#.00");
+            df.format(totalPrice);
+            session.setAttribute("totalPrice", df.format(totalPrice));
+
 
             return "checkout";
         }
