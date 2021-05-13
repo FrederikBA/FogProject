@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,7 @@ public class BomMapper {
 
     public List<BomLine> getBomByOrderId(int orderId) throws UserException {
         List<BomLine> bomLines = new ArrayList<>();
+        DecimalFormat df = new DecimalFormat("#.00");
         try (Connection connection = database.connect()) {
             String sql = "SELECT * FROM bom_items WHERE order_id = ?";
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
