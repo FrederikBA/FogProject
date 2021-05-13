@@ -21,6 +21,14 @@ public class Order {
         this.timestamp = timestamp;
     }
 
+    public Order(int orderId, int userId, Timestamp timestamp, double price, String status) {
+        this.orderId = orderId;
+        this.userId = userId;
+        this.timestamp = timestamp;
+        this.price = price;
+        this.status = status;
+    }
+
     public int getOrderId() {
         return orderId;
     }

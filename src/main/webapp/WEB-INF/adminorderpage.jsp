@@ -13,52 +13,55 @@
     </jsp:attribute>
 
     <jsp:body>
-        <form method="post" action="${pageContext.request.contextPath}/fc/carport">
-        <div class="row">
+        <form method="post">
+            <div class="row">
 
-            <h1 align="center">Velkommen til ADMIN ORDER</h1>
+                <h1 align="center">Velkommen til ADMIN ORDER</h1>
 
-            <table class="table">
-                <thead>
-                <tr>
-                    <th scope="col">Bruger ID</th>
-                    <th scope="col">Ordrer ID</th>
-                    <th scope="col">Indhold</th>
-                    <th scope="col">Tidspunkt</th>
-                    <th scope="col">Pris</th>
-                    <th scope="col">Fjern</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>8</td>
-                    <td>Se indhold</td>
-                    <td>24:00</td>
-                    <td>24.999.- DKK</td>
-                    <td>Fjern</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>17</td>
-                    <td>Se indhold</td>
-                    <td>18:57</td>
-                    <td>24.999.- DKK</td>
-                    <td>Fjern</td>
-                </tr>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Bruger ID</th>
+                        <th scope="col">Ordrer ID</th>
+                        <th scope="col">Tidspunkt</th>
+                        <th scope="col">Pris</th>
+                        <th scope="col">Indhold</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Fjern</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach var="order" items="${sessionScope.orderlist}">
+                        <tr>
+                            <td>${order.userId}</td>
+                            <td>${order.orderId}</td>
+                            <td>${order.timestamp}</td>
+                            <td>${order.price}</td>
 
-                </tbody>
-            </table>
+                            <td><a href="${pageContext.request.contextPath}/fc/ordercontentpage">
+                                <button class="btn btn-primary btn-sm" type="submit" name="content" value="${order.orderId}" >
+                                    Se indhold
+                                </button>
+                            </a></td>
 
-        </div>
 
-        <div class="row">
-            <div class="col-md"></div>
-            <div class="col-md center">
+
+                                <td>Fjern</td>
+                        </tr>
+
+                    </c:forEach>
+                    </tbody>
+                </table>
 
             </div>
-            <div class="col-md"></div>
-        </div>
+
+            <div class="row">
+                <div class="col-md"></div>
+                <div class="col-md center">
+
+                </div>
+                <div class="col-md"></div>
+            </div>
         </form>
 
     </jsp:body>

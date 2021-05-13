@@ -1,6 +1,7 @@
 package business.services;
 
 import business.entities.BomLine;
+import business.entities.Order;
 import business.exceptions.UserException;
 import business.persistence.Database;
 import business.persistence.OrderMapper;
@@ -29,4 +30,8 @@ public class OrderFacade {
     public void updateOrderStatus(int orderId) throws UserException {
         orderMapper.updateOrderStatus(orderId);
     }
+    public List<Order> getAllOrders() throws UserException {
+      return orderMapper.getAllOrders();
+    }
+
 }
