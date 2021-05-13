@@ -55,15 +55,9 @@ public class CreateOrderCommand extends CommandUnprotectedPage {
         //Place order
         if (request.getParameter("create") != null) {
             //Add to Bill of Materials
-
-            //Add posts
-            bom.addToBill(bomService.calculatePostsFromMeasurements(width, length));
-
-            //Add Rafters
-            bom.addToBill(bomService.calculateRaftersFromMeasurements(width, length));
-
-            //AdD Wall Plates
-            bom.addToBill(bomService.calculateWallPlateFromMeasurements(width, length));
+            for (BomLine bomLine : bomService.calculateCarportFromMeasurements(width, length)) {
+                bom.getBomLines().add(bomLine);
+            }
 
             //Save order
             orderFacade.createOrder(userId, length, width, bom.getBomLines());

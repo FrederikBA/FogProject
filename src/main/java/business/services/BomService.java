@@ -7,6 +7,7 @@ import business.exceptions.UserException;
 import business.persistence.Database;
 import business.persistence.MaterialMapper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BomService {
@@ -17,6 +18,17 @@ public class BomService {
         this.materialFacade = new MaterialFacade(database);
     }
 
+    public List<BomLine> calculateCarportFromMeasurements(int width, int length) throws UserException {
+        List<BomLine> billOfMaterials = new ArrayList<>();
+        //Add Posts
+        billOfMaterials.add(calculatePostsFromMeasurements(width, length));
+        //Add Rafters
+        billOfMaterials.add(calculateRaftersFromMeasurements(width, length));
+        //Add Wall Plates
+        billOfMaterials.add(calculateWallPlateFromMeasurements(width, length));
+
+        return billOfMaterials;
+    }
 
     public BomLine calculatePostsFromMeasurements(int width, int length) throws UserException {
         Material material = materialFacade.getMaterialById(1);
@@ -70,7 +82,8 @@ public class BomService {
         }
 
         BomLine tmpBomLine = new BomLine(materialId, name, quantity, materialLength, description, price);
-        
+
         return tmpBomLine;
     }
+
 }
