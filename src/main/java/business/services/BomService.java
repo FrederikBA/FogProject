@@ -31,15 +31,15 @@ public class BomService {
     }
 
     public BomLine calculatePostsFromMeasurements(int width, int length) throws UserException {
-        Material material = materialFacade.getMaterialById(1);
+        Material material = materialFacade.getMaterialById(6);
         int materialId = material.getMaterialId();
-        String name = material.getName();
+        String name = material.getDescription();
         int quantity = 4;
         if (length >= 650) {
             quantity = 6;
         }
         int materialLength = 300;
-        String description = material.getDescription();
+        String description = "Stolper nedgraves 90 cm. i jord";
         double price = 0;
 
         for (int i = 0; i < quantity; i++) {
@@ -52,12 +52,12 @@ public class BomService {
     }
 
     public BomLine calculateRaftersFromMeasurements(int width, int length) throws UserException {
-        Material material = materialFacade.getMaterialById(2);
+        Material material = materialFacade.getMaterialById(5);
         int materialId = material.getMaterialId();
-        String name = material.getName();
+        String name = material.getDescription();
         int quantity = length / 50;
         int materialLength = width;
-        String description = material.getDescription();
+        String description = "Spær, monteres på rem";
         double price = 0;
 
         for (int i = 0; i < quantity; i++) {
@@ -70,12 +70,12 @@ public class BomService {
     }
 
     public BomLine calculateWallPlateFromMeasurements(int width, int length) throws UserException {
-        Material material = materialFacade.getMaterialById(3);
+        Material material = materialFacade.getMaterialById(5);
         int materialId = material.getMaterialId();
-        String name = material.getName();
+        String name = material.getDescription();
         int quantity = 2;
         int materialLength = length;
-        String description = material.getDescription();
+        String description = "Remme i sider, sadles ned i stolper";
         double price = 0;
 
         for (int i = 0; i < quantity; i++) {
