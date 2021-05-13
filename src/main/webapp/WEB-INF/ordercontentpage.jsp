@@ -16,7 +16,7 @@
             <div class="row">
                 <div class="col-md"></div>
                 <div class="col-md-8 center">
-                    <h1>Velkommen til ORDER CONTeNT PAGE</h1>
+                    <h1>Velkommen til ORDER CONTENT PAGE</h1>
 
                 </div>
                 <div class="col-md"></div>
@@ -38,7 +38,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <c:forEach var="bomLine" items="${sessionScope.billOfMaterials}">
+                        <c:forEach var="bomLine" items="${requestScope.billOfMaterials}">
                             <tr>
                                 <td>${bomLine.name}</td>
                                 <td>${bomLine.quantity}</td>

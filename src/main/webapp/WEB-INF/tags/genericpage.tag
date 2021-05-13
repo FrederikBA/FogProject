@@ -48,6 +48,11 @@ example: https://getbootstrap.com/docs/5.0/examples/pricing/
                             <li class="nav-item active">Produkter</li>
                         </a>
                     </c:if>
+                    <c:if test="${sessionScope.user.role.equals('customer')}">
+                        <a href="${pageContext.request.contextPath}/fc/">
+                            <li class="nav-item active">Min bestilling</li>
+                        </a>
+                    </c:if>
                 </ul>
                 <div class="ms-auto">
                     <c:if test="${sessionScope.user != null }">

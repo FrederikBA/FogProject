@@ -31,7 +31,6 @@ public class AdminOrderCommand extends CommandProtectedPage {
         //Show list of orders for adminOrderPage.jsp
         session.setAttribute("orderlist", orderList);
 
-
         //Show order content from specific orders
         if (request.getParameter("content") != null) {
             int orderId = Integer.parseInt(request.getParameter("content"));
@@ -40,10 +39,8 @@ public class AdminOrderCommand extends CommandProtectedPage {
 
             request.setAttribute("billOfMaterials", billOfMaterials);
             return "ordercontentpage";
-
         }
 
         return pageToShow;
-
     }
 }

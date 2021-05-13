@@ -51,7 +51,6 @@ public class BomService {
         for (int i = 0; i < quantity; i++) {
             price += material.getPricePerUnit();
         }
-
         BomLine tmpBomLine = new BomLine(materialId, name, quantity, materialLength, description, price);
 
         return tmpBomLine;
