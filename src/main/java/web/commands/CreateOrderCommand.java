@@ -64,6 +64,7 @@ public class CreateOrderCommand extends CommandUnprotectedPage {
             orderFacade.createOrder(userId, length, width, bom.getBomLines());
 
             //Clear Bill of Materials
+            bomService.calculateCarportFromMeasurements(width, length).clear();
             bom.getBomLines().clear();
 
             //Get total price of latest Carport order
