@@ -13,7 +13,6 @@
     </jsp:attribute>
 
     <jsp:body>
-        <form method="post" action="${pageContext.request.contextPath}/fc/carport">
             <div class="row">
 
                 <h1 align="center">Velkommen til ADMIN CUSTOMER</h1>
@@ -24,43 +23,27 @@
                         <tr>
                             <th scope="col">Bruger ID</th>
                             <th scope="col">Email</th>
-                            <th scope="col">Tidspunkt</th>
-                            <th scope="col">Se ordrer</th>
-                            <th scope="col">Slet ordre</th>
+                            <th scope="col">Rolle</th>
 
                         </tr>
                         </thead>
                         <tbody>
+                        <c:forEach var="user" items="${sessionScope.userList}">
                         <tr>
-                            <td>1</td>
-                            <td>AudiTT@mail.dk</td>
-                            <td>24:00</td>
-                            <td>Se indhold</td>
-                            <td>Fjern</td>
+                            <td>${user.id}</td>
+                            <td>${user.email}</td>
+                            <td>${user.role}</td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>AudiTT@mail.dk</td>
-                            <td>12:00</td>
-                            <td>Se indhold</td>
-                            <td>Fjern</td>
-                        </tr>
+
+                            </c:forEach>
 
                         </tbody>
                     </table>
-
                 </div>
-
 
             </div>
 
-            <div class="row">
-                <div class="col-md"></div>
-                <div class="col-md center">
-                </div>
-                <div class="col-md"></div>
-            </div>
-        </form>
+
 
     </jsp:body>
 </t:genericpage>

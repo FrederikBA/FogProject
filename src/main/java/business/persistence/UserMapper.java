@@ -1,9 +1,12 @@
 package business.persistence;
 
+import business.entities.Material;
 import business.exceptions.UserException;
 import business.entities.User;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserMapper {
     private Database database;
@@ -50,6 +53,31 @@ public class UserMapper {
                 } else {
                     throw new UserException("Could not validate user");
                 }
+            } catch (SQLException ex) {
+                throw new UserException(ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            throw new UserException("Connection to database could not be established");
+        }
+    }
+
+    public List<User> getAllUsers() throws UserException {
+        List<User> userList = new ArrayList<>();
+        try (Connection connection = database.connect()) {
+            String sql = "SELECT * FROM user";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    int id = rs.getInt("id");
+                    String email = rs.getString("email");
+                    String password = rs.getString("password");
+                    String role = rs.getString("role");
+
+                    User tmpUser = new User(id, email,password,role);
+                    userList.add(tmpUser);
+                }
+                return userList;
             } catch (SQLException ex) {
                 throw new UserException(ex.getMessage());
             }
