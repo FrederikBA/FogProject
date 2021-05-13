@@ -20,27 +20,24 @@
 
         <div class="col"></div>
 
-
-        <h1 align="center">Velkommen til ADMIN PRODUCTS</h1>
-
         <table class="table">
             <thead>
             <tr>
                 <th scope="col">Id</th>
-                <th scope="col">Beskrivelse(navn)</th>
-                <th scope="col">Enhed</th>
                 <th scope="col">Beskrivelse</th>
+                <th scope="col">Enhed</th>
                 <th scope="col">Pris pr</th>
+                <th scope="col">Type</th>
             </tr>
             </thead>
             <tbody>
             <c:forEach var="material" items="${sessionScope.materials}">
                 <tr>
                     <td>${material.materialId}</td>
-                    <td>${material.name}</td>
-                    <td>${material.unit}</td>
                     <td>${material.description}</td>
+                    <td>${material.unit}</td>
                     <td>${material.pricePerUnit}</td>
+                    <td>${material.type}</td>
                 </tr>
 
             </c:forEach>
@@ -57,8 +54,8 @@
 
             <div class="col-md">
                 <div class="form-group">
-                    <label for="name">Navn:</label>
-                    <input class="form-control" type="text" id="name" name="name">
+                    <label for="description">Beskrivelse:</label>
+                    <input class="form-control" type="text" id="description" name="description">
                 </div>
             </div>
 
@@ -71,15 +68,15 @@
 
             <div class="col-md">
                 <div class="form-group">
-                    <label for="description">Beskrivelse:</label>
-                    <input class="form-control" type="text" id="description" name="description">
+                    <label for="price">Pris:</label>
+                    <input class="form-control" type="text" id="price" name="price">
                 </div>
             </div>
 
             <div class="col-md">
                 <div class="form-group">
-                    <label for="price">Pris:</label>
-                    <input class="form-control" type="text" id="price" name="price">
+                    <label for="type">Type:</label>
+                    <input class="form-control" type="text" id="type" name="type">
                 </div>
             </div>
         </div>
