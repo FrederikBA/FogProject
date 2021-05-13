@@ -23,12 +23,11 @@ public class MaterialMapper {
                 ResultSet rs = ps.executeQuery();
                 while (rs.next()) {
                     int id = rs.getInt(1);
-                    String name = rs.getString(2);
+                    String description = rs.getString(2);
                     String unit = rs.getString(3);
-                    String description = rs.getString(4);
-                    double pricePerUnit = rs.getDouble(5);
-
-                    Material tmpMaterial = new Material(id, name, unit, description, pricePerUnit);
+                    double pricePerUnit = rs.getDouble(4);
+                    String type = rs.getString(5);
+                    Material tmpMaterial = new Material(id, description, unit, pricePerUnit, type);
                     materialList.add(tmpMaterial);
                 }
                 return materialList;
@@ -50,12 +49,12 @@ public class MaterialMapper {
                 ResultSet rs = ps.executeQuery();
                 if (rs.next()) {
                     int id = rs.getInt(1);
-                    String name = rs.getString(2);
+                    String description = rs.getString(2);
                     String unit = rs.getString(3);
-                    String description = rs.getString(4);
-                    double pricePerUnit = rs.getDouble(5);
+                    double pricePerUnit = rs.getDouble(4);
+                    String type = rs.getString(5);
 
-                    tmpMaterial = new Material(id, name, unit, description, pricePerUnit);
+                    tmpMaterial = new Material(id, description, unit, pricePerUnit, type);
                 }
                 return tmpMaterial;
             } catch (SQLException ex) {

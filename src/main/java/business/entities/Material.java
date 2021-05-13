@@ -2,17 +2,17 @@ package business.entities;
 
 public class Material {
     private int materialId;
-    private String name;
-    private String unit;
     private String description;
+    private String unit;
     private double pricePerUnit;
+    private String type;
 
-    public Material(int materialId, String name, String unit, String description, double pricePerUnit) {
+    public Material(int materialId, String description, String unit, double pricePerUnit, String type) {
         this.materialId = materialId;
-        this.name = name;
-        this.unit = unit;
         this.description = description;
+        this.unit = unit;
         this.pricePerUnit = pricePerUnit;
+        this.type = type;
     }
 
     public int getMaterialId() {
@@ -23,12 +23,12 @@ public class Material {
         this.materialId = materialId;
     }
 
-    public String getName() {
-        return name;
+    public String getDescription() {
+        return description;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getUnit() {
@@ -39,14 +39,6 @@ public class Material {
         this.unit = unit;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public double getPricePerUnit() {
         return pricePerUnit;
     }
@@ -55,8 +47,16 @@ public class Material {
         this.pricePerUnit = pricePerUnit;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     @Override
     public String toString() {
-        return name;
+        return description;
     }
 }
