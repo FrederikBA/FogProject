@@ -215,7 +215,9 @@ public class BomService {
         Material material = materialFacade.getMaterialById(8);
         int materialId = material.getMaterialId();
         String name = material.getDescription();
-        int quantity = length / 130;
+        double decimalLength = (double)length;
+        double x = decimalLength / 130;
+        int quantity = (int) Math.round(x);
         int materialLength = width;
         String description = "tagplader monteres på spær";
         double price = 0;
