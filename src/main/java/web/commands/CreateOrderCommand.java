@@ -63,14 +63,13 @@ public class CreateOrderCommand extends CommandUnprotectedPage {
             //Save order
             orderFacade.createOrder(userId, length, width, bom.getBomLines());
 
-            //Clear Bill of Materials
+            //Clear Bill of Materials ArrayList
             bomService.calculateCarportFromMeasurements(width, length).clear();
             bom.getBomLines().clear();
 
             //Get total price of latest Carport order
             double totalPrice = orderFacade.getOrderPriceByTimestamp();
             DecimalFormat df = new DecimalFormat("#.00");
-            df.format(totalPrice);
             session.setAttribute("totalPrice", df.format(totalPrice));
 
 
