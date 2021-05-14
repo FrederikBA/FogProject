@@ -38,10 +38,13 @@ public class BomService {
 
         //Add Vandbrædt
         billOfMaterials.add(calculateVandbrædtSidesFromMeasurements(width, length));
-        billOfMaterials.add(calculateVandBrædtFrontFromMeasurements(width, length));
+        billOfMaterials.add(calculateVandbrædtFrontFromMeasurements(width, length));
 
         //Add Tagplader
         billOfMaterials.add(calculateTagpladerFromMeasurements(width, length));
+
+        //Add Hulbånd.
+        billOfMaterials.add(calculateHulbåndFromMeasurements(width, length));
 
         return billOfMaterials;
     }
@@ -51,7 +54,7 @@ public class BomService {
         int materialId = material.getMaterialId();
         String name = material.getDescription();
         int quantity = 4;
-        if (length >= 650) {
+        if (length > 510) {
             quantity = 6;
         }
         int materialLength = 300;
@@ -95,6 +98,10 @@ public class BomService {
         String description = "Remme i sider, sadles ned i stolper";
         double price = 0;
 
+        if (length > 600) {
+            quantity = 3;
+        }
+
         for (int i = 0; i < quantity; i++) {
             price += material.getPricePerUnit();
         }
@@ -132,7 +139,7 @@ public class BomService {
         double price = 0;
 
         for (int i = 0; i < quantity; i++) {
-            price = material.getPricePerUnit();
+            price += material.getPricePerUnit();
         }
 
         BomLine bomLine = new BomLine(materialId, name, quantity, materialLength, description, price);
@@ -148,8 +155,9 @@ public class BomService {
         int materialLength = 360;
         String description = "oversternbrædder til forenden";
         double price = 0;
+
         for (int i = 0; i < quantity; i++) {
-            price = material.getPricePerUnit();
+            price += material.getPricePerUnit();
         }
 
         BomLine bomLine = new BomLine(materialId, name, quantity, materialLength, description, price);
@@ -167,7 +175,7 @@ public class BomService {
         double price = 0;
 
         for (int i = 0; i < quantity; i++) {
-            price = material.getPricePerUnit();
+            price += material.getPricePerUnit();
         }
 
         BomLine bomLine = new BomLine(materialId, name, quantity, materialLength, description, price);
@@ -185,7 +193,7 @@ public class BomService {
         double price = 0;
 
         for (int i = 0; i < quantity; i++) {
-            price = material.getPricePerUnit();
+            price += material.getPricePerUnit();
         }
 
         BomLine bomLine = new BomLine(materialId, name, quantity, materialLength, description, price);
@@ -193,7 +201,7 @@ public class BomService {
         return bomLine;
     }
 
-    public BomLine calculateVandBrædtFrontFromMeasurements(int width, int length) throws UserException {
+    public BomLine calculateVandbrædtFrontFromMeasurements(int width, int length) throws UserException {
         Material material = materialFacade.getMaterialById(7);
         int materialId = material.getMaterialId();
         String name = material.getDescription();
@@ -203,7 +211,7 @@ public class BomService {
         double price = 0;
 
         for (int i = 0; i < quantity; i++) {
-            price = material.getPricePerUnit();
+            price += material.getPricePerUnit();
         }
 
         BomLine bomLine = new BomLine(materialId, name, quantity, materialLength, description, price);
@@ -215,7 +223,7 @@ public class BomService {
         Material material = materialFacade.getMaterialById(8);
         int materialId = material.getMaterialId();
         String name = material.getDescription();
-        double decimalLength = (double)length;
+        double decimalLength = (double) length;
         double x = decimalLength / 130;
         int quantity = (int) Math.ceil(x);
         int materialLength = width;
@@ -223,10 +231,33 @@ public class BomService {
         double price = 0;
 
         for (int i = 0; i < quantity; i++) {
-            price = material.getPricePerUnit();
+            price += material.getPricePerUnit();
         }
 
+
         BomLine bomLine = new BomLine(materialId, name, quantity, materialLength, description, price);
+
+        return bomLine;
+    }
+
+    public BomLine calculateHulbåndFromMeasurements(int width, int length) throws UserException {
+        Material material = materialFacade.getMaterialById(10);
+        int materialId = material.getMaterialId();
+        String name = material.getDescription();
+        //Beregn længde af side på trekant for at finde ud af længden på hulbånd, hvis større end 10m så skal der bruges 2 ruller.
+        double diagonalLength = Math.sqrt((width * width) + (length * length));
+        int quantity = 1;
+        if (diagonalLength * 2 > 1000)
+            quantity = 2;
+        String description = "Til vindkryds på spær";
+        double price = 0;
+
+        for (int i = 0; i < quantity; i++) {
+            price += material.getPricePerUnit();
+        }
+
+
+        BomLine bomLine = new BomLine(materialId, name, quantity, description, price, diagonalLength);
 
         return bomLine;
     }

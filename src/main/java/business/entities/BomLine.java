@@ -7,6 +7,7 @@ public class BomLine {
     private int length;
     private String description;
     private double price;
+    private double diagonalLength;
 
     public BomLine(int materialId, String name, int quantity, int length, String description, double price) {
         this.materialId = materialId;
@@ -15,6 +16,23 @@ public class BomLine {
         this.length = length;
         this.description = description;
         this.price = price;
+    }
+
+    public BomLine(int materialId, String name, int quantity, String description, double price) {
+        this.materialId = materialId;
+        this.name = name;
+        this.quantity = quantity;
+        this.description = description;
+        this.price = price;
+    }
+
+    public BomLine(int materialId, String name, int quantity, String description, double price, double diagonalLength) {
+        this.materialId = materialId;
+        this.name = name;
+        this.quantity = quantity;
+        this.description = description;
+        this.price = price;
+        this.diagonalLength = diagonalLength;
     }
 
     public int getMaterialId() {

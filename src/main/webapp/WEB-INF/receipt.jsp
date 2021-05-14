@@ -51,15 +51,19 @@
                             </tr>
                             </thead>
                             <tbody>
+
                             <c:forEach var="bomLine" items="${sessionScope.billOfMaterials}">
-                                <tr>
-                                    <td>${bomLine.name}</td>
-                                    <td>${bomLine.quantity}</td>
-                                    <td>${bomLine.length}</td>
-                                    <td>${bomLine.description}</td>
-                                    <td>${bomLine.price}</td>
-                                </tr>
+                                <c:if test="${bomLine.length > 1}">
+                                    <tr>
+                                        <td>${bomLine.name}</td>
+                                        <td>${bomLine.quantity}</td>
+                                        <td>${bomLine.length}</td>
+                                        <td>${bomLine.description}</td>
+                                        <td>${bomLine.price}</td>
+                                    </tr>
+                                </c:if>
                             </c:forEach>
+
                             </tbody>
                         </table>
                     </div>
