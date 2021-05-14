@@ -71,7 +71,7 @@ public class BomService {
         Material material = materialFacade.getMaterialById(5);
         int materialId = material.getMaterialId();
         String name = material.getDescription();
-        int quantity = length / 50;
+        int quantity = length / 55 + 1;
         int materialLength = width;
         String description = "Spær, monteres på rem";
         double price = 0;
