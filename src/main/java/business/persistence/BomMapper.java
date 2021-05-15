@@ -30,10 +30,11 @@ public class BomMapper {
                     String name = rs.getString("name");
                     int quantity = rs.getInt("quantity");
                     int length = rs.getInt("length");
+                    String unit = rs.getString("unit");
                     String desc = rs.getString("description");
                     double price = rs.getDouble("price");
 
-                    BomLine tmpBomLine = new BomLine(materialId, name, quantity, length, desc, price);
+                    BomLine tmpBomLine = new BomLine(materialId, name, quantity, length, unit, desc, price);
                     bomLines.add(tmpBomLine);
                 }
                 return bomLines;

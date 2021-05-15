@@ -72,6 +72,7 @@ public class BomService {
             quantity = 6;
         }
         int materialLength = 300;
+        String unit = material.getUnit();
         String description = "Stolper nedgraves 90 cm. i jord";
         double price = 0;
 
@@ -79,7 +80,7 @@ public class BomService {
             price += material.getPricePerUnit();
         }
 
-        BomLine bomLine = new BomLine(materialId, name, quantity, materialLength, description, price);
+        BomLine bomLine = new BomLine(materialId, name, quantity, materialLength, unit, description, price);
 
         return bomLine;
     }
@@ -90,6 +91,7 @@ public class BomService {
         String name = material.getDescription();
         int quantity = length / 55 + 1;
         int materialLength = width;
+        String unit = material.getUnit();
         String description = "Spær, monteres på rem";
         double price = 0;
 
@@ -98,7 +100,7 @@ public class BomService {
         }
 
 
-        BomLine bomLine = new BomLine(materialId, name, quantity, materialLength, description, price);
+        BomLine bomLine = new BomLine(materialId, name, quantity, materialLength, unit, description, price);
 
         return bomLine;
     }
@@ -109,6 +111,7 @@ public class BomService {
         String name = material.getDescription();
         int quantity = 2;
         int materialLength = length;
+        String unit = material.getUnit();
         String description = "Remme i sider, sadles ned i stolper";
         double price = 0;
 
@@ -120,7 +123,7 @@ public class BomService {
             price += material.getPricePerUnit();
         }
 
-        BomLine bomLine = new BomLine(materialId, name, quantity, materialLength, description, price);
+        BomLine bomLine = new BomLine(materialId, name, quantity, materialLength, unit, description, price);
 
         return bomLine;
     }
@@ -131,6 +134,7 @@ public class BomService {
         String name = material.getDescription();
         int quantity = 4;
         int materialLength = 360;
+        String unit = material.getUnit();
         String description = "understernbrædder til for & bag ende";
         double price = 0;
 
@@ -138,7 +142,7 @@ public class BomService {
             price += material.getPricePerUnit();
         }
 
-        BomLine bomLine = new BomLine(materialId, name, quantity, materialLength, description, price);
+        BomLine bomLine = new BomLine(materialId, name, quantity, materialLength, unit, description, price);
 
         return bomLine;
     }
@@ -149,6 +153,7 @@ public class BomService {
         String name = material.getDescription();
         int quantity = 4;
         int materialLength = 540;
+        String unit = material.getUnit();
         String description = "understernbrædder til siderne";
         double price = 0;
 
@@ -156,7 +161,7 @@ public class BomService {
             price += material.getPricePerUnit();
         }
 
-        BomLine bomLine = new BomLine(materialId, name, quantity, materialLength, description, price);
+        BomLine bomLine = new BomLine(materialId, name, quantity, materialLength, unit, description, price);
 
         return bomLine;
     }
@@ -167,6 +172,7 @@ public class BomService {
         String name = material.getDescription();
         int quantity = 2;
         int materialLength = 360;
+        String unit = material.getUnit();
         String description = "oversternbrædder til forenden";
         double price = 0;
 
@@ -174,7 +180,7 @@ public class BomService {
             price += material.getPricePerUnit();
         }
 
-        BomLine bomLine = new BomLine(materialId, name, quantity, materialLength, description, price);
+        BomLine bomLine = new BomLine(materialId, name, quantity, materialLength, unit, description, price);
 
         return bomLine;
     }
@@ -185,6 +191,7 @@ public class BomService {
         String name = material.getDescription();
         int quantity = 4;
         int materialLength = 540;
+        String unit = material.getUnit();
         String description = "oversternbrædder til siderne";
         double price = 0;
 
@@ -192,7 +199,7 @@ public class BomService {
             price += material.getPricePerUnit();
         }
 
-        BomLine bomLine = new BomLine(materialId, name, quantity, materialLength, description, price);
+        BomLine bomLine = new BomLine(materialId, name, quantity, materialLength, unit, description, price);
 
         return bomLine;
     }
@@ -203,6 +210,7 @@ public class BomService {
         String name = material.getDescription();
         int quantity = 4;
         int materialLength = 540;
+        String unit = material.getUnit();
         String description = "vandbrædt på stern i sider";
         double price = 0;
 
@@ -210,7 +218,7 @@ public class BomService {
             price += material.getPricePerUnit();
         }
 
-        BomLine bomLine = new BomLine(materialId, name, quantity, materialLength, description, price);
+        BomLine bomLine = new BomLine(materialId, name, quantity, materialLength, unit, description, price);
 
         return bomLine;
     }
@@ -221,6 +229,7 @@ public class BomService {
         String name = material.getDescription();
         int quantity = 2;
         int materialLength = 360;
+        String unit = material.getUnit();
         String description = "vandbrædt på stern i forende";
         double price = 0;
 
@@ -228,7 +237,7 @@ public class BomService {
             price += material.getPricePerUnit();
         }
 
-        BomLine bomLine = new BomLine(materialId, name, quantity, materialLength, description, price);
+        BomLine bomLine = new BomLine(materialId, name, quantity, materialLength, unit, description, price);
 
         return bomLine;
     }
@@ -241,6 +250,7 @@ public class BomService {
         double x = decimalLength / 130;
         int quantity = (int) Math.ceil(x);
         int materialLength = width;
+        String unit = material.getUnit();
         String description = "tagplader monteres på spær";
         double price = 0;
 
@@ -248,7 +258,7 @@ public class BomService {
             price += material.getPricePerUnit();
         }
 
-        BomLine bomLine = new BomLine(materialId, name, quantity, materialLength, description, price);
+        BomLine bomLine = new BomLine(materialId, name, quantity, materialLength, unit, description, price);
 
         return bomLine;
     }
@@ -258,6 +268,7 @@ public class BomService {
         int materialId = material.getMaterialId();
         String name = material.getDescription();
         int quantity = 3;
+        String unit = material.getUnit();
         String description = "Skruer til tagplader";
         double price = 0;
 
@@ -265,7 +276,7 @@ public class BomService {
             price += material.getPricePerUnit();
         }
 
-        BomLine bomLine = new BomLine(materialId, name, quantity, description, price);
+        BomLine bomLine = new BomLine(materialId, name, quantity, unit, description, price);
 
         return bomLine;
     }
@@ -279,6 +290,7 @@ public class BomService {
         int quantity = 1;
         if (diagonalLength * 2 > 1000)
             quantity = 2;
+        String unit = material.getUnit();
         String description = "Til vindkryds på spær";
         double price = 0;
 
@@ -286,7 +298,7 @@ public class BomService {
             price += material.getPricePerUnit();
         }
 
-        BomLine bomLine = new BomLine(materialId, name, quantity, description, price, diagonalLength);
+        BomLine bomLine = new BomLine(materialId, name, quantity, unit, description, price, diagonalLength);
 
         return bomLine;
     }
@@ -296,6 +308,7 @@ public class BomService {
         int materialId = material.getMaterialId();
         String name = material.getDescription();
         int quantity = calculateSpærFromMeasurements(width, length).getQuantity();
+        String unit = material.getUnit();
         String description = "Til montering af spær på rem";
         double price = 0;
 
@@ -303,7 +316,7 @@ public class BomService {
             price += material.getPricePerUnit();
         }
 
-        BomLine bomLine = new BomLine(materialId, name, quantity, description, price);
+        BomLine bomLine = new BomLine(materialId, name, quantity, unit, description, price);
 
         return bomLine;
     }
@@ -313,6 +326,7 @@ public class BomService {
         int materialId = material.getMaterialId();
         String name = material.getDescription();
         int quantity = calculateSpærFromMeasurements(width, length).getQuantity();
+        String unit = material.getUnit();
         String description = "Til montering af spær på rem";
         double price = 0;
 
@@ -320,7 +334,7 @@ public class BomService {
             price += material.getPricePerUnit();
         }
 
-        BomLine bomLine = new BomLine(materialId, name, quantity, description, price);
+        BomLine bomLine = new BomLine(materialId, name, quantity, unit, description, price);
 
         return bomLine;
     }
@@ -330,6 +344,7 @@ public class BomService {
         int materialId = material.getMaterialId();
         String name = material.getDescription();
         int quantity = 1;
+        String unit = material.getUnit();
         String description = "Til montering af stern & vandbrædt";
         double price = 0;
 
@@ -337,7 +352,7 @@ public class BomService {
             price += material.getPricePerUnit();
         }
 
-        BomLine bomLine = new BomLine(materialId, name, quantity, description, price);
+        BomLine bomLine = new BomLine(materialId, name, quantity, unit, description, price);
 
         return bomLine;
     }
@@ -347,6 +362,7 @@ public class BomService {
         int materialId = material.getMaterialId();
         String name = material.getDescription();
         int quantity = 3;
+        String unit = material.getUnit();
         String description = "Til montering af universalbeslag & hulbånd";
         double price = 0;
 
@@ -354,7 +370,7 @@ public class BomService {
             price += material.getPricePerUnit();
         }
 
-        BomLine bomLine = new BomLine(materialId, name, quantity, description, price);
+        BomLine bomLine = new BomLine(materialId, name, quantity, unit, description, price);
 
         return bomLine;
     }
@@ -364,6 +380,7 @@ public class BomService {
         int materialId = material.getMaterialId();
         String name = material.getDescription();
         int quantity = 18;
+        String unit = material.getUnit();
         String description = "Til montering af rem på stolper";
         double price = 0;
 
@@ -371,7 +388,7 @@ public class BomService {
             price += material.getPricePerUnit();
         }
 
-        BomLine bomLine = new BomLine(materialId, name, quantity, description, price);
+        BomLine bomLine = new BomLine(materialId, name, quantity, unit, description, price);
 
         return bomLine;
     }
@@ -381,6 +398,7 @@ public class BomService {
         int materialId = material.getMaterialId();
         String name = material.getDescription();
         int quantity = 12;
+        String unit = material.getUnit();
         String description = "Til montering af rem på stolper";
         double price = 0;
 
@@ -388,7 +406,7 @@ public class BomService {
             price += material.getPricePerUnit();
         }
 
-        BomLine bomLine = new BomLine(materialId, name, quantity, description, price);
+        BomLine bomLine = new BomLine(materialId, name, quantity, unit, description, price);
 
         return bomLine;
     }
@@ -398,6 +416,7 @@ public class BomService {
         int materialId = material.getMaterialId();
         String name = material.getDescription();
         int quantity = 2;
+        String unit = material.getUnit();
         String description = "Til montering af yderste beklædning";
         double price = 0;
 
@@ -405,7 +424,7 @@ public class BomService {
             price += material.getPricePerUnit();
         }
 
-        BomLine bomLine = new BomLine(materialId, name, quantity, description, price);
+        BomLine bomLine = new BomLine(materialId, name, quantity, unit, description, price);
 
         return bomLine;
     }
@@ -415,6 +434,7 @@ public class BomService {
         int materialId = material.getMaterialId();
         String name = material.getDescription();
         int quantity = 2;
+        String unit = material.getUnit();
         String description = "Til montering af yderste beklædning";
         double price = 0;
 
@@ -422,7 +442,7 @@ public class BomService {
             price += material.getPricePerUnit();
         }
 
-        BomLine bomLine = new BomLine(materialId, name, quantity, description, price);
+        BomLine bomLine = new BomLine(materialId, name, quantity, unit, description, price);
 
         return bomLine;
     }
@@ -432,6 +452,7 @@ public class BomService {
         int materialId = material.getMaterialId();
         String name = material.getDescription();
         int quantity = 1;
+        String unit = material.getUnit();
         String description = "Til lås på dør i skur";
         double price = 0;
 
@@ -439,7 +460,7 @@ public class BomService {
             price += material.getPricePerUnit();
         }
 
-        BomLine bomLine = new BomLine(materialId, name, quantity, description, price);
+        BomLine bomLine = new BomLine(materialId, name, quantity, unit, description, price);
 
         return bomLine;
     }
@@ -449,6 +470,7 @@ public class BomService {
         int materialId = material.getMaterialId();
         String name = material.getDescription();
         int quantity = 2;
+        String unit = material.getUnit();
         String description = "Til skurdør";
         double price = 0;
 
@@ -456,7 +478,7 @@ public class BomService {
             price += material.getPricePerUnit();
         }
 
-        BomLine bomLine = new BomLine(materialId, name, quantity, description, price);
+        BomLine bomLine = new BomLine(materialId, name, quantity, unit, description, price);
 
         return bomLine;
     }
@@ -466,6 +488,7 @@ public class BomService {
         int materialId = material.getMaterialId();
         String name = material.getDescription();
         int quantity = 32;
+        String unit = material.getUnit();
         String description = "Til montering af løsholter i skur";
         double price = 0;
 
@@ -473,7 +496,7 @@ public class BomService {
             price += material.getPricePerUnit();
         }
 
-        BomLine bomLine = new BomLine(materialId, name, quantity, description, price);
+        BomLine bomLine = new BomLine(materialId, name, quantity, unit, description, price);
 
         return bomLine;
     }

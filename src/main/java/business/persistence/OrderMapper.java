@@ -55,7 +55,7 @@ public class OrderMapper {
 
     public void insertIntoBomItems(int orderId, BomLine line) throws UserException {
         try (Connection connection = database.connect()) {
-            String sql = "INSERT INTO bom_items (order_id, material_id, name, quantity, length, description, price) VALUES (?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO bom_items (order_id, material_id, name, quantity, length, unit, description, price) VALUES (?,?,?,?,?,?,?,?)";
 
             try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 ps.setInt(1, orderId);
@@ -63,8 +63,9 @@ public class OrderMapper {
                 ps.setString(3, line.getName());
                 ps.setInt(4, line.getQuantity());
                 ps.setInt(5, line.getLength());
-                ps.setString(6, line.getDescription());
-                ps.setDouble(7, line.getPrice());
+                ps.setString(6,line.getUnit());
+                ps.setString(7, line.getDescription());
+                ps.setDouble(8, line.getPrice());
                 ps.executeUpdate();
 
             } catch (SQLException ex) {
