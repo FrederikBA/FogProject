@@ -6,11 +6,13 @@ import business.entities.User;
 import business.exceptions.UserException;
 import business.services.BomService;
 import business.services.OrderFacade;
+import business.services.SVG;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.text.DecimalFormat;
+import java.util.Locale;
 
 public class CreateOrderCommand extends CommandUnprotectedPage {
     BomService bomService;
@@ -25,6 +27,7 @@ public class CreateOrderCommand extends CommandUnprotectedPage {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
         HttpSession session = request.getSession();
+        Locale.setDefault(new Locale("US"));
         User user;
         int width = 0;
         int length = 0;
@@ -59,6 +62,15 @@ public class CreateOrderCommand extends CommandUnprotectedPage {
             for (BomLine bomLine : bomService.calculateCarportFromMeasurements(width, length)) {
                 bom.getBomLines().add(bomLine);
             }
+
+            //Draw Carport
+            SVG svg = new SVG(0, 0, "0 0 855 600", 100, 100);
+
+            for (int x = 0; x < 14; x++) {
+                svg.addRect(100 + 50*x, 0, 600, 4.5);
+            }
+
+            request.setAttribute("drawing", svg.toString());
 
             //Save order
             orderFacade.createOrder(userId, length, width, bom.getBomLines());

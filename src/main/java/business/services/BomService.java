@@ -285,7 +285,6 @@ public class BomService {
         Material material = materialFacade.getMaterialById(10);
         int materialId = material.getMaterialId();
         String name = material.getDescription();
-        //Beregn længde af side på trekant for at finde ud af længden på hulbånd, hvis større end 10m så skal der bruges 2 ruller.
         double diagonalLength = Math.sqrt((width * width) + (length * length));
         int quantity = 1;
         if (diagonalLength * 2 > 1000)

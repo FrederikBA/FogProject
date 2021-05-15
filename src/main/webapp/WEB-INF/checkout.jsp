@@ -33,19 +33,12 @@
                 <h3>${sessionScope.totalPrice}</h3>
             </div>
             <br>
-            <div class="row">
+            <div class="center responsive">
+                <h2>Din tegning:</h2>
 
-                <div class="col-md"></div>
-                <div class="col-md-6 center">
-
-                    <h2>Din tegning:</h2>
-                    <img class="responsive drawing" src="${pageContext.request.contextPath}/img/carport.PNG">
-
-                </div>
-                <div class="col-md"></div>
+                    ${requestScope.drawing}
 
             </div>
-
 
             <div class="row">
                 <div class="col-md"></div>
