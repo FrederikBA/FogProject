@@ -43,8 +43,22 @@ public class BomService {
         //Add Tagplader
         billOfMaterials.add(calculateTagpladerFromMeasurements(width, length));
 
-        //Add Hulbånd.
+        //Add Tilbehør
+        billOfMaterials.add(calculateBundskruerFromMeasurements(width, length));
         billOfMaterials.add(calculateHulbåndFromMeasurements(width, length));
+        billOfMaterials.add(calculateUniversalskruerHøjreFromMeasurements(width, length));
+        billOfMaterials.add(calculateUniversalskruerVenstreFromMeasurements(width, length));
+        billOfMaterials.add(calculateSternAndVandbrætSkruerFromMeasurements(width, length));
+        billOfMaterials.add(calculateBeslagskruerFromMeasurements(width, length));
+        billOfMaterials.add(calculateBræddeboltFromMeasurements(width, length));
+        billOfMaterials.add(calculateFirkantskiverFromMeasurements(width, length));
+        billOfMaterials.add(calculateSkruerYdersteBeklædningFromMeasurements(width, length));
+        billOfMaterials.add(calculateSkruerIndersteBeklædningFromMeasurements(width, length));
+
+        //Skur Tilbehør
+        //billOfMaterials.add(calculateStalddørsgrebFromMeasurements(width, length));
+        //billOfMaterials.add(calculateThængselFromMeasurements(width, length));
+        //billOfMaterials.add(calculateVinkelbeslagFromMeasurements(width, length));
 
         return billOfMaterials;
     }
@@ -234,8 +248,24 @@ public class BomService {
             price += material.getPricePerUnit();
         }
 
-
         BomLine bomLine = new BomLine(materialId, name, quantity, materialLength, description, price);
+
+        return bomLine;
+    }
+
+    public BomLine calculateBundskruerFromMeasurements(int width, int length) throws UserException {
+        Material material = materialFacade.getMaterialById(9);
+        int materialId = material.getMaterialId();
+        String name = material.getDescription();
+        int quantity = 3;
+        String description = "Skruer til tagplader";
+        double price = 0;
+
+        for (int i = 0; i < quantity; i++) {
+            price += material.getPricePerUnit();
+        }
+
+        BomLine bomLine = new BomLine(materialId, name, quantity, description, price);
 
         return bomLine;
     }
@@ -256,8 +286,194 @@ public class BomService {
             price += material.getPricePerUnit();
         }
 
-
         BomLine bomLine = new BomLine(materialId, name, quantity, description, price, diagonalLength);
+
+        return bomLine;
+    }
+
+    public BomLine calculateUniversalskruerHøjreFromMeasurements(int width, int length) throws UserException {
+        Material material = materialFacade.getMaterialById(11);
+        int materialId = material.getMaterialId();
+        String name = material.getDescription();
+        int quantity = calculateSpærFromMeasurements(width, length).getQuantity();
+        String description = "Til montering af spær på rem";
+        double price = 0;
+
+        for (int i = 0; i < quantity; i++) {
+            price += material.getPricePerUnit();
+        }
+
+        BomLine bomLine = new BomLine(materialId, name, quantity, description, price);
+
+        return bomLine;
+    }
+
+    public BomLine calculateUniversalskruerVenstreFromMeasurements(int width, int length) throws UserException {
+        Material material = materialFacade.getMaterialById(12);
+        int materialId = material.getMaterialId();
+        String name = material.getDescription();
+        int quantity = calculateSpærFromMeasurements(width, length).getQuantity();
+        String description = "Til montering af spær på rem";
+        double price = 0;
+
+        for (int i = 0; i < quantity; i++) {
+            price += material.getPricePerUnit();
+        }
+
+        BomLine bomLine = new BomLine(materialId, name, quantity, description, price);
+
+        return bomLine;
+    }
+
+    public BomLine calculateSternAndVandbrætSkruerFromMeasurements(int width, int length) throws UserException {
+        Material material = materialFacade.getMaterialById(13);
+        int materialId = material.getMaterialId();
+        String name = material.getDescription();
+        int quantity = 1;
+        String description = "Til montering af stern & vandbrædt";
+        double price = 0;
+
+        for (int i = 0; i < quantity; i++) {
+            price += material.getPricePerUnit();
+        }
+
+        BomLine bomLine = new BomLine(materialId, name, quantity, description, price);
+
+        return bomLine;
+    }
+
+    public BomLine calculateBeslagskruerFromMeasurements(int width, int length) throws UserException {
+        Material material = materialFacade.getMaterialById(14);
+        int materialId = material.getMaterialId();
+        String name = material.getDescription();
+        int quantity = 3;
+        String description = "Til montering af universalbeslag & hulbånd";
+        double price = 0;
+
+        for (int i = 0; i < quantity; i++) {
+            price += material.getPricePerUnit();
+        }
+
+        BomLine bomLine = new BomLine(materialId, name, quantity, description, price);
+
+        return bomLine;
+    }
+
+    public BomLine calculateBræddeboltFromMeasurements(int width, int length) throws UserException {
+        Material material = materialFacade.getMaterialById(15);
+        int materialId = material.getMaterialId();
+        String name = material.getDescription();
+        int quantity = 18;
+        String description = "Til montering af rem på stolper";
+        double price = 0;
+
+        for (int i = 0; i < quantity; i++) {
+            price += material.getPricePerUnit();
+        }
+
+        BomLine bomLine = new BomLine(materialId, name, quantity, description, price);
+
+        return bomLine;
+    }
+
+    public BomLine calculateFirkantskiverFromMeasurements(int width, int length) throws UserException {
+        Material material = materialFacade.getMaterialById(16);
+        int materialId = material.getMaterialId();
+        String name = material.getDescription();
+        int quantity = 12;
+        String description = "Til montering af rem på stolper";
+        double price = 0;
+
+        for (int i = 0; i < quantity; i++) {
+            price += material.getPricePerUnit();
+        }
+
+        BomLine bomLine = new BomLine(materialId, name, quantity, description, price);
+
+        return bomLine;
+    }
+
+    public BomLine calculateSkruerYdersteBeklædningFromMeasurements(int width, int length) throws UserException {
+        Material material = materialFacade.getMaterialById(17);
+        int materialId = material.getMaterialId();
+        String name = material.getDescription();
+        int quantity = 2;
+        String description = "Til montering af yderste beklædning";
+        double price = 0;
+
+        for (int i = 0; i < quantity; i++) {
+            price += material.getPricePerUnit();
+        }
+
+        BomLine bomLine = new BomLine(materialId, name, quantity, description, price);
+
+        return bomLine;
+    }
+
+    public BomLine calculateSkruerIndersteBeklædningFromMeasurements(int width, int length) throws UserException {
+        Material material = materialFacade.getMaterialById(18);
+        int materialId = material.getMaterialId();
+        String name = material.getDescription();
+        int quantity = 2;
+        String description = "Til montering af yderste beklædning";
+        double price = 0;
+
+        for (int i = 0; i < quantity; i++) {
+            price += material.getPricePerUnit();
+        }
+
+        BomLine bomLine = new BomLine(materialId, name, quantity, description, price);
+
+        return bomLine;
+    }
+
+    public BomLine calculateStalddørsgrebFromMeasurements(int width, int length) throws UserException {
+        Material material = materialFacade.getMaterialById(19);
+        int materialId = material.getMaterialId();
+        String name = material.getDescription();
+        int quantity = 1;
+        String description = "Til lås på dør i skur";
+        double price = 0;
+
+        for (int i = 0; i < quantity; i++) {
+            price += material.getPricePerUnit();
+        }
+
+        BomLine bomLine = new BomLine(materialId, name, quantity, description, price);
+
+        return bomLine;
+    }
+
+    public BomLine calculateThængselFromMeasurements(int width, int length) throws UserException {
+        Material material = materialFacade.getMaterialById(20);
+        int materialId = material.getMaterialId();
+        String name = material.getDescription();
+        int quantity = 2;
+        String description = "Til skurdør";
+        double price = 0;
+
+        for (int i = 0; i < quantity; i++) {
+            price += material.getPricePerUnit();
+        }
+
+        BomLine bomLine = new BomLine(materialId, name, quantity, description, price);
+
+        return bomLine;
+    }
+
+    public BomLine calculateVinkelbeslagFromMeasurements(int width, int length) throws UserException {
+        Material material = materialFacade.getMaterialById(21);
+        int materialId = material.getMaterialId();
+        String name = material.getDescription();
+        int quantity = 32;
+        String description = "Til montering af løsholter i skur";
+        double price = 0;
+
+        for (int i = 0; i < quantity; i++) {
+            price += material.getPricePerUnit();
+        }
+
+        BomLine bomLine = new BomLine(materialId, name, quantity, description, price);
 
         return bomLine;
     }

@@ -15,10 +15,6 @@
     <jsp:body>
 
 
-        <div class="row">
-        </div>
-
-        <div class="col"></div>
         <br>
         <h3 class="center">Træ & Tagplader</h3>
         <table class="table">
