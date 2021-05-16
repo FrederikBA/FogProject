@@ -17,7 +17,7 @@
             <div class="row">
 
             </div>
-            <div class="col-md center">
+            <div class="center">
 
 
                 <h1>Din ordre er registreret.</h1>
@@ -33,12 +33,16 @@
                 <h3>${sessionScope.totalPrice}</h3>
             </div>
             <br>
-            <div class="center responsive">
+            <div class="row center">
                 <h2>Din tegning:</h2>
-
-                    ${requestScope.drawing}
+                <div class="col-md"></div>
+                <div class="col-md-9">
+                        ${sessionScope.drawing}
+                </div>
+                <div class="col-md"></div>
 
             </div>
+            <br>
 
             <div class="row">
                 <div class="col-md"></div>

@@ -1,6 +1,7 @@
 package business.persistence;
 
 import business.entities.BomLine;
+import business.entities.Material;
 import business.exceptions.UserException;
 
 import java.sql.Connection;
@@ -42,6 +43,35 @@ public class BomMapper {
                 throw new UserException(ex.getMessage());
             }
         } catch (SQLException | UserException ex) {
+            throw new UserException("Connection to database could not be established");
+        }
+    }
+
+    public BomLine getBomLineByFromOrderByMaterialId(int orderId, int materialId) throws UserException {
+        BomLine bomLine = null;
+        try (Connection connection = database.connect()) {
+            String sql = "SELECT * FROM bom_items WHERE material_id = ?";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, orderId);
+                ps.setInt(2, materialId);
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
+                    //public BomLine(int materialId, String name, int quantity, int length, String unit, String description, double price)
+                    String name = rs.getString("name");
+                    int quantity = rs.getInt("quantity");
+                    int length = rs.getInt("length");
+                    String unit = rs.getString("unit");
+                    String description = rs.getString("description");
+                    double price = rs.getDouble("price");
+
+                    bomLine = new BomLine(materialId, name, quantity, length, unit, description, price);
+                }
+                return bomLine;
+            } catch (SQLException ex) {
+                throw new UserException(ex.getMessage());
+            }
+        } catch (SQLException ex) {
             throw new UserException("Connection to database could not be established");
         }
     }

@@ -4,6 +4,7 @@ import business.entities.Bom;
 import business.entities.BomLine;
 import business.entities.User;
 import business.exceptions.UserException;
+import business.services.BomFacade;
 import business.services.BomService;
 import business.services.OrderFacade;
 import business.services.SVG;
@@ -17,17 +18,18 @@ import java.util.Locale;
 public class CreateOrderCommand extends CommandUnprotectedPage {
     BomService bomService;
     OrderFacade orderFacade;
+    BomFacade bomFacade;
 
     public CreateOrderCommand(String pageToShow) {
         super(pageToShow);
         bomService = new BomService(database);
         orderFacade = new OrderFacade(database);
+        bomFacade = new BomFacade(database);
     }
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
         HttpSession session = request.getSession();
-        Locale.setDefault(new Locale("US"));
         User user;
         int width = 0;
         int length = 0;
@@ -39,14 +41,12 @@ public class CreateOrderCommand extends CommandUnprotectedPage {
             userId = user.getId();
         }
 
-
         //Create Bill of Materials
         Bom bom = (Bom) session.getAttribute("bom");
         if (bom == null) {
             bom = new Bom();
             session.setAttribute("bom", bom);
         }
-
 
         //Get value from dropdowns and parse to Integer
         if (request.getParameter("width") != null || request.getParameter("length") != null) {
@@ -63,15 +63,6 @@ public class CreateOrderCommand extends CommandUnprotectedPage {
                 bom.getBomLines().add(bomLine);
             }
 
-            //Draw Carport
-            SVG svg = new SVG(0, 0, "0 0 855 600", 100, 100);
-
-            for (int x = 0; x < 14; x++) {
-                svg.addRect(100 + 50*x, 0, 600, 4.5);
-            }
-
-            request.setAttribute("drawing", svg.toString());
-
             //Save order
             orderFacade.createOrder(userId, length, width, bom.getBomLines());
 
@@ -84,6 +75,37 @@ public class CreateOrderCommand extends CommandUnprotectedPage {
             DecimalFormat df = new DecimalFormat("#.00");
             session.setAttribute("totalPrice", df.format(totalPrice));
 
+            //Draw Carport
+            SVG svg = new SVG(0, 0, "0 0 855 600", 100, 100);
+
+            //Get Order ID
+            int orderId = orderFacade.getOrderIdByTimestamp();
+
+            //Draw Frame
+            svg.addRect(0, 0, width, length);
+
+            //Draw Rem
+            BomLine rem = bomFacade.getBomByOrderId(orderId).get(2);
+            //svg.addRect(0, width - 534.5, 4.5, rem.getLength());
+            //svg.addRect(0, width - 70, 4.5, rem.getLength());
+
+            //Draw Spær
+            BomLine spær = bomFacade.getBomByOrderId(orderId).get(1);
+            double dquantity = spær.getQuantity();
+            double distance = length / (dquantity - 1);
+            for (int x = 0; x < spær.getQuantity(); x++) {
+                svg.addSpær(distance * x, 0, width, 4.5);
+            }
+
+            //Draw Stolper
+            BomLine stolpe = bomFacade.getBomByOrderId(orderId).get(0);
+            for (int x = 0; x < stolpe.getQuantity(); x++) {
+                //svg.addRect(110+310*x, width-535, 10, 10);
+                //svg.addRect(110+310*x, width-75, 10, 10);
+            }
+
+            //Save Drawing
+            session.setAttribute("drawing", svg.toString());
 
             return "checkout";
         }

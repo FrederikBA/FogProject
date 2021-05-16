@@ -12,12 +12,34 @@
     </jsp:attribute>
 
     <jsp:body>
-        <form method="post" >
-        <div class="row">
-                    <h1>Velkommen til Customer orders</h1>
-
-
-        </div>
+        <form method="post">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Ordre ID</th>
+                    <th scope="col">Tidspunkt</th>
+                    <th scope="col">Pris</th>
+                    <th scope="col">Indhold</th>
+                    <th scope="col">Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach var="order" items="${sessionScope.orders}">
+                    <tr>
+                        <td>${order.orderId}</td>
+                        <td>${order.timestamp}</td>
+                        <td>${order.price}</td>
+                        <td>
+                            <button class="btn btn-primary btn-sm" type="submit" name="content"
+                                    value="${order.orderId}">
+                                Se indhold
+                            </button>
+                        </td>
+                        <td>${order.status}</td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
         </form>
     </jsp:body>
 </t:genericpage>

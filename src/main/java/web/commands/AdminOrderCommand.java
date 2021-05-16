@@ -28,19 +28,24 @@ public class AdminOrderCommand extends CommandProtectedPage {
         //Show list of orders
         List<Order> orderList = orderFacade.getAllOrders();
 
-        //Show list of orders for adminOrderPage.jsp
-        session.setAttribute("orderlist", orderList);
 
         //Show order content from specific orders
         if (request.getParameter("content") != null) {
             int orderId = Integer.parseInt(request.getParameter("content"));
             request.setAttribute("orderId", orderId);
             List<BomLine> billOfMaterials = bomFacade.getBomByOrderId(orderId);
-
             request.setAttribute("billOfMaterials", billOfMaterials);
             return "ordercontentpage";
         }
 
+        //Update Order Status
+        if (request.getParameter("update") != null) {
+            int orderId = Integer.parseInt(request.getParameter("update"));
+            request.setAttribute("orderId", orderId);
+            orderFacade.updateOrderStatusToConfirmed(orderId);
+            orderList = orderFacade.getAllOrders();
+        }
+        session.setAttribute("orderlist", orderList);
         return pageToShow;
     }
 }

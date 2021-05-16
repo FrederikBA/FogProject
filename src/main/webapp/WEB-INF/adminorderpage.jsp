@@ -22,11 +22,12 @@
                     <thead>
                     <tr>
                         <th scope="col">Bruger ID</th>
-                        <th scope="col">Ordrer ID</th>
+                        <th scope="col">Ordre ID</th>
                         <th scope="col">Tidspunkt</th>
                         <th scope="col">Pris</th>
                         <th scope="col">Indhold</th>
                         <th scope="col">Status</th>
+                        <th scope="col">Opdater Status</th>
                         <th scope="col">Fjern</th>
                     </tr>
                     </thead>
@@ -38,14 +39,22 @@
                             <td>${order.timestamp}</td>
                             <td>${order.price}</td>
 
-                            <td><a href="${pageContext.request.contextPath}/fc/ordercontentpage">
-                                <button class="btn btn-primary btn-sm" type="submit" name="content" value="${order.orderId}" >
-                                    Se indhold
+                            <td>
+                                <a href="${pageContext.request.contextPath}/fc/ordercontentpage">
+                                    <button class="btn btn-primary btn-sm" type="submit" name="content"
+                                            value="${order.orderId}">
+                                        Se indhold
+                                    </button>
+                                </a>
+                            </td>
+                            <td>${order.status}</td>
+                            <td>
+                                <button style="width:115px;" class="btn btn-primary btn-sm" type="submit" name="update"
+                                        value="${order.orderId}">
+                                    Bekræft
                                 </button>
-                            </a></td>
-
-                                <td>${order.status}</td>
-                                <td>Fjern</td>
+                            </td>
+                            <td>Fjern</td>
                         </tr>
 
                     </c:forEach>

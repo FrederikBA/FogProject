@@ -50,7 +50,7 @@ example: https://getbootstrap.com/docs/5.0/examples/pricing/
                     </c:if>
                     <c:if test="${sessionScope.user.role.equals('customer')}">
                         <a href="${pageContext.request.contextPath}/fc/customervieworder">
-                            <li class="nav-item active">Min bestilling</li>
+                            <li class="nav-item active">Mine ordrer</li>
                         </a>
                     </c:if>
                 </ul>

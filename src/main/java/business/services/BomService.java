@@ -89,7 +89,10 @@ public class BomService {
         Material material = materialFacade.getMaterialById(5);
         int materialId = material.getMaterialId();
         String name = material.getDescription();
-        int quantity = length / 55 + 1;
+        double dlength = length;
+        double n = Math.ceil(dlength / 60);
+        double dquantity = n + 1;
+        int quantity = (int)dquantity;
         int materialLength = width;
         String unit = material.getUnit();
         String description = "Spær, monteres på rem";
