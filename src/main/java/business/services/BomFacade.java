@@ -17,4 +17,8 @@ public class BomFacade {
     public List<BomLine> getBomByOrderId(int orderId) throws UserException {
         return bomMapper.getBomByOrderId(orderId);
     }
+
+    public BomLine getBomLineByFromOrderByMaterialId(int orderId, int materialId) throws UserException {
+        return bomMapper.getBomLineByFromOrderByMaterialId(orderId, materialId);
+    }
 }

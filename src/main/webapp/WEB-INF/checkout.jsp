@@ -36,9 +36,9 @@
             <div class="center responsive">
                 <h2>Din tegning:</h2>
 
-                    ${requestScope.drawing}
-
+                    ${sessionScope.drawing}
             </div>
+            <br>
 
             <div class="row">
                 <div class="col-md"></div>
