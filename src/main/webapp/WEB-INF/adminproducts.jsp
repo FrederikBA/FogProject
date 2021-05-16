@@ -14,7 +14,7 @@
 
     <jsp:body>
 
-
+    <form method="post" action="${pageContext.request.contextPath}/fc/adminproducts">
         <br>
         <h3 class="center">Træ & Tagplader</h3>
         <table class="table">
@@ -121,6 +121,6 @@
                 </button>
             </div>
         </div>
-
+    </form>
     </jsp:body>
 </t:genericpage>

@@ -30,7 +30,16 @@ public class MaterialFacade {
     public List<Material> getAllAccesories() throws UserException {
         return materialMapper.getAllAccesories();
     }
-    public Material updateMaterialById(Material material, int id) throws UserException {
-        return materialMapper.updateMaterialById(material, id);
+
+    public void updateMaterialById(Material material, int id) throws UserException {
+        materialMapper.updateMaterialById(material, id);
     }
+
+    public void addMaterial(Material material) throws UserException {
+        materialMapper.addMaterial(material);
     }
+
+    public int deleteMaterial(int materialId) throws UserException {
+        return materialMapper.deleteMaterial(materialId);
+    }
+}

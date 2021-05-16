@@ -15,6 +15,7 @@ public class Material {
         this.type = type;
     }
 
+
     public int getMaterialId() {
         return materialId;
     }
