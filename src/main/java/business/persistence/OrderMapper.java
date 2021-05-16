@@ -20,7 +20,7 @@ public class OrderMapper {
     public void createOrder(int userId, int length, int width, List<BomLine> bomLines) throws UserException {
         double orderPrice = 0;
         int orderId = 0;
-        String status = "incomplete";
+        String status = "Forespørgsel modtaget";
 
         for (BomLine bl : bomLines) {
             orderPrice += bl.getPrice();
@@ -63,7 +63,7 @@ public class OrderMapper {
                 ps.setString(3, line.getName());
                 ps.setInt(4, line.getQuantity());
                 ps.setInt(5, line.getLength());
-                ps.setString(6,line.getUnit());
+                ps.setString(6, line.getUnit());
                 ps.setString(7, line.getDescription());
                 ps.setDouble(8, line.getPrice());
                 ps.executeUpdate();
@@ -101,7 +101,7 @@ public class OrderMapper {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery();
                 if (rs.next()) {
-                   price = rs.getDouble("price");
+                    price = rs.getDouble("price");
                 }
                 return price;
             } catch (SQLException ex) {
@@ -112,9 +112,24 @@ public class OrderMapper {
         }
     }
 
-    public void updateOrderStatus(int orderId) throws UserException {
+    public void updateOrderStatusToPending(int orderId) throws UserException {
         try (Connection connection = database.connect()) {
-            String sql = "UPDATE orders SET status = \"complete\" WHERE order_id = ?";
+            String sql = "UPDATE orders SET status = \"Behandles\" WHERE order_id = ?";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, orderId);
+                ps.executeUpdate();
+            } catch (SQLException ex) {
+                throw new UserException(ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            throw new UserException("Connection to database could not be established");
+        }
+    }
+
+    public void updateOrderStatusToConfirmed(int orderId) throws UserException {
+        try (Connection connection = database.connect()) {
+            String sql = "UPDATE orders SET status = \"Bekræftet\" WHERE order_id = ?";
 
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, orderId);
@@ -131,7 +146,7 @@ public class OrderMapper {
     public List<Order> getAllOrders() throws UserException {
         List<Order> orderList = new ArrayList<>();
         try (Connection connection = database.connect()) {
-            String sql = "SELECT * FROM fog_carport.orders";
+            String sql = "SELECT * FROM orders";
 
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery();
@@ -152,8 +167,28 @@ public class OrderMapper {
         }
         return orderList;
     }
+    public List<Order> getAllOrdersByUserId(int userId) throws UserException {
+        List<Order> orderList = new ArrayList<>();
+        try (Connection connection = database.connect()) {
+            String sql = "SELECT * FROM orders WHERE user_id = ?";
 
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1,userId);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    int orderId = rs.getInt("order_id");
+                    Timestamp timestamp = rs.getTimestamp("timestamp");
+                    double price = rs.getDouble("price");
+                    String status = rs.getString("status");
 
-
-
+                    Order tmpOrder = new Order(orderId, userId, timestamp, price, status);
+                    orderList.add(tmpOrder);
+                }
+                return orderList;
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return orderList;
+    }
 }

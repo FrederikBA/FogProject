@@ -27,11 +27,19 @@ public class OrderFacade {
         return orderMapper.getOrderPriceByTimestamp();
     }
 
-    public void updateOrderStatus(int orderId) throws UserException {
-        orderMapper.updateOrderStatus(orderId);
-    }
-    public List<Order> getAllOrders() throws UserException {
-      return orderMapper.getAllOrders();
+    public void updateOrderStatusToPending(int orderId) throws UserException {
+        orderMapper.updateOrderStatusToPending(orderId);
     }
 
+    public void updateOrderStatusToConfirmed(int orderId) throws UserException {
+        orderMapper.updateOrderStatusToConfirmed(orderId);
+    }
+
+    public List<Order> getAllOrders() throws UserException {
+        return orderMapper.getAllOrders();
+    }
+
+    public List<Order> getAllOrdersByUserId(int userId) throws UserException {
+        return orderMapper.getAllOrdersByUserId(userId);
+    }
 }

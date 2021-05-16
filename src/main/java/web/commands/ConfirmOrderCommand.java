@@ -28,9 +28,9 @@ public class ConfirmOrderCommand extends CommandUnprotectedPage {
         int orderId = orderFacade.getOrderIdByTimestamp();
         List<BomLine> billOfMaterials = bomFacade.getBomByOrderId(orderId);
 
-        //Confirm order
+        //Change order status to pending.
         if (request.getParameter("confirm") != null) {
-            orderFacade.updateOrderStatus(orderId);
+            orderFacade.updateOrderStatusToPending(orderId);
             session.setAttribute("billOfMaterials", billOfMaterials);
             return "receipt";
         }
