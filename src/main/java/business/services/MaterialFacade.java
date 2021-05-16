@@ -5,6 +5,7 @@ import business.exceptions.UserException;
 import business.persistence.Database;
 import business.persistence.MaterialMapper;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class MaterialFacade {
@@ -29,4 +30,7 @@ public class MaterialFacade {
     public List<Material> getAllAccesories() throws UserException {
         return materialMapper.getAllAccesories();
     }
-}
+    public Material updateMaterialById(Material material, int id) throws UserException {
+        return materialMapper.updateMaterialById(material, id);
+    }
+    }

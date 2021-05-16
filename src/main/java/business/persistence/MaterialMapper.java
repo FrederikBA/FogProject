@@ -114,4 +114,24 @@ public class MaterialMapper {
             throw new UserException("Connection to database could not be established");
         }
     }
+
+    public Material updateMaterialById(Material material, int materialId) throws UserException {
+        try (Connection connection = database.connect()) {
+            String sql = "UPDATE fog_carport.material SET description = ?, unit = ?, price_per_unit = ?, type = ? WHERE id = ?";
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, materialId);
+                ps.setString(2, material.getDescription());
+                ps.setString(3, material.getUnit());
+                ps.setDouble(4, material.getPricePerUnit());
+                ps.setString(5, material.getType());
+                ps.executeUpdate();
+            } catch (SQLException ex) {
+                throw new UserException(ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            throw new UserException("Connection to database could not be established");
+
+        }
+        return null;
+    }
 }

@@ -25,10 +25,15 @@ public class AdminProductsCommand extends CommandProtectedPage {
         List<Material> materials = materialFacade.getAllMaterials();
         List<Material> wood = materialFacade.getAllWood();
         List<Material> accesories = materialFacade.getAllAccesories();
+        Material updateMaterial = materialFacade.updateMaterialById();
 
         session.setAttribute("materials", materials);
         session.setAttribute("wood", wood);
         session.setAttribute("accesories", accesories);
+
+        if (request.getParameter("materialBtn") != null) {
+            session.setAttribute("updateMaterial", updateMaterial);
+        }
         return pageToShow;
     }
 
