@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Locale;
 
 public class AdminProductsCommand extends CommandProtectedPage {
 
@@ -21,7 +22,6 @@ public class AdminProductsCommand extends CommandProtectedPage {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
         HttpSession session = request.getSession();
-
         List<Material> materials = materialFacade.getAllMaterials();
         List<Material> wood = materialFacade.getAllWood();
         List<Material> accesories = materialFacade.getAllAccesories();

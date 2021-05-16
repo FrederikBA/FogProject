@@ -30,7 +30,6 @@ public class CreateOrderCommand extends CommandUnprotectedPage {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
         HttpSession session = request.getSession();
-        Locale.setDefault(new Locale("US"));
         User user;
         int width = 0;
         int length = 0;
