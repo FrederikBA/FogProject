@@ -20,7 +20,7 @@ public class OrderMapper {
     public void createOrder(int userId, int length, int width, List<BomLine> bomLines) throws UserException {
         double orderPrice = 0;
         int orderId = 0;
-        String status = "Forespørgsel modtaget";
+        String status = "Forespørgsel";
 
         for (BomLine bl : bomLines) {
             orderPrice += bl.getPrice();
