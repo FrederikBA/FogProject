@@ -127,8 +127,8 @@
 
             <div class="col-md">
                 <div class="form-group">
-                    <label for="price">Pris:</label>
-                    <input class="form-control" type="text" id="price" name="price">
+                    <label for="MaterialPrice">Pris:</label>
+                    <input class="form-control" type="text" id="MaterialPrice" name="MaterialPrice">
                 </div>
             </div>
         </div>

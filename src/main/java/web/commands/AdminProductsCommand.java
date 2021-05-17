@@ -31,8 +31,8 @@ public class AdminProductsCommand extends CommandProtectedPage {
         //Update material price
         if (request.getParameter("update") != null) {
             String materialId = request.getParameter("materialeId");
-            String price = request.getParameter("price");
-            int changePrice = materialFacade.updateMaterialById(Integer.parseInt(materialId),Double.parseDouble(price));
+            String MaterialPrice = request.getParameter("MaterialPrice");
+            int changePrice = materialFacade.updateMaterialById(Integer.parseInt(materialId),Double.parseDouble(MaterialPrice));
             if (changePrice == 1)
             {
                 materials = materialFacade.getAllMaterials();
