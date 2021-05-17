@@ -15,6 +15,12 @@ public class Material {
         this.type = type;
     }
 
+    public Material(String description, String unit, double pricePerUnit, String type) {
+        this.description = description;
+        this.unit = unit;
+        this.pricePerUnit = pricePerUnit;
+        this.type = type;
+    }
 
     public int getMaterialId() {
         return materialId;

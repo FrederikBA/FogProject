@@ -80,13 +80,6 @@
 
             <div class="col-md">
                 <div class="form-group">
-                    <label for="materialId">Materiale Id:</label>
-                    <input class="form-control" type="text" id="materialId" name="materialId">
-                </div>
-            </div>
-
-            <div class="col-md">
-                <div class="form-group">
                     <label for="description">Beskrivelse:</label>
                     <input class="form-control" type="text" id="description" name="description">
                 </div>

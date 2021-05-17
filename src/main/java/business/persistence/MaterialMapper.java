@@ -138,16 +138,14 @@ public class MaterialMapper {
 
     public void addMaterial(Material material) throws UserException {
         try (Connection connection = database.connect()) {
-            String sql = "INSERT INTO material (id,description,unit,price_per_unit,type) VALUES (?,?,?,?,?)";
+            String sql = "INSERT INTO material (description,unit,price_per_unit,type) VALUES (?,?,?,?)";
 
             try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-                ps.setInt(1,material.getMaterialId());
-                ps.setString(2,material.getDescription());
-                ps.setString(3,material.getUnit());
-                ps.setDouble(4,material.getPricePerUnit());
-                ps.setString(5,material.getType());
+                ps.setString(1,material.getDescription());
+                ps.setString(2,material.getUnit());
+                ps.setDouble(3,material.getPricePerUnit());
+                ps.setString(4,material.getType());
                 ps.executeUpdate();
-
             } catch (SQLException ex) {
                 throw new UserException(ex.getMessage());
             }

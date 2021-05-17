@@ -26,9 +26,7 @@ public class AdminProductsCommand extends CommandProtectedPage {
         List<Material> wood = materialFacade.getAllWood();
         List<Material> accesories = materialFacade.getAllAccesories();
 
-        session.setAttribute("materials", materials);
-        session.setAttribute("wood", wood);
-        session.setAttribute("accesories", accesories);
+
 
         if (request.getParameter("materialBtn") != null) {
             //  Material updateMaterial = materialFacade.updateMaterialById(,2);
@@ -36,25 +34,32 @@ public class AdminProductsCommand extends CommandProtectedPage {
         }
 
 
+        //Add material to product page
         if (request.getParameter("addMaterial") != null) {
-            int materialId = Integer.parseInt(request.getParameter("materialId"));
             String description = request.getParameter("description");
             String unit = request.getParameter("unit");
             double pricePerUnit = Double.parseDouble(request.getParameter("price"));
             String type = request.getParameter("type");
 
-            materialFacade.addMaterial(new Material(materialId,description,unit,pricePerUnit,type));
+            materialFacade.addMaterial(new Material(description,unit,pricePerUnit,type));
             session.setAttribute("tmp", materials);
             return "adminproducts";
         }
 
-        //: TODO Figure out how to delete a product from ID given
-        //Delete material with material ID
+        //Delete material
         if (request.getParameter("delete") != null){
             String deleteMats = request.getParameter("delete");
 
             materialFacade.deleteMaterial(Integer.parseInt(deleteMats));
+            materials = materialFacade.getAllMaterials();
+            wood = materialFacade.getAllWood();
+            accesories = materialFacade.getAllAccesories();
+
         }
+        session.setAttribute("materials", materials);
+        session.setAttribute("wood", wood);
+        session.setAttribute("accesories", accesories);
+
         return pageToShow;
     }
 }
