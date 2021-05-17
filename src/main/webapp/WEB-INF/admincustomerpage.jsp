@@ -15,7 +15,7 @@
     <jsp:body>
             <div class="row">
 
-                <h1 align="center">Velkommen til ADMIN CUSTOMER</h1>
+                <h1 align="center">Kundeoversigt</h1>
 
                 <div class="col-md center">
                     <table class="table">

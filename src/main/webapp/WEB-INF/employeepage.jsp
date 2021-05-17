@@ -4,13 +4,18 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Demo Page for Employee Roles
+         Fog - Carport
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>
     <jsp:body>
-        <h1>Hello ${sessionScope.email} </h1>
-        You are now logged in as a EMPLOYEE of our wonderful site.
-
+        <div class="center">
+            <br>
+            <h1>Du er logged ind som: ${sessionScope.email} </h1>
+            <br>
+            <a href="${pageContext.request.contextPath}/fc/index">
+                <button style="width:200px;" type="submit" class="btn btn-primary">Retur til forsiden</button>
+            </a>
+        </div>
     </jsp:body>
 </t:genericpage>

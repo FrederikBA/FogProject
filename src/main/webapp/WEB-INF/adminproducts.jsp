@@ -15,6 +15,7 @@
     <jsp:body>
 
     <form method="post" action="${pageContext.request.contextPath}/fc/adminproducts">
+        <h1 align="center">Produktoversigt</h1>
         <br>
         <h3 class="center">Træ & Tagplader</h3>
         <table class="table">
@@ -23,7 +24,7 @@
                 <th scope="col">Id</th>
                 <th scope="col">Beskrivelse</th>
                 <th scope="col">Enhed</th>
-                <th scope="col">Pris pr</th>
+                <th scope="col">Stykpris</th>
                 <th scope="col">Fjern</th>
 
             </tr>
@@ -54,7 +55,7 @@
                 <th scope="col">Id</th>
                 <th scope="col">Beskrivelse</th>
                 <th scope="col">Enhed</th>
-                <th scope="col">Pris pr</th>
+                <th scope="col">Stykpris</th>
                 <th scope="col">Fjern</th>
             </tr>
             </thead>
