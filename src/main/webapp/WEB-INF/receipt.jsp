@@ -68,7 +68,6 @@
                 </div>
             </div>
             <div class="row center">
-
                 <div class="col-md">
                     <h3>Beslag & Skruer</h3>
                     <table class="table">
@@ -94,9 +93,8 @@
                         </tr>
                         </c:if>
                         </c:forEach>
-
+                    </table>
                 </div>
-
             </div>
         </form>
     </jsp:body>

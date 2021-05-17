@@ -112,6 +112,31 @@ public class OrderMapper {
         }
     }
 
+    public Order getOrder(int orderId) throws UserException {
+        try (Connection connection = database.connect()) {
+            String sql = "SELECT * FROM orders WHERE order_id = ?";
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, orderId);
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
+                    int userId = rs.getInt("user_id");
+                    double price = rs.getDouble("price");
+                    String status = rs.getString("status");
+                    int length = rs.getInt("length");
+                    int width = rs.getInt("width");
+                    Timestamp timestamp = rs.getTimestamp("timestamp");
+                    Order tmpOrder = new Order(orderId, userId, price, status, length, width, timestamp);
+                    return tmpOrder;
+                }
+            } catch (SQLException ex) {
+                throw new UserException(ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            throw new UserException("Connection to database could not be established");
+        }
+        return null;
+    }
+
     public void updateOrderStatusToPending(int orderId) throws UserException {
         try (Connection connection = database.connect()) {
             String sql = "UPDATE orders SET status = \"Behandles\" WHERE order_id = ?";
@@ -167,13 +192,14 @@ public class OrderMapper {
         }
         return orderList;
     }
+
     public List<Order> getAllOrdersByUserId(int userId) throws UserException {
         List<Order> orderList = new ArrayList<>();
         try (Connection connection = database.connect()) {
             String sql = "SELECT * FROM orders WHERE user_id = ?";
 
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ps.setInt(1,userId);
+                ps.setInt(1, userId);
                 ResultSet rs = ps.executeQuery();
                 while (rs.next()) {
                     int orderId = rs.getInt("order_id");
@@ -191,6 +217,7 @@ public class OrderMapper {
         }
         return orderList;
     }
+
     public int deleteOrder(int orderId) throws UserException {
         try (Connection connection = database.connect()) {
             String sql = "DELETE FROM fog_carport.orders WHERE order_id = ? ";
