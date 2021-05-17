@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Locale;
+import java.util.StringTokenizer;
 
 public class AdminProductsCommand extends CommandProtectedPage {
 
@@ -27,10 +28,21 @@ public class AdminProductsCommand extends CommandProtectedPage {
         List<Material> accesories = materialFacade.getAllAccesories();
 
 
+        //Update material price
+        if (request.getParameter("update") != null) {
+            String materialId = request.getParameter("materialeId");
+            String price = request.getParameter("price");
+            int changePrice = materialFacade.updateMaterialById(Integer.parseInt(materialId),Double.parseDouble(price));
+            if (changePrice == 1)
+            {
+                materials = materialFacade.getAllMaterials();
+                wood = materialFacade.getAllWood();
+                accesories = materialFacade.getAllAccesories();
 
-        if (request.getParameter("updateMaterial") != null) {
-              Material updateMaterial = materialFacade.updateMaterialById();
-              session.setAttribute("updateMaterial", updateMaterial);
+                session.setAttribute("materials", materials);
+                session.setAttribute("wood", wood);
+                session.setAttribute("accesories", accesories);
+            }
         }
 
 
@@ -42,7 +54,6 @@ public class AdminProductsCommand extends CommandProtectedPage {
             String type = request.getParameter("type");
 
             materialFacade.addMaterial(new Material(description,unit,pricePerUnit,type));
-            session.setAttribute("tmp", materials);
 
             materials = materialFacade.getAllMaterials();
             wood = materialFacade.getAllWood();

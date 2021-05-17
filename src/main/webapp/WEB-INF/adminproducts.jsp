@@ -116,12 +116,32 @@
                 </button>
             </div>
 
+        <div class="row">
+
+            <div class="col-md">
+                <div class="form-group">
+                    <label for="description">materialeId:</label>
+                    <input class="form-control" type="text" id="materialeId" name="materialeId">
+                </div>
+            </div>
+
+            <div class="col-md">
+                <div class="form-group">
+                    <label for="price">Pris:</label>
+                    <input class="form-control" type="text" id="price" name="price">
+                </div>
+            </div>
+        </div>
+            <div class="row">
+
             <div class="col-md">
                 <br>
                 <button style="width:100%;" type="submit" class="btn btn-secondary" name="update"
                         value="update">Opdater Materiale
                 </button>
             </div>
+        </div>
+
         </div>
     </form>
     </jsp:body>

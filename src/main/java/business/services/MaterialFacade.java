@@ -31,8 +31,8 @@ public class MaterialFacade {
         return materialMapper.getAllAccesories();
     }
 
-    public void updateMaterialById(Material material, int id) throws UserException {
-        materialMapper.updateMaterialById(material, id);
+    public int updateMaterialById( int materialId, double price) throws UserException {
+       return materialMapper.updateMaterialById(materialId,price);
     }
 
     public void addMaterial(Material material) throws UserException {
@@ -42,4 +42,7 @@ public class MaterialFacade {
     public int deleteMaterial(int materialId) throws UserException {
         return materialMapper.deleteMaterial(materialId);
     }
+
+
+
 }
