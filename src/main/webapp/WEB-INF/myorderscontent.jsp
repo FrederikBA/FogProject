@@ -17,16 +17,19 @@
                 <div class="center">
                     <br>
                     <h3>Ordre status: ${requestScope.status}</h3>
-                    <h3>Pris i alt: ${requestScope.totalPrice},-</h3>
+                    <h4>Din valgte bredde: ${requestScope.width}</h4>
+                    <h4>Din valgte længde: ${requestScope.length}</h4>
+                    <br>
+                    <h4>Pris i alt: ${requestScope.totalPrice},-</h4>
                     <br>
                     <c:if test="${!requestScope.status.equals('Bekræftet')}">
-                        <h3>Når din ordre bliver bekræftet får du adgang til tegning samt stykliste på denne side.</h3>
+                        <h4>Når din ordre bliver bekræftet får du adgang til tegning samt stykliste på denne side.</h4>
                     </c:if>
                 </div>
                 <c:if test="${requestScope.status.equals('Bekræftet')}">
                 <div class="tegning">
                     <div class="row center">
-                        <h2>Din tegning:</h2>
+                        <h2>Tegning af Carporten:</h2>
                         <div class="col-md"></div>
                         <div class="col-md-9">
                                 ${requestScope.drawing}
@@ -97,6 +100,14 @@
                     </div>
                     </c:if>
                 </div>
+            </div>
+            <br>
+            <div class="center">
+                <a href="${pageContext.request.contextPath}/fc/myorders">
+                    <button style="width:150px;" type="button" name="return" class="btn btn-primary">Tilbage</button>
+                </a>
+            </div>
+            <br>
         </form>
     </jsp:body>
 </t:genericpage>

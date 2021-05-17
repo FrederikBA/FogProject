@@ -16,7 +16,7 @@
         <form method="post">
             <div class="row">
 
-                <h1 align="center">Velkommen til ADMIN ORDER</h1>
+                <h1 class="center">Ordreoversigt</h1>
 
                 <table class="table">
                     <thead>
@@ -41,7 +41,8 @@
 
                             <td>
                                 <a href="${pageContext.request.contextPath}/fc/ordercontentpage">
-                                    <button class="btn btn-primary btn-sm" type="submit" name="content"
+                                    <button style="width:115px;" class="btn btn-primary btn-sm" type="submit"
+                                            name="content"
                                             value="${order.orderId}">
                                         Se indhold
                                     </button>
@@ -49,13 +50,19 @@
                             </td>
                             <td>${order.status}</td>
                             <td>
-                                <button style="width:115px;" class="btn btn-primary btn-sm" type="submit" name="update"
-                                        value="${order.orderId}">
-                                    Bekræft
-                                </button>
+                                <c:if test="${!order.status.equals('Bekræftet')}">
+                                    <button style="width:115px;" class="btn btn-primary btn-sm" type="submit"
+                                            name="update"
+                                            value="${order.orderId}">
+                                        Bekræft
+                                    </button>
+                                </c:if>
+                                <c:if test="${order.status.equals('Bekræftet')}">
+                                    Status Opdateret
+                                </c:if>
                             </td>
                             <td>
-                                <button class="btn btn-danger btn-sm" type="submit" name="delete"
+                                <button style="width:115px;" class="btn btn-danger btn-sm" type="submit" name="delete"
                                         value="${order.orderId}">
                                     Fjern
                                 </button>

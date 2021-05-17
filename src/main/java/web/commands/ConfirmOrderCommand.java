@@ -39,7 +39,6 @@ public class ConfirmOrderCommand extends CommandUnprotectedPage {
             return "carport";
         }
 
-
         return pageToShow;
     }
 }

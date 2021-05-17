@@ -64,9 +64,11 @@ public class MyOrdersCommand extends CommandUnprotectedPage {
             Double totalPrice = order.getPrice();
             request.setAttribute("totalPrice", df.format(totalPrice));
 
-            //Get Drawing
+            //Drawing
             double length = order.getLength();
             double width = order.getWidth();
+            request.setAttribute("length", length);
+            request.setAttribute("width", width);
 
             //Draw Carport
             SVG svg = new SVG(0, 0, "0 0 855 600", 100, 100);
@@ -87,8 +89,6 @@ public class MyOrdersCommand extends CommandUnprotectedPage {
 
             return "myorderscontent";
         }
-
-
         return pageToShow;
     }
 }

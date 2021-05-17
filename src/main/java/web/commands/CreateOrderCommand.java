@@ -48,6 +48,12 @@ public class CreateOrderCommand extends CommandUnprotectedPage {
             session.setAttribute("bom", bom);
         }
 
+        //Check for login
+        if (request.getParameter("begin") != null && session.getAttribute("user") == null) {
+            throw new UserException("Du skal være logged ind for at skræddersy en carport.");
+        }
+
+
         //Get value from dropdowns and parse to Integer
         if (request.getParameter("width") != null || request.getParameter("length") != null) {
             width = Integer.parseInt(request.getParameter("width"));
@@ -58,6 +64,7 @@ public class CreateOrderCommand extends CommandUnprotectedPage {
 
         //Place order
         if (request.getParameter("create") != null) {
+
             //Add to Bill of Materials
             for (BomLine bomLine : bomService.calculateCarportFromMeasurements(width, length)) {
                 bom.getBomLines().add(bomLine);

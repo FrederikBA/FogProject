@@ -13,6 +13,7 @@
 
     <jsp:body>
         <form method="post">
+            <h2>Ordreoversigt for kunde: ${sessionScope.user.email}</h2>
             <table class="table">
                 <thead>
                 <tr>

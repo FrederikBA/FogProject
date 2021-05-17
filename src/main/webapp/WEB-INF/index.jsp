@@ -33,7 +33,7 @@
             <div class="row">
                 <div class="col-md"></div>
                 <div class="col-md center">
-                    <button type="submit" class="btn btn-primary">Skræddersy din Carport</button>
+                    <button type="submit" name="begin" class="btn btn-primary">Skræddersy din Carport</button>
                 </div>
                 <div class="col-md"></div>
             </div>
