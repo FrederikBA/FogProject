@@ -37,6 +37,11 @@ example: https://getbootstrap.com/docs/5.0/examples/pricing/
                     <a href="${pageContext.request.contextPath}/fc/index">
                         <li class="nav-item active">Forside</li>
                     </a>
+                    <c:if test="${sessionScope.user != null}">
+                        <a href="${pageContext.request.contextPath}/fc/myorders">
+                            <li class="nav-item active">Mine ordrer</li>
+                        </a>
+                    </c:if>
                     <c:if test="${sessionScope.user.role.equals('employee')}">
                         <a href="${pageContext.request.contextPath}/fc/admincustomerpage">
                             <li class="nav-item active">Kunder</li>
@@ -48,14 +53,9 @@ example: https://getbootstrap.com/docs/5.0/examples/pricing/
                             <li class="nav-item active">Produkter</li>
                         </a>
                     </c:if>
-                    <c:if test="${sessionScope.user.role.equals('customer')}">
-                        <a href="${pageContext.request.contextPath}/fc/customervieworder">
-                            <li class="nav-item active">Mine ordrer</li>
-                        </a>
-                    </c:if>
                 </ul>
                 <div class="ms-auto">
-                    <c:if test="${sessionScope.user != null }">
+                    <c:if test="${sessionScope.user != null}">
                         <p class="px-2 username right mx-2">${sessionScope.user.email}</p>
                     </c:if>
                     <c:set var="thisPage" value="${pageContext.request.servletPath}"/>
