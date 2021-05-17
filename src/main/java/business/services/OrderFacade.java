@@ -45,4 +45,7 @@ public class OrderFacade {
     public int deleteOrder(int orderId) throws UserException {
     return orderMapper.deleteOrder(orderId);
     }
+    public int deleteOrderContent(int orderId) throws UserException {
+        return orderMapper.deleteOrderContent(orderId);
+    }
     }

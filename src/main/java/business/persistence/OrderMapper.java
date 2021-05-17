@@ -206,4 +206,22 @@ public class OrderMapper {
             throw new UserException(ex.getMessage());
         }
     }
+    //Delete bom item, tag en order id, delete content først- FØRst SLET FRA BOM_LINE FØR SLET FOR ORDERS
+    //lav 2 metoder, og lig begge metoder ind i adminOrderCommand.
+
+    public int deleteOrderContent(int orderId) throws UserException {
+        try (Connection connection = database.connect()) {
+            String sql = "DELETE FROM bom_items WHERE order_id = ? ";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, orderId);
+                int rowsAffected = ps.executeUpdate();
+                return rowsAffected;
+            } catch (SQLException ex) {
+                throw new UserException(ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            throw new UserException(ex.getMessage());
+        }
+    }
 }

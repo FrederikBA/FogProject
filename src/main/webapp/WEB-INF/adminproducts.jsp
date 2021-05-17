@@ -24,6 +24,8 @@
                 <th scope="col">Beskrivelse</th>
                 <th scope="col">Enhed</th>
                 <th scope="col">Pris pr</th>
+                <th scope="col">Fjern</th>
+
             </tr>
             </thead>
             <tbody>
@@ -33,6 +35,12 @@
                     <td>${material.description}</td>
                     <td>${material.unit}</td>
                     <td>${material.pricePerUnit}</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm" type="submit" name="delete"
+                                value="${material.materialId}">
+                            Fjern
+                        </button>
+                    </td>
                 </tr>
 
             </c:forEach>
@@ -47,6 +55,7 @@
                 <th scope="col">Beskrivelse</th>
                 <th scope="col">Enhed</th>
                 <th scope="col">Pris pr</th>
+                <th scope="col">Fjern</th>
             </tr>
             </thead>
             <tbody>
@@ -56,6 +65,12 @@
                     <td>${material.description}</td>
                     <td>${material.unit}</td>
                     <td>${material.pricePerUnit}</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm" type="submit" name="delete"
+                                value="${material.materialId}">
+                            Fjern
+                        </button>
+                    </td>
                 </tr>
 
             </c:forEach>
@@ -111,13 +126,6 @@
                 <br>
                 <button style="width:100%;" type="submit" class="btn btn-secondary" name="update"
                         value="update">Opdater Materiale
-                </button>
-            </div>
-
-            <div class="col-md">
-                <br>
-                <button style="width:100%;" type="submit" class="btn btn-secondary" name="deleteMaterial"
-                        value="update">Slet
                 </button>
             </div>
         </div>

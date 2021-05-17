@@ -157,7 +157,7 @@ public class MaterialMapper {
     }
     public int deleteMaterial(int materialId) throws UserException {
         try (Connection connection = database.connect()) {
-            String sql = "DELETE FROM fog_carport.material WHERE id = ? ";
+            String sql = "DELETE FROM material WHERE id = ? ";
 
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, materialId);
