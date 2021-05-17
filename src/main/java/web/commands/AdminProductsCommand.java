@@ -28,9 +28,9 @@ public class AdminProductsCommand extends CommandProtectedPage {
 
 
 
-        if (request.getParameter("materialBtn") != null) {
-            //  Material updateMaterial = materialFacade.updateMaterialById(,2);
-            //  session.setAttribute("updateMaterial", updateMaterial);
+        if (request.getParameter("updateMaterial") != null) {
+              Material updateMaterial = materialFacade.updateMaterialById();
+              session.setAttribute("updateMaterial", updateMaterial);
         }
 
 
@@ -43,6 +43,14 @@ public class AdminProductsCommand extends CommandProtectedPage {
 
             materialFacade.addMaterial(new Material(description,unit,pricePerUnit,type));
             session.setAttribute("tmp", materials);
+
+            materials = materialFacade.getAllMaterials();
+            wood = materialFacade.getAllWood();
+            accesories = materialFacade.getAllAccesories();
+
+            session.setAttribute("materials", materials);
+            session.setAttribute("wood", wood);
+            session.setAttribute("accesories", accesories);
             return "adminproducts";
         }
 
