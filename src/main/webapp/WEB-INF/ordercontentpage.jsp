@@ -13,47 +13,39 @@
 
     <jsp:body>
         <form method="post" action="${pageContext.request.contextPath}/fc/adminorderpage">
-            <div class="row">
-                <div class="col-md"></div>
-                <div class="col-md-8 center">
-                    <h1>Velkommen til ORDER CONTENT PAGE</h1>
-
-                </div>
-                <div class="col-md"></div>
-            </div>
-
-            <br>
-
-            <div class="row">
-                <div class="col-md"></div>
-                <div class="col-md center">
-                    <table class="table">
-                        <thead>
+            <div class>
+                <h2>Stykliste tilhørende ordrenummer: ${requestScope.orderId}</h2>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Beskrivelse</th>
+                        <th scope="col">Antal</th>
+                        <th scope="col">Længde</th>
+                        <th scope="col">Beskrivelse</th>
+                        <th scope="col">Pris</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach var="bomLine" items="${requestScope.billOfMaterials}">
                         <tr>
-                            <th scope="col">Beskrivelse</th>
-                            <th scope="col">Antal</th>
-                            <th scope="col">Længde</th>
-                            <th scope="col">Beskrivelse</th>
-                            <th scope="col">Pris</th>
+                            <td>${bomLine.name}</td>
+                            <td>${bomLine.quantity}</td>
+                            <td>${bomLine.length}</td>
+                            <td>${bomLine.description}</td>
+                            <td>${bomLine.price}</td>
                         </tr>
-                        </thead>
-                        <tbody>
-                        <c:forEach var="bomLine" items="${requestScope.billOfMaterials}">
-                            <tr>
-                                <td>${bomLine.name}</td>
-                                <td>${bomLine.quantity}</td>
-                                <td>${bomLine.length}</td>
-                                <td>${bomLine.description}</td>
-                                <td>${bomLine.price}</td>
-                            </tr>
-                        </c:forEach>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="col-md"></div>
+                    </c:forEach>
+                    </tbody>
+                </table>
             </div>
+            <br>
+            <div class="center">
+                <a href="${pageContext.request.contextPath}/fc/adminorderpage">
+                    <button style="width:150px;" type="button" name="return" class="btn btn-primary">Tilbage</button>
+                </a>
+            </div>
+            <br>
         </form>
-
     </jsp:body>
 </t:genericpage>
 

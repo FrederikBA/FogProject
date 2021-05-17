@@ -100,6 +100,14 @@
                     </div>
                     </c:if>
                 </div>
+            </div>
+            <br>
+            <div class="center">
+                <a href="${pageContext.request.contextPath}/fc/myorders">
+                    <button style="width:150px;" type="button" name="return" class="btn btn-primary">Tilbage</button>
+                </a>
+            </div>
+            <br>
         </form>
     </jsp:body>
 </t:genericpage>

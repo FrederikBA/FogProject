@@ -15,7 +15,7 @@
     <jsp:body>
 
     <form method="post" action="${pageContext.request.contextPath}/fc/adminproducts">
-        <h1 align="center">Produktoversigt</h1>
+        <h1 class="center">Produktoversigt</h1>
         <br>
         <h3 class="center">Træ & Tagplader</h3>
         <table class="table">

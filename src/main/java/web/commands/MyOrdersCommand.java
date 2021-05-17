@@ -89,8 +89,6 @@ public class MyOrdersCommand extends CommandUnprotectedPage {
 
             return "myorderscontent";
         }
-
-
         return pageToShow;
     }
 }
