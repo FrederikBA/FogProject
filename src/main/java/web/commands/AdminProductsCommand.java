@@ -48,6 +48,8 @@ public class AdminProductsCommand extends CommandProtectedPage {
             return "adminproducts";
         }
 
+        //: TODO Figure out how to delete a product from ID given
+        //Delete material with material ID
         if (request.getParameter("deleteMaterial") != null){
             String deleteMats = request.getParameter("delete");
             materialFacade.deleteMaterial(Integer.parseInt(deleteMats));

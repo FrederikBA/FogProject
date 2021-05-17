@@ -45,6 +45,14 @@ public class AdminOrderCommand extends CommandProtectedPage {
             orderFacade.updateOrderStatusToConfirmed(orderId);
             orderList = orderFacade.getAllOrders();
         }
+        //: TODO Currently giving constraint error
+        //Delete order
+        if (request.getParameter("delete") != null){
+            String deleteId = request.getParameter("delete");
+            orderFacade.deleteOrder(Integer.parseInt(deleteId));
+            orderList = orderFacade.getAllOrders();
+        }
+
         session.setAttribute("orderlist", orderList);
         return pageToShow;
     }

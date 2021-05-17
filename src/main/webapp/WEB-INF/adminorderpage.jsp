@@ -54,7 +54,12 @@
                                     Bekræft
                                 </button>
                             </td>
-                            <td>Fjern</td>
+                            <td>
+                                <button class="btn btn-danger btn-sm" type="submit" name="delete"
+                                        value="${order.orderId}">
+                                    Fjern
+                                </button>
+                            </td>
                         </tr>
 
                     </c:forEach>
