@@ -29,21 +29,10 @@
 
                 <br>
 
-                <h2>Din pris DKK:</h2>
-                <h3>${sessionScope.totalPrice}</h3>
+                <h2>Pris i alt:</h2>
+                <h3>${sessionScope.totalPrice},-</h3>
             </div>
             <br>
-            <div class="row center">
-                <h2>Din tegning:</h2>
-                <div class="col-md"></div>
-                <div class="col-md-9">
-                        ${sessionScope.drawing}
-                </div>
-                <div class="col-md"></div>
-
-            </div>
-            <br>
-
             <div class="row">
                 <div class="col-md"></div>
                 <div class="col-md center">

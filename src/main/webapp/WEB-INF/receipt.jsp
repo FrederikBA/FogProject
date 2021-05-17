@@ -14,87 +14,18 @@
 
     <jsp:body>
         <form method="post" action="${pageContext.request.contextPath}/fc/checkout">
-            <div class="row center">
+            <div class="center">
                 <h1>KVITTERING</h1>
-                <h2>Carport:</h2>
+                <br>
                 <h4>Din valgte Bredde: ${sessionScope.width}</h4>
                 <h4>Din valgte Længde: ${sessionScope.length}</h4>
-                <h3>Tag: Fladt<br></h3>
-                <h3>Skur: Ingen<br></h3>
-
                 <br>
-                <div class="col-md"></div>
-                <div class="col-md-6">
-                    <img class="responsive" src="${pageContext.request.contextPath}/img/carport.PNG">
-                </div>
-                <div class="col-md"></div>
-
+                <h3>Tag: Fladt</h3>
+                <h3>Skur: Ingen</h3>
                 <br>
-
-                <h3>Pris: ${sessionScope.totalPrice},-</h3>
-            </div>
-            <br>
-            <div class="row center">
-                <h1>Stykliste</h1>
-                <div class="col-md">
-                    <h3>Træ & Tagplader</h3>
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th scope="col">Beskrivelse</th>
-                            <th scope="col">Antal</th>
-                            <th scope="col">Længde</th>
-                            <th scope="col">Enhed</th>
-                            <th scope="col">Beskrivelse</th>
-                            <th scope="col">Pris</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                        <c:forEach var="bomLine" items="${sessionScope.billOfMaterials}">
-                            <c:if test="${bomLine.length > 0}">
-                                <tr>
-                                    <td>${bomLine.name}</td>
-                                    <td>${bomLine.quantity}</td>
-                                    <td>${bomLine.length}</td>
-                                    <td>${bomLine.unit}</td>
-                                    <td>${bomLine.description}</td>
-                                    <td>${bomLine.price}</td>
-                                </tr>
-                            </c:if>
-                        </c:forEach>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="row center">
-                <div class="col-md">
-                    <h3>Beslag & Skruer</h3>
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th scope="col">Beskrivelse</th>
-                            <th scope="col">Antal</th>
-                            <th scope="col">Enhed</th>
-                            <th scope="col">Beskrivelse</th>
-                            <th scope="col">Pris</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                        <c:forEach var="bomLine" items="${sessionScope.billOfMaterials}">
-                        <c:if test="${bomLine.length < 1}">
-                        <tr>
-                            <td>${bomLine.name}</td>
-                            <td>${bomLine.quantity}</td>
-                            <td>${bomLine.unit}</td>
-                            <td>${bomLine.description}</td>
-                            <td>${bomLine.price}</td>
-                        </tr>
-                        </c:if>
-                        </c:forEach>
-                    </table>
-                </div>
+                <h3>Pris i alt: ${sessionScope.totalPrice},-</h3>
+                <br>
+                <h4>Din ordre vil kunne opfølges under "Mine ordrer".<br><br> Når din ordre er blevet bekræftet, vil du have adgang til en tegning over carporten samt den tilhørende stykliste.</h4>
             </div>
         </form>
     </jsp:body>
