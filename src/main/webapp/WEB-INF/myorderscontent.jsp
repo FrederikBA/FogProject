@@ -50,7 +50,6 @@
                                     <th scope="col">Længde</th>
                                     <th scope="col">Enhed</th>
                                     <th scope="col">Beskrivelse</th>
-                                    <th scope="col">Pris</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -62,7 +61,6 @@
                                             <td>${bomLine.length}</td>
                                             <td>${bomLine.unit}</td>
                                             <td>${bomLine.description}</td>
-                                            <td>${bomLine.price}</td>
                                         </tr>
                                     </c:if>
                                 </c:forEach>
@@ -79,7 +77,6 @@
                                     <th scope="col">Antal</th>
                                     <th scope="col">Enhed</th>
                                     <th scope="col">Beskrivelse</th>
-                                    <th scope="col">Pris</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -91,7 +88,6 @@
                                     <td>${bomLine.quantity}</td>
                                     <td>${bomLine.unit}</td>
                                     <td>${bomLine.description}</td>
-                                    <td>${bomLine.price}</td>
                                 </tr>
                                 </c:if>
                                 </c:forEach>

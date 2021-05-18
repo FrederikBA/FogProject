@@ -37,7 +37,7 @@ example: https://getbootstrap.com/docs/5.0/examples/pricing/
                     <a href="${pageContext.request.contextPath}/fc/index">
                         <li class="nav-item active">Forside</li>
                     </a>
-                    <c:if test="${sessionScope.user != null}">
+                    <c:if test="${sessionScope.user.role.equals('customer')}">
                         <a href="${pageContext.request.contextPath}/fc/myorders">
                             <li class="nav-item active">Mine ordrer</li>
                         </a>
