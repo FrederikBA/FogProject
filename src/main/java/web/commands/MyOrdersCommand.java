@@ -81,7 +81,37 @@ public class MyOrdersCommand extends CommandUnprotectedPage {
             double dquantity = spær.getQuantity();
             double distance = length / (dquantity - 1);
             for (int x = 0; x < spær.getQuantity(); x++) {
-                svg.addSpær(distance * x, 0, width, 4.5);
+                svg.addRect(distance * x, 0, width, 4.5);
+            }
+
+            //Draw Rem
+            double remDistance = width / 100 * 5.83;
+            svg.addRect(0, remDistance - 4.5, 4.5, length);
+            svg.addRect(0, width - remDistance, 4.5, length);
+
+            //Draw Hulbånd
+            double firstDistanceHulbånd = distance * 1;
+            double secondDistance = distance * spær.getQuantity() - (2 * distance);
+            svg.addLine(firstDistanceHulbånd + 4.5, remDistance, secondDistance, width - remDistance);
+            svg.addLine(secondDistance, remDistance, firstDistanceHulbånd + 4.5, width - remDistance);
+
+
+            //Draw Stolper
+            BomLine stolpe = billOfMaterials.get(0);
+
+            if (stolpe.getQuantity() == 6) {
+                double firstDistance = distance * 2;
+                double distanceBetween = distance * 5;
+                for (int x = 0; x < stolpe.getQuantity(); x++) {
+                    svg.addRect(firstDistance + distanceBetween * x - 2.25, width - remDistance - 2.25, 9, 9);
+                    svg.addRect(firstDistance + distanceBetween * x - 2.25, remDistance - 4.5 - 2.25, 9, 9);
+                }
+            } else {
+                double firstDistance = distance * 1;
+                svg.addRect(firstDistance - 2.25, width - remDistance - 2.25, 9, 9);
+                svg.addRect(secondDistance - 2.25, width - remDistance - 2.25, 9, 9);
+                svg.addRect(firstDistance - 2.25, remDistance - 4.5 - 2.25, 9, 9);
+                svg.addRect(secondDistance - 2.25, remDistance - 4.5 - 2.25, 9, 9);
             }
 
             //Save Drawing
