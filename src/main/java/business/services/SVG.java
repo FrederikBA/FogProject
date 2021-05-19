@@ -17,7 +17,7 @@ public class SVG {
             " preserveAspectRatio=\"xMinYMin\">";
 
     private final String rectTemplate = "<rect x=\"%f\" y=\"%f\" height=\"%f\" width=\"%f\" style=\"stroke:#000000; fill: #ffffff\" />";
-    private final String spærTemplate = "<rect x=\"%f\" y=\"%f\" height=\"%f\" width=\"%f\" style=\"stroke:#000000; fill: #ffffff\" />";
+    private final String lineTemplate = "<line x1=\"%f\" y1=\"%f\" x2=\"%f\" y2=\"%f\" style=\"stroke:#000000; fill: #ffffff\" stroke-dasharray=\"5 5\"/>";
 
     public SVG(int x, int y, String viewBox, int width, int height) {
         this.x = x;
@@ -32,12 +32,8 @@ public class SVG {
         svg.append(String.format(rectTemplate, x, y, height, width));
     }
 
-    public void addSpær(double x, double y, double height, double width) {
-        svg.append(String.format(spærTemplate, x, y, height, width));
-    }
-
-    public void addLine(int x1, int y1, int x2, int y2) {
-
+    public void addLine(double x1, double y1, double x2, double y2) {
+        svg.append(String.format(lineTemplate, x1, y1, x2, y2));
     }
 
     public void addSvg(SVG innerSVG) {

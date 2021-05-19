@@ -13,7 +13,7 @@ import java.util.List;
 public class BomService {
     MaterialFacade materialFacade;
 
-
+    
     public BomService(Database database) {
         this.materialFacade = new MaterialFacade(database);
     }
@@ -92,7 +92,7 @@ public class BomService {
         double dlength = length;
         double n = Math.ceil(dlength / 60);
         double dquantity = n + 1;
-        int quantity = (int)dquantity;
+        int quantity = (int) dquantity;
         int materialLength = width;
         String unit = material.getUnit();
         String description = "Spær, monteres på rem";

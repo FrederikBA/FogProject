@@ -90,25 +90,7 @@ public class CreateOrderCommand extends CommandUnprotectedPage {
             //Draw Frame
             svg.addRect(0, 0, width, length);
 
-            //Draw Rem
-            BomLine rem = bomFacade.getBomByOrderId(orderId).get(2);
-            //svg.addRect(0, width - 534.5, 4.5, rem.getLength());
-            //svg.addRect(0, width - 70, 4.5, rem.getLength());
 
-            //Draw Spær
-            BomLine spær = bomFacade.getBomByOrderId(orderId).get(1);
-            double dquantity = spær.getQuantity();
-            double distance = length / (dquantity - 1);
-            for (int x = 0; x < spær.getQuantity(); x++) {
-                svg.addSpær(distance * x, 0, width, 4.5);
-            }
-
-            //Draw Stolper
-            BomLine stolpe = bomFacade.getBomByOrderId(orderId).get(0);
-            for (int x = 0; x < stolpe.getQuantity(); x++) {
-                //svg.addRect(110+310*x, width-535, 10, 10);
-                //svg.addRect(110+310*x, width-75, 10, 10);
-            }
 
             //Save Drawing
             session.setAttribute("drawing", svg.toString());
