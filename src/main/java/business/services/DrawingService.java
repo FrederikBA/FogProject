@@ -76,7 +76,7 @@ public class DrawingService {
 
         //Text
         svg.addText(length + 60, (width / 2) - 30, 90, (int) width);
-        svg.addText(length + 30, (y2 / 2) - 30, 90, (int) middleLength);
+        svg.addText(length + 30, (width / 2) - 30, 90, (int) middleLength);
         svg.addText(length / 2, width + 40, 0, (int) length);
 
         return svg;
@@ -84,16 +84,16 @@ public class DrawingService {
 
     public SVG drawCarportSide(double width, double length, int orderId) throws UserException {
         List<BomLine> billOfMaterials = bomFacade.getBomByOrderId(orderId);
+        BomLine stolpe = billOfMaterials.get(0);
+        BomLine spær = billOfMaterials.get(1);
         SVG svg = new SVG(0, 0, "0 0 855 855", 100, 100);
 
         //Draw Frame
-        double stolpeHeight = 210;
+        double stolpeHeight = stolpe.getLength() - 90;
         double carportHeight = stolpeHeight + 20;
         svg.addSideFrame(0, 0, carportHeight, length);
 
         //Draw Stolper
-        BomLine stolpe = billOfMaterials.get(0);
-        BomLine spær = billOfMaterials.get(1);
         double dquantity = spær.getQuantity();
         double distance = length / (dquantity - 1);
         double firstDistance = distance * 2;
