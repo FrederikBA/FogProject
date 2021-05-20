@@ -21,10 +21,11 @@ public class AdminCustomerCommand extends CommandProtectedPage{
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
         HttpSession session = request.getSession();
+
         List<User> userList = userFacade.getAllUsers();
 
         session.setAttribute("userList", userList);
 
-        return pageToShow;
+        return "admincustomerpage";
     }
 }

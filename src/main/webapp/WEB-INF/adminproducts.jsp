@@ -106,18 +106,16 @@
                     <input class="form-control" type="text" id="type" name="type">
                 </div>
             </div>
-        </div>
 
-        <div class="row">
             <div class="col-md">
                 <br>
                 <button style="width:100%;" type="submit" class="btn btn-secondary" name="addMaterial"
                         value="update">Tilføj
                 </button>
             </div>
+        </div>
 
-        <div class="row">
-
+            <div class="row">
             <div class="col-md">
                 <div class="form-group">
                     <label for="description">materialeId:</label>
@@ -131,8 +129,6 @@
                     <input class="form-control" type="text" id="MaterialPrice" name="MaterialPrice">
                 </div>
             </div>
-        </div>
-            <div class="row">
 
             <div class="col-md">
                 <br>
@@ -140,8 +136,6 @@
                         value="update">Opdater Materiale
                 </button>
             </div>
-        </div>
-
         </div>
     </form>
     </jsp:body>

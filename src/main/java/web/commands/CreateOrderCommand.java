@@ -53,7 +53,6 @@ public class CreateOrderCommand extends CommandUnprotectedPage {
             throw new UserException("Du skal være logged ind for at skræddersy en carport.");
         }
 
-
         //Get value from dropdowns and parse to Integer
         if (request.getParameter("width") != null || request.getParameter("length") != null) {
             width = Integer.parseInt(request.getParameter("width"));
