@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "FrontController", urlPatterns = {"/fc/*"})
 public class FrontController extends HttpServlet {
     private final static String USER = "root";
-    private final static String PASSWORD = "root123";
+    private final static String PASSWORD = "root";
     private final static String URL = "jdbc:mysql://localhost:3306/fog_carport?serverTimezone=CET";
 
     public static Database database;
@@ -36,7 +36,7 @@ public class FrontController extends HttpServlet {
         // Initialize whatever global datastructures needed here:
 
         //Set Locale
-        Locale.setDefault(new Locale("US"));
+       Locale.setDefault(new Locale("US"));
 
     }
 

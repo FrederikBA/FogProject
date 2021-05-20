@@ -12,6 +12,7 @@ public class Order {
     private int length;
     private int width;
     private Timestamp timestamp;
+    private User user;
 
     public Order(int orderId, int userId, Double price, String status, int length, int width, Timestamp timestamp) {
         this.orderId = orderId;
@@ -85,5 +86,9 @@ public class Order {
 
     public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public void setOrderId(User user) {
+        this.user = user;
     }
 }

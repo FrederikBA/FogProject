@@ -2,10 +2,8 @@ package business.services;
 
 import business.entities.BomLine;
 import business.entities.Material;
-import business.entities.User;
 import business.exceptions.UserException;
 import business.persistence.Database;
-import business.persistence.MaterialMapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +15,7 @@ public class BomService {
     public BomService(Database database) {
         this.materialFacade = new MaterialFacade(database);
     }
+
 
     public List<BomLine> calculateCarportFromMeasurements(int width, int length) throws UserException {
         List<BomLine> billOfMaterials = new ArrayList<>();

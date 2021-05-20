@@ -26,6 +26,6 @@ public class AdminCustomerCommand extends CommandProtectedPage{
 
         session.setAttribute("userList", userList);
 
-        return "admincustomerpage";
+        return pageToShow;
     }
 }
