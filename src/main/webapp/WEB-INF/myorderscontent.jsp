@@ -29,13 +29,23 @@
                 <c:if test="${requestScope.status.equals('Bekræftet')}">
                 <div class="tegning">
                     <div class="row center">
-                        <h2>Tegning af Carporten:</h2>
+                        <h2>Tegning af Carporten set oppefra:</h2>
                         <div class="col-md"></div>
                         <div class="col-md-9">
                                 ${requestScope.drawing}
                         </div>
                         <div class="col-md"></div>
                     </div>
+
+                    <div class="tegning">
+                        <div class="row center">
+                            <h2>Tegning af Carporten set fra siden:</h2>
+                            <div class="col-md"></div>
+                            <div class="col-md-9">
+                                    ${requestScope.sideDrawing}
+                            </div>
+                            <div class="col-md"></div>
+                        </div>
 
                     <div class="stykliste">
                         <br>

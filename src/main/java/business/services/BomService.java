@@ -68,7 +68,7 @@ public class BomService {
         int materialId = material.getMaterialId();
         String name = material.getDescription();
         int quantity = 4;
-        if (length > 510) {
+        if (length > 630) {
             quantity = 6;
         }
         int materialLength = 300;

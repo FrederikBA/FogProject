@@ -4,10 +4,7 @@ import business.entities.BomLine;
 import business.entities.Order;
 import business.entities.User;
 import business.exceptions.UserException;
-import business.services.BomFacade;
-import business.services.OrderFacade;
-import business.services.SVG;
-import business.services.UserFacade;
+import business.services.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,11 +16,13 @@ import java.util.List;
 public class MyOrdersCommand extends CommandUnprotectedPage {
     OrderFacade orderFacade;
     BomFacade bomFacade;
+    DrawingService drawingService;
 
     public MyOrdersCommand(String pageToShow) {
         super(pageToShow);
         this.orderFacade = new OrderFacade(database);
         this.bomFacade = new BomFacade(database);
+        this.drawingService = new DrawingService(database);
 
     }
 
@@ -64,58 +63,35 @@ public class MyOrdersCommand extends CommandUnprotectedPage {
             Double totalPrice = order.getPrice();
             request.setAttribute("totalPrice", df.format(totalPrice));
 
-            //Drawing
+            //Drawings
             double length = order.getLength();
             double width = order.getWidth();
             request.setAttribute("length", length);
             request.setAttribute("width", width);
 
-            //Draw Carport
-            SVG svg = new SVG(0, 0, "0 0 855 600", 100, 100);
+            //Carport seen from above
+            SVG carportTop = drawingService.drawCarportTop(width, length, orderId);
 
-            //Draw Frame
-            svg.addRect(0, 0, width, length);
+            //Arrows with text
+            SVG carportTopArrows = drawingService.drawCarportTopArrows(width, length, orderId);
 
-            //Draw Spær
-            BomLine spær = billOfMaterials.get(1);
-            double dquantity = spær.getQuantity();
-            double distance = length / (dquantity - 1);
-            for (int x = 0; x < spær.getQuantity(); x++) {
-                svg.addRect(distance * x, 0, width, 4.5);
-            }
+            //Combine drawings
+            carportTopArrows.addSvg(carportTop);
 
-            //Draw Rem
-            double remDistance = width / 100 * 5.83;
-            svg.addRect(0, remDistance - 4.5, 4.5, length);
-            svg.addRect(0, width - remDistance, 4.5, length);
+            //Save drawing
+            request.setAttribute("drawing", carportTopArrows.toString());
 
-            //Draw Hulbånd
-            double firstDistanceHulbånd = distance * 1;
-            double secondDistance = distance * spær.getQuantity() - (2 * distance);
-            svg.addLine(firstDistanceHulbånd + 4.5, remDistance, secondDistance, width - remDistance);
-            svg.addLine(secondDistance, remDistance, firstDistanceHulbånd + 4.5, width - remDistance);
+            //Carport seen from the side
+            SVG carportSide = drawingService.drawCarportSide(width, length, orderId);
 
+            //Arrows with text
+            SVG carportSideArrows = drawingService.drawCarportSideArrows(width, length, orderId);
 
-            //Draw Stolper
-            BomLine stolpe = billOfMaterials.get(0);
+            //Combine drawings:
+            carportSideArrows.addSvg(carportSide);
 
-            if (stolpe.getQuantity() == 6) {
-                double firstDistance = distance * 2;
-                double distanceBetween = distance * 5;
-                for (int x = 0; x < stolpe.getQuantity(); x++) {
-                    svg.addRect(firstDistance + distanceBetween * x - 2.25, width - remDistance - 2.25, 9, 9);
-                    svg.addRect(firstDistance + distanceBetween * x - 2.25, remDistance - 4.5 - 2.25, 9, 9);
-                }
-            } else {
-                double firstDistance = distance * 1;
-                svg.addRect(firstDistance - 2.25, width - remDistance - 2.25, 9, 9);
-                svg.addRect(secondDistance - 2.25, width - remDistance - 2.25, 9, 9);
-                svg.addRect(firstDistance - 2.25, remDistance - 4.5 - 2.25, 9, 9);
-                svg.addRect(secondDistance - 2.25, remDistance - 4.5 - 2.25, 9, 9);
-            }
-
-            //Save Drawing
-            request.setAttribute("drawing", svg.toString());
+            //Save drawing
+            request.setAttribute("sideDrawing", carportSideArrows.toString());
 
             return "myorderscontent";
         }
