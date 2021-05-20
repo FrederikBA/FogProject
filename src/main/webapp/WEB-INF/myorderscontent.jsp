@@ -27,25 +27,36 @@
                     </c:if>
                 </div>
                 <c:if test="${requestScope.status.equals('Bekræftet')}">
-                <div class="tegning">
-                    <div class="row center">
-                        <h2>Tegning af Carporten set oppefra:</h2>
-                        <div class="col-md"></div>
-                        <div class="col-md-9">
-                                ${requestScope.drawing}
+
+                    <div class="center">
+                        <h3>Carporten set oppefra:</h3>
+                        <button class="btn btn-secondary btn-full" type="button" data-toggle="collapse"
+                                data-target="#collapseExample"
+                                aria-expanded="false" aria-controls="collapseExample">
+                            Se tegning
+                        </button>
+                        <div class="collapse" id="collapseExample">
+                            <br>
+                            <div class="card card-body">
+                                    ${requestScope.drawing}
+                            </div>
                         </div>
-                        <div class="col-md"></div>
                     </div>
 
-                    <div class="tegning">
-                        <div class="row center">
-                            <h2>Tegning af Carporten set fra siden:</h2>
-                            <div class="col-md"></div>
-                            <div class="col-md-9">
+                    <div class="center pt-5">
+                        <h3>Carporten set fra siden:</h3>
+                        <button class="btn btn-secondary btn-full" type="button" data-toggle="collapse"
+                                data-target="#collapseExampleTwo"
+                                aria-expanded="false" aria-controls="collapseExampleTwo">
+                            Se tegning
+                        </button>
+                        <div class="collapse" id="collapseExampleTwo">
+                            <br>
+                            <div class="card card-body">
                                     ${requestScope.sideDrawing}
                             </div>
-                            <div class="col-md"></div>
                         </div>
+                    </div>
 
                     <div class="stykliste">
                         <br>
@@ -104,8 +115,7 @@
                             </table>
                         </div>
                     </div>
-                    </c:if>
-                </div>
+                </c:if>
             </div>
             <br>
             <div class="center">

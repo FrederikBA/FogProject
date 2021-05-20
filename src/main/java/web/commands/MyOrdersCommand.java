@@ -78,20 +78,18 @@ public class MyOrdersCommand extends CommandUnprotectedPage {
             //Combine drawings
             carportTopArrows.addSvg(carportTop);
 
-            //Save drawing
-            request.setAttribute("drawing", carportTopArrows.toString());
-
             //Carport seen from the side
             SVG carportSide = drawingService.drawCarportSide(width, length, orderId);
 
             //Arrows with text
             SVG carportSideArrows = drawingService.drawCarportSideArrows(width, length, orderId);
 
-            //Combine drawings:
+            //Combine drawings
             carportSideArrows.addSvg(carportSide);
-
-            //Save drawing
+            
+            //Save drawings
             request.setAttribute("sideDrawing", carportSideArrows.toString());
+            request.setAttribute("drawing", carportTopArrows.toString());
 
             return "myorderscontent";
         }
