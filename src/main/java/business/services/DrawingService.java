@@ -63,13 +63,20 @@ public class DrawingService {
 
     public SVG drawCarportTopArrows(double width, double length, int orderId) throws UserException {
         SVG svg = new SVG(0, 0, "0 0 855 855", 100, 100);
+        //Variables
+        double remDistance = width / 100 * 5.83;
+        double y2 = width - remDistance;
+        double y1 = remDistance;
+        double middleLength = width - (remDistance + remDistance);
 
         //Arrows
-        svg.addArrow(length + 20, 0, length + 20, width);
+        svg.addArrow(length + 50, 0, length + 50, width);
+        svg.addArrow(length + 20, y1 - 4.5, length + 20, y2 + 4.5);
         svg.addArrow(0, width + 20, length + 4.5, width + 20);
 
         //Text
-        svg.addText(length + 40, (width / 2) - 40, 90, (int) width);
+        svg.addText(length + 60, (width / 2) - 30, 90, (int) width);
+        svg.addText(length + 30, (y2 / 2) - 30, 90, (int) middleLength);
         svg.addText(length / 2, width + 40, 0, (int) length);
 
         return svg;
@@ -107,7 +114,6 @@ public class DrawingService {
         }
 
         //Draw Roof
-        //Draw Roof
         svg.addRoof(0, 0, 20, length);
 
         return svg;
@@ -120,7 +126,7 @@ public class DrawingService {
         double carportHeight = stolpeHeight + 20;
 
         //Arrows
-        svg.addArrow(length + 20, 0, length + 20, carportHeight);
+        svg.addArrow(length + 20, 0, length + 20, carportHeight - 20);
         svg.addArrow(0, carportHeight + 20, length + 4.5, carportHeight + 20);
 
         //Text
