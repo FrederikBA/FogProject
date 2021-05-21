@@ -10,6 +10,7 @@ import web.commands.Command;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static web.FrontController.database;
 
 class BomServiceTest {
@@ -44,6 +45,7 @@ class BomServiceTest {
     @Test
     void calculateSpærFromMeasurements() throws UserException {
         BomLine spær = bomService.calculateSpærFromMeasurements(600, 780);
+        assertNotNull(spær);
         assertEquals(14, spær.getQuantity());
         assertEquals(1400, spær.getPrice());
     }
@@ -55,6 +57,7 @@ class BomServiceTest {
     @Test
     void calculateHulbåndFromMeasurements() throws UserException {
         BomLine hulbånd = bomService.calculateHulbåndFromMeasurements(600, 780);
+        assertNotNull(hulbånd);
         assertEquals(2, hulbånd.getQuantity());
         assertEquals(100, hulbånd.getPrice());
     }
