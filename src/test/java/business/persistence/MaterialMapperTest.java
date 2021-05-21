@@ -35,11 +35,11 @@ class MaterialMapperTest {
     @BeforeEach
     void setUp() {
         // reset test database
-        try ( Statement stmt = database.connect().createStatement() ) {
+        try (Statement stmt = database.connect().createStatement()) {
 
             //users
-            stmt.execute("drop table if exists users" );
-            stmt.execute("create table " + TESTDATABASE + ".users LIKE " + DATABASE + ".users;" );
+            stmt.execute("drop table if exists users");
+            stmt.execute("create table " + TESTDATABASE + ".users LIKE " + DATABASE + ".users;");
             stmt.execute(
                     "insert into users values " +
                             "(1,'jens@somewhere.com','jensen','customer'), " +
@@ -48,15 +48,15 @@ class MaterialMapperTest {
 
 
             //orders - "order_id, user_id, price, status, length, width, timestamp"
-            stmt.execute("drop table if exists orders" );
-            stmt.execute("create table " + TESTDATABASE + ".orders LIKE " + DATABASE + ".orders;" );
+            stmt.execute("drop table if exists orders");
+            stmt.execute("create table " + TESTDATABASE + ".orders LIKE " + DATABASE + ".orders;");
             stmt.execute(
                     "insert into users values " +
                             "(1,1, '250','bekræftet','240','240','2021-05-15'), " +
                             "(2,2, '300','bekræftet','140','740','2021-05-14'), " +
                             "(3,3, '750','bekræftet','540','640','2021-05-18')");
         } catch (SQLException ex) {
-            System.out.println( "Could not open connection to database: " + ex.getMessage() );
+            System.out.println("Could not open connection to database: " + ex.getMessage());
         }
     }
 

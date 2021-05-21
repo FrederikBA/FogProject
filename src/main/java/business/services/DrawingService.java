@@ -63,9 +63,15 @@ public class DrawingService {
     }
 
     public SVG drawCarportTopArrows(double width, double length, int orderId) throws UserException {
+        List<BomLine> billOfMaterials = bomFacade.getBomByOrderId(orderId);
         String viewBox = "0, 0, " + 855 + ", " + 855;
         SVG svg = new SVG(0, 0, viewBox, 100, 100);
+
         //Variables
+        BomLine spær = billOfMaterials.get(1);
+        double dquantity = spær.getQuantity();
+        double distance = length / (dquantity - 1);
+
         double remDistance = width / 100 * 5.83;
         double y2 = width - remDistance;
         double y1 = remDistance;
@@ -75,12 +81,14 @@ public class DrawingService {
         svg.initMarkersOne();
         svg.addArrowOne(length + 50, 0, length + 50, width);
         svg.addArrowOne(length + 20, y1 - 4.5, length + 20, y2 + 4.5);
-        svg.addArrowOne(0, width + 20, length + 4.5, width + 20);
+        svg.addArrowOne(0, width + 50, length + 4.5, width + 50);
+        svg.addArrowOne(0, width + 20, distance, width + 20);
 
         //Text
         svg.addText(length + 60, (width / 2) - 30, 90, (int) width);
         svg.addText(length + 30, (width / 2) - 30, 90, (int) middleLength);
-        svg.addText(length / 2, width + 40, 0, (int) length);
+        svg.addText(length / 2, width + 70, 0, (int) length);
+        svg.addText(distance/2-20, width + 40, 0, (int) distance);
 
         return svg;
     }

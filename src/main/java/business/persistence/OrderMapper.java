@@ -233,6 +233,7 @@ public class OrderMapper {
             throw new UserException(ex.getMessage());
         }
     }
+
     public int deleteOrderContent(int orderId) throws UserException {
         try (Connection connection = database.connect()) {
             String sql = "DELETE FROM bom_items WHERE order_id = ? ";
