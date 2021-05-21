@@ -33,6 +33,36 @@
                 <h3>${sessionScope.totalPrice},-</h3>
             </div>
             <br>
+            <div class="center">
+                <h3>Carporten set oppefra:</h3>
+                <button class="btn btn-secondary btn-full" type="button" data-toggle="collapse"
+                        data-target="#collapseExample"
+                        aria-expanded="false" aria-controls="collapseExample">
+                    Se tegning
+                </button>
+                <div class="collapse" id="collapseExample">
+                    <br>
+                    <div class="card card-body">
+                            ${requestScope.drawing}
+                    </div>
+                </div>
+            </div>
+
+            <div class="center pt-5">
+                <h3>Carporten set fra siden:</h3>
+                <button class="btn btn-secondary btn-full" type="button" data-toggle="collapse"
+                        data-target="#collapseExampleTwo"
+                        aria-expanded="false" aria-controls="collapseExampleTwo">
+                    Se tegning
+                </button>
+                <div class="collapse" id="collapseExampleTwo">
+                    <br>
+                    <div class="card card-body">
+                            ${requestScope.sideDrawing}
+                    </div>
+                </div>
+            </div>
+            <br>
             <div class="row">
                 <div class="col-md"></div>
                 <div class="col-md center">

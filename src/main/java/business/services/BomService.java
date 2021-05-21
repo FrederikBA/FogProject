@@ -289,7 +289,10 @@ public class BomService {
         Material material = materialFacade.getMaterialById(10);
         int materialId = material.getMaterialId();
         String name = material.getDescription();
-        double diagonalLength = Math.sqrt((width * width) + (length * length));
+        double dWidth = width;
+        double remDistance = dWidth / 100 * 5.83;
+        double middleWidth = dWidth - (remDistance + remDistance);
+        double diagonalLength = Math.sqrt((middleWidth * middleWidth) + (length * length));
         int quantity = 1;
         if (diagonalLength * 2 > 1000)
             quantity = 2;

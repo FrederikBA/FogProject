@@ -25,7 +25,7 @@
                 <br>
                 <h3>Pris i alt: ${sessionScope.totalPrice},-</h3>
                 <br>
-                <h4>Din ordre vil kunne opfølges under "Mine ordrer".<br><br> Når din ordre er blevet bekræftet, vil du have adgang til en tegning over carporten samt den tilhørende stykliste.</h4>
+                <h4>Din ordre vil kunne opfølges under "Mine ordrer".<br><br> Når din ordre er blevet bekræftet, vil du få adgang til den tilhørende stykliste.</h4>
             </div>
         </form>
     </jsp:body>

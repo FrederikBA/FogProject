@@ -10,14 +10,13 @@ import web.commands.Command;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static web.FrontController.database;
 
-class BomServiceTest   {
-    private final static String DATABASE = "fog_carport";  // Change this to your own database
-    private final static String TESTDATABASE = DATABASE + "_test";
+class BomServiceTest {
     private final static String USER = "root";
-    private final static String PASSWORD = "root";
-    private final static String URL = "jdbc:mysql://localhost:3306/" + TESTDATABASE + "?serverTimezone=CET&useSSL=false";
+    private final static String PASSWORD = "root123";
+    private final static String URL = "jdbc:mysql://localhost:3306/fog_carport?serverTimezone=CET";
 
     private static Database database;
 
@@ -38,14 +37,17 @@ class BomServiceTest   {
     @Test
     void calculateStolperFromMeasurements() throws UserException {
 
-        BomLine result = bomService.calculateStolperFromMeasurements(780,300);
-        assertEquals(6,result.getQuantity());
+        BomLine result = bomService.calculateStolperFromMeasurements(600, 780);
+        assertEquals(6, result.getQuantity());
         assertEquals(300, result.getLength());
-
     }
 
     @Test
-    void calculateSpærFromMeasurements() {
+    void calculateSpærFromMeasurements() throws UserException {
+        BomLine spær = bomService.calculateSpærFromMeasurements(600, 780);
+        assertNotNull(spær);
+        assertEquals(14, spær.getQuantity());
+        assertEquals(1400, spær.getPrice());
     }
 
     @Test
@@ -55,6 +57,10 @@ class BomServiceTest   {
     }
 
     @Test
-    void calculateHulbåndFromMeasurements() {
+    void calculateHulbåndFromMeasurements() throws UserException {
+        BomLine hulbånd = bomService.calculateHulbåndFromMeasurements(600, 780);
+        assertNotNull(hulbånd);
+        assertEquals(2, hulbånd.getQuantity());
+        assertEquals(100, hulbånd.getPrice());
     }
 }
