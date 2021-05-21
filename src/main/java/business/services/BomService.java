@@ -61,6 +61,7 @@ public class BomService {
 
         return billOfMaterials;
     }
+    //TODO: Vi bruger ikk width i parameter i flere af metoderne herinde???
 
     public BomLine calculateStolperFromMeasurements(int width, int length) throws UserException {
         Material material = materialFacade.getMaterialById(6);
@@ -107,6 +108,7 @@ public class BomService {
         return bomLine;
     }
 
+    //TODO: Vi bruger ikk width i parameter i flere af metoderne herinde???
     public BomLine calculateRemFromMeasurements(int width, int length) throws UserException {
         Material material = materialFacade.getMaterialById(5);
         int materialId = material.getMaterialId();
@@ -129,7 +131,7 @@ public class BomService {
 
         return bomLine;
     }
-
+    //TODO: Vi bruger ikk width i parameter i flere af metoderne herinde???
     public BomLine calculateUndersternOneFromMeasurements(int width, int length) throws UserException {
         Material material = materialFacade.getMaterialById(1);
         int materialId = material.getMaterialId();

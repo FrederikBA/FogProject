@@ -15,7 +15,7 @@ import static web.FrontController.database;
 
 class BomServiceTest {
     private final static String USER = "root";
-    private final static String PASSWORD = "root123";
+    private final static String PASSWORD = "root";
     private final static String URL = "jdbc:mysql://localhost:3306/fog_carport?serverTimezone=CET";
 
     private static Database database;
@@ -36,10 +36,18 @@ class BomServiceTest {
 
     @Test
     void calculateStolperFromMeasurements() throws UserException {
-
-        BomLine result = bomService.calculateStolperFromMeasurements(600, 780);
+        //Ækvivalensklassepartionering, Tjekke hvor går grænsen fra at have 4 eller 6 stolper.
+        //Test 1
+        BomLine result = bomService.calculateStolperFromMeasurements(600, 631);
+        assertNotNull(result);
         assertEquals(6, result.getQuantity());
         assertEquals(300, result.getLength());
+        //Test 2
+        BomLine result1 = bomService.calculateStolperFromMeasurements(600, 630);
+        assertNotNull(result1);
+        assertEquals(4, result1.getQuantity());
+
+
     }
 
     @Test
@@ -60,7 +68,18 @@ class BomServiceTest {
     }
 
     @Test
-    void calculateRemFromMeasurements() {
+    void calculateRemFromMeasurements() throws UserException {
+        //Ækvivalensklassepartionering, Tjekke hvor går grænsen fra at have 2 eller 3 remme.
+        //Test 1
+        BomLine result = bomService.calculateRemFromMeasurements(3,601);
+        assertNotNull(result);
+        assertEquals(3,result.getQuantity());
+        //Test 2
+        BomLine result1 = bomService.calculateRemFromMeasurements(3,600);
+        assertNotNull(result1);
+        assertEquals(2,result1.getQuantity());
+
+
     }
 
     @Test

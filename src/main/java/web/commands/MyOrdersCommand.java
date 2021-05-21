@@ -44,6 +44,7 @@ public class MyOrdersCommand extends CommandUnprotectedPage {
 
         //Show Order content
         if (request.getParameter("content") != null) {
+
             //Get orderId
             int orderId = Integer.parseInt(request.getParameter("content"));
 
