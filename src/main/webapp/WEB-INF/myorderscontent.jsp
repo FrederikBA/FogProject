@@ -23,41 +23,40 @@
                     <h4>Pris i alt: ${requestScope.totalPrice},-</h4>
                     <br>
                     <c:if test="${!requestScope.status.equals('Bekræftet')}">
-                        <h4>Når din ordre bliver bekræftet får du adgang til tegning samt stykliste på denne side.</h4>
+                        <h4>Når din ordre bliver bekræftet får du adgang til styklisten på denne side.</h4>
                     </c:if>
                 </div>
+
+
+                <div class="center">
+                    <h3>Carporten set oppefra:</h3>
+                    <button class="btn btn-secondary btn-full" type="button" data-toggle="collapse"
+                            data-target="#collapseExample"
+                            aria-expanded="false" aria-controls="collapseExample">
+                        Se tegning
+                    </button>
+                    <div class="collapse" id="collapseExample">
+                        <br>
+                        <div class="card card-body">
+                                ${requestScope.drawing}
+                        </div>
+                    </div>
+                </div>
+                <div class="center pt-5">
+                    <h3>Carporten set fra siden:</h3>
+                    <button class="btn btn-secondary btn-full" type="button" data-toggle="collapse"
+                            data-target="#collapseExampleTwo"
+                            aria-expanded="false" aria-controls="collapseExampleTwo">
+                        Se tegning
+                    </button>
+                    <div class="collapse" id="collapseExampleTwo">
+                        <br>
+                        <div class="card card-body">
+                                ${requestScope.sideDrawing}
+                        </div>
+                    </div>
+                </div>
                 <c:if test="${requestScope.status.equals('Bekræftet')}">
-
-                    <div class="center">
-                        <h3>Carporten set oppefra:</h3>
-                        <button class="btn btn-secondary btn-full" type="button" data-toggle="collapse"
-                                data-target="#collapseExample"
-                                aria-expanded="false" aria-controls="collapseExample">
-                            Se tegning
-                        </button>
-                        <div class="collapse" id="collapseExample">
-                            <br>
-                            <div class="card card-body">
-                                    ${requestScope.drawing}
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="center pt-5">
-                        <h3>Carporten set fra siden:</h3>
-                        <button class="btn btn-secondary btn-full" type="button" data-toggle="collapse"
-                                data-target="#collapseExampleTwo"
-                                aria-expanded="false" aria-controls="collapseExampleTwo">
-                            Se tegning
-                        </button>
-                        <div class="collapse" id="collapseExampleTwo">
-                            <br>
-                            <div class="card card-body">
-                                    ${requestScope.sideDrawing}
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="stykliste">
                         <br>
                         <h1 class="center">Stykliste</h1>

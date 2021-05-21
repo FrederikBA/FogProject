@@ -4,10 +4,7 @@ import business.entities.Bom;
 import business.entities.BomLine;
 import business.entities.User;
 import business.exceptions.UserException;
-import business.services.BomFacade;
-import business.services.BomService;
-import business.services.OrderFacade;
-import business.services.SVG;
+import business.services.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,12 +16,14 @@ public class CreateOrderCommand extends CommandUnprotectedPage {
     BomService bomService;
     OrderFacade orderFacade;
     BomFacade bomFacade;
+    DrawingService drawingService;
 
     public CreateOrderCommand(String pageToShow) {
         super(pageToShow);
         bomService = new BomService(database);
         orderFacade = new OrderFacade(database);
         bomFacade = new BomFacade(database);
+        drawingService = new DrawingService(database);
     }
 
     @Override
@@ -81,19 +80,31 @@ public class CreateOrderCommand extends CommandUnprotectedPage {
             DecimalFormat df = new DecimalFormat("#.00");
             session.setAttribute("totalPrice", df.format(totalPrice));
 
-            //Draw Carport
-            SVG svg = new SVG(0, 0, "0 0 855 600", 100, 100);
-
+            //Drawings
             //Get Order ID
             int orderId = orderFacade.getOrderIdByTimestamp();
 
-            //Draw Frame
-            svg.addRect(0, 0, width, length);
+            //Carport seen from above
+            SVG carportTop = drawingService.drawCarportTop(width, length, orderId);
 
+            //Arrows with text
+            SVG carportTopArrows = drawingService.drawCarportTopArrows(width, length, orderId);
 
+            //Combine drawings
+            carportTopArrows.addSvg(carportTop);
 
-            //Save Drawing
-            session.setAttribute("drawing", svg.toString());
+            //Carport seen from the side
+            SVG carportSide = drawingService.drawCarportSide(width, length, orderId);
+
+            //Arrows with text
+            SVG carportSideArrows = drawingService.drawCarportSideArrows(width, length, orderId);
+
+            //Combine drawings
+            carportSideArrows.addSvg(carportSide);
+
+            //Save drawings
+            request.setAttribute("sideDrawing", carportSideArrows.toString());
+            request.setAttribute("drawing", carportTopArrows.toString());
 
             return "checkout";
         }
