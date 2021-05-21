@@ -45,8 +45,9 @@ class OrderMapperTest {
     @BeforeEach
     void setUp() {
         // reset test database
+        //Placed them like this, in this order because of sql foreign key error.
+        //:TODO try with "Drop if table exists"
         try (Statement stmt = database.connect().createStatement()) {
-
             stmt.execute("delete from bom_items");
             stmt.execute("delete from orders");
             stmt.execute("delete from user");
@@ -73,7 +74,7 @@ class OrderMapperTest {
         order.setOrderId(new User(1, "jens@somewhere.com", "jensen", "customer"));
         List<BomLine> bomLines = bomService.calculateCarportFromMeasurements(300, 700);
         orderMapper.createOrder(1, 255, 244, bomLines);
-       List<Order> orderList = orderMapper.getAllOrdersByUserId(1);
+        List<Order> orderList = orderMapper.getAllOrdersByUserId(1);
         assertEquals(2, orderList.size());
 
 

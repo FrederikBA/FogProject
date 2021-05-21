@@ -49,7 +49,9 @@ class BomServiceTest   {
     }
 
     @Test
-    void calculateRemFromMeasurements() {
+    void calculateRemFromMeasurements() throws UserException {
+        BomLine result = bomService.calculateRemFromMeasurements(3,601);
+        assertEquals(3,result.getQuantity());
     }
 
     @Test
