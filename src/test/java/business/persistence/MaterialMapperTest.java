@@ -56,20 +56,12 @@ class MaterialMapperTest {
             stmt.execute("delete from user");
             stmt.execute("delete from material");
 
-            //Creates 3 users, dont think i need this.
-            stmt.execute(
-                    "insert into user values " +
-                            "(1,'jens@somewhere.com','jensen','customer'), " +
-                            "(2,'ken@somewhere.com','kensen','customer'), " +
-                            "(3,'robin@somewhere.com','batman','employee')");
-
             //Create three materials in DB
             stmt.execute(
                     "insert into material values " +
                             "(1, '25x200 mm. trykimp. Brædt', 'Stk', '100', 'wood'), " +
-                            "(2, '25x125mm. trykimp. Brædt', 'Stk', '75', 'wood'), " +
-                            "(3, '38x73 mm. Lægte ubh.', 'Stk', '115', 'wood')");
-
+                            "(2, '25x125mm. trykimp. Brædt', 'Stk', '100', 'wood'), " +
+                            "(3, '38x73 mm. Lægte ubh.', 'Stk', '100', 'wood')");
         } catch (SQLException ex) {
             System.out.println("Could not open connection to database: " + ex.getMessage());
         }
@@ -86,20 +78,26 @@ class MaterialMapperTest {
 
     }
     @Test
-    void getAllMaterials() {
+    void getAllMaterials() throws UserException {
+    List<Material> materialList = materialMapper.getAllMaterials();
+    assertEquals(3,materialList.size());
     }
 
     @Test
-    void updateMaterialById() {
+    void updateMaterialById() throws UserException {
+        materialMapper.updateMaterialById(1,500);
+        Material material = materialMapper.getMaterialById(1);
+        assertEquals(500,material.getPricePerUnit());
+
+        materialMapper.updateMaterialById(1,250);
+        Material updatePrice = materialMapper.getMaterialById(1);
+        assertEquals(250,updatePrice.getPricePerUnit());
     }
 
     @Test
     void deleteMaterial() throws UserException {
-       Material tmp = materialMapper.getMaterialById(1);
         materialMapper.deleteMaterial(1);
         List<Material> materialList = materialMapper.getAllMaterials();
         assertEquals(2,materialList.size());
     }
-
-
 }
