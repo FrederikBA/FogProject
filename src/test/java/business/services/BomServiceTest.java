@@ -52,10 +52,19 @@ class BomServiceTest {
 
     @Test
     void calculateSpærFromMeasurements() throws UserException {
-        BomLine spær = bomService.calculateSpærFromMeasurements(600, 780);
-        assertNotNull(spær);
-        assertEquals(14, spær.getQuantity());
-        assertEquals(1400, spær.getPrice());
+        //Case One
+        BomLine resultOne = bomService.calculateSpærFromMeasurements(600, 780);
+        assertNotNull(resultOne);
+        assertEquals(14, resultOne.getQuantity());
+        assertEquals(600, resultOne.getLength());
+        assertEquals(1400, resultOne.getPrice());
+
+        //Case Two
+        BomLine resultTwo = bomService.calculateSpærFromMeasurements(300, 450);
+        assertNotNull(resultTwo);
+        assertEquals(9, resultTwo.getQuantity());
+        assertEquals(300, resultTwo.getLength());
+        assertEquals(900, resultTwo.getPrice());
     }
 
     @Test
@@ -75,9 +84,15 @@ class BomServiceTest {
 
     @Test
     void calculateHulbåndFromMeasurements() throws UserException {
-        BomLine hulbånd = bomService.calculateHulbåndFromMeasurements(600, 780);
-        assertNotNull(hulbånd);
-        assertEquals(2, hulbånd.getQuantity());
-        assertEquals(100, hulbånd.getPrice());
+        BomLine result = bomService.calculateHulbåndFromMeasurements(600, 780);
+        assertNotNull(result);
+        assertEquals(2, result.getQuantity());
+        assertEquals(100, result.getPrice());
+
+        //Case Two
+        BomLine resultTwo = bomService.calculateHulbåndFromMeasurements(300, 300);
+        assertNotNull(resultTwo);
+        assertEquals(1, resultTwo.getQuantity());
+        assertEquals(50, resultTwo.getPrice());
     }
 }

@@ -13,18 +13,19 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyOrdersCommand extends CommandUnprotectedPage {
+public class MyOrdersCommand extends CommandProtectedPage {
     OrderFacade orderFacade;
     BomFacade bomFacade;
     DrawingService drawingService;
 
-    public MyOrdersCommand(String pageToShow) {
-        super(pageToShow);
+    public MyOrdersCommand(String pageToShow, String role) {
+        super(pageToShow, role);
         this.orderFacade = new OrderFacade(database);
         this.bomFacade = new BomFacade(database);
         this.drawingService = new DrawingService(database);
 
     }
+
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
@@ -44,6 +45,7 @@ public class MyOrdersCommand extends CommandUnprotectedPage {
 
         //Show Order content
         if (request.getParameter("content") != null) {
+
             //Get orderId
             int orderId = Integer.parseInt(request.getParameter("content"));
 
@@ -86,7 +88,7 @@ public class MyOrdersCommand extends CommandUnprotectedPage {
 
             //Combine drawings
             carportSideArrows.addSvg(carportSide);
-            
+
             //Save drawings
             request.setAttribute("sideDrawing", carportSideArrows.toString());
             request.setAttribute("drawing", carportTopArrows.toString());
