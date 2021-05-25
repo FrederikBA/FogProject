@@ -62,9 +62,8 @@ public class AdminProductsCommand extends CommandProtectedPage {
 
         //Delete material
         if (request.getParameter("delete") != null) {
-            String deleteMats = request.getParameter("delete");
-
-            if (materialFacade.deleteMaterial(Integer.parseInt(deleteMats)) > 0) {
+            String deleteId = request.getParameter("delete");
+            if (materialFacade.deleteMaterial(Integer.parseInt(deleteId)) > 0) {
                 //Update lists
                 materials = materialFacade.getAllMaterials();
                 wood = materialFacade.getAllWood();
