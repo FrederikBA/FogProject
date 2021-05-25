@@ -65,13 +65,13 @@ example: https://getbootstrap.com/docs/5.0/examples/pricing/
                     <c:if test="${isNotLoginPage && isNotRegisterPage}">
                         <c:if test="${sessionScope.user != null }">
                             <a type="button" class="btn btn-outline-light mx-2 right"
-                               href="${pageContext.request.contextPath}/fc/logoutcommand">Logout</a>
+                               href="${pageContext.request.contextPath}/fc/logoutcommand">Log af</a>
                         </c:if>
                         <c:if test="${sessionScope.user == null}">
                             <a type="button" class="btn btn-outline-light mx-2 right"
-                               href="${pageContext.request.contextPath}/fc/loginpage">Login</a>
+                               href="${pageContext.request.contextPath}/fc/loginpage">Log ind</a>
                             <a type="button" class="btn btn-outline-light mx-2 right"
-                               href="${pageContext.request.contextPath}/fc/registerpage">Sign up</a>
+                               href="${pageContext.request.contextPath}/fc/registerpage">Registrer bruger</a>
                         </c:if>
                     </c:if>
                 </div>

@@ -14,129 +14,135 @@
 
     <jsp:body>
 
-    <form method="post" action="${pageContext.request.contextPath}/fc/adminproducts">
-        <h1 class="center">Produktoversigt</h1>
-        <br>
-        <h3 class="center">Træ & Tagplader</h3>
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Beskrivelse</th>
-                <th scope="col">Enhed</th>
-                <th scope="col">Stykpris</th>
-                <th scope="col">Fjern</th>
-
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach var="material" items="${sessionScope.wood}">
+        <form method="post" action="${pageContext.request.contextPath}/fc/adminproducts">
+            <h1 class="center">Produktoversigt</h1>
+            <br>
+            <c:if test="${not empty requestScope.error}">
+                <div class="center">
+                    <p style="font-size: 18pt; color: red;">${requestScope.error}</p>
+                </div>
+            </c:if>
+            <h3 class="center">Træ & Tagplader</h3>
+            <table class="table">
+                <thead>
                 <tr>
-                    <td>${material.materialId}</td>
-                    <td>${material.description}</td>
-                    <td>${material.unit}</td>
-                    <td>${material.pricePerUnit}</td>
-                    <td>
-                        <button class="btn btn-danger btn-sm" type="submit" name="delete"
-                                value="${material.materialId}">
-                            Fjern
-                        </button>
-                    </td>
-                </tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Beskrivelse</th>
+                    <th scope="col">Enhed</th>
+                    <th scope="col">Stykpris</th>
+                    <th scope="col">Fjern</th>
 
-            </c:forEach>
-            </tbody>
-        </table>
-        <br>
-        <h3 class="center">Beslag & Skruer</h3>
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Beskrivelse</th>
-                <th scope="col">Enhed</th>
-                <th scope="col">Stykpris</th>
-                <th scope="col">Fjern</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach var="material" items="${sessionScope.accesories}">
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach var="material" items="${requestScope.wood}">
+                    <tr>
+                        <td>${material.materialId}</td>
+                        <td>${material.description}</td>
+                        <td>${material.unit}</td>
+                        <td>${material.pricePerUnit}</td>
+                        <td>
+                            <button class="btn btn-danger btn-sm" type="submit" name="delete"
+                                    value="${material.materialId}">
+                                Fjern
+                            </button>
+                        </td>
+                    </tr>
+
+                </c:forEach>
+                </tbody>
+            </table>
+            <br>
+            <h3 class="center">Beslag & Skruer</h3>
+            <table class="table">
+                <thead>
                 <tr>
-                    <td>${material.materialId}</td>
-                    <td>${material.description}</td>
-                    <td>${material.unit}</td>
-                    <td>${material.pricePerUnit}</td>
-                    <td>
-                        <button class="btn btn-danger btn-sm" type="submit" name="delete"
-                                value="${material.materialId}">
-                            Fjern
-                        </button>
-                    </td>
+                    <th scope="col">Id</th>
+                    <th scope="col">Beskrivelse</th>
+                    <th scope="col">Enhed</th>
+                    <th scope="col">Stykpris</th>
+                    <th scope="col">Fjern</th>
                 </tr>
+                </thead>
+                <tbody>
+                <c:forEach var="material" items="${requestScope.accesories}">
+                    <tr>
+                        <td>${material.materialId}</td>
+                        <td>${material.description}</td>
+                        <td>${material.unit}</td>
+                        <td>${material.pricePerUnit}</td>
+                        <td>
+                            <button class="btn btn-danger btn-sm" type="submit" name="delete"
+                                    value="${material.materialId}">
+                                Fjern
+                            </button>
+                        </td>
+                    </tr>
 
-            </c:forEach>
-            </tbody>
-        </table>
-        <div class="row">
-
-            <div class="col-md">
-                <div class="form-group">
-                    <label for="description">Beskrivelse:</label>
-                    <input class="form-control" type="text" id="description" name="description">
-                </div>
-            </div>
-
-            <div class="col-md">
-                <div class="form-group">
-                    <label for="unit">Enhed:</label>
-                    <input class="form-control" type="text" id="unit" name="unit">
-                </div>
-            </div>
-
-            <div class="col-md">
-                <div class="form-group">
-                    <label for="price">Pris:</label>
-                    <input class="form-control" type="text" id="price" name="price">
-                </div>
-            </div>
-
-            <div class="col-md">
-                <div class="form-group">
-                    <label for="type">Type:</label>
-                    <input class="form-control" type="text" id="type" name="type">
-                </div>
-            </div>
-
-            <div class="col-md">
-                <br>
-                <button style="width:100%;" type="submit" class="btn btn-secondary" name="addMaterial"
-                        value="update">Tilføj
-                </button>
-            </div>
-        </div>
-
+                </c:forEach>
+                </tbody>
+            </table>
             <div class="row">
-            <div class="col-md">
-                <div class="form-group">
-                    <label for="description">materialeId:</label>
-                    <input class="form-control" type="text" id="materialeId" name="materialeId">
+
+                <div class="col-md">
+                    <div class="form-group">
+                        <label for="description">Beskrivelse:</label>
+                        <input class="form-control" type="text" id="description" name="description">
+                    </div>
+                </div>
+
+                <div class="col-md">
+                    <div class="form-group">
+                        <label for="unit">Enhed:</label>
+                        <input class="form-control" type="text" id="unit" name="unit">
+                    </div>
+                </div>
+
+                <div class="col-md">
+                    <div class="form-group">
+                        <label for="price">Pris:</label>
+                        <input class="form-control" type="text" id="price" name="price">
+                    </div>
+                </div>
+
+                <div class="col-md">
+                    <div class="form-group">
+                        <label for="type">Type:</label>
+                        <input class="form-control" type="text" id="type" name="type">
+                    </div>
+                </div>
+
+                <div class="col-md">
+                    <br>
+                    <button style="width:100%;" type="submit" class="btn btn-secondary" name="addMaterial"
+                            value="update">Tilføj
+                    </button>
                 </div>
             </div>
+            <br>
+            <div class="row">
+                <div class="col-md">
+                    <div class="form-group">
+                        <label for="description">ID:</label>
+                        <input class="form-control" type="text" id="materialeId" name="materialeId">
+                    </div>
+                </div>
 
-            <div class="col-md">
-                <div class="form-group">
-                    <label for="MaterialPrice">Pris:</label>
-                    <input class="form-control" type="text" id="MaterialPrice" name="MaterialPrice">
+                <div class="col-md">
+                    <div class="form-group">
+                        <label for="MaterialPrice">Pris:</label>
+                        <input class="form-control" type="text" id="MaterialPrice" name="MaterialPrice">
+                    </div>
+                </div>
+
+                <div class="col-md">
+                    <br>
+                    <button style="width:100%;" type="submit" class="btn btn-secondary" name="update"
+                            value="update">Opdater Materiale
+                    </button>
                 </div>
             </div>
-
-            <div class="col-md">
-                <br>
-                <button style="width:100%;" type="submit" class="btn btn-secondary" name="update"
-                        value="update">Opdater Materiale
-                </button>
-            </div>
-        </div>
-    </form>
+            <br>
+        </form>
     </jsp:body>
 </t:genericpage>

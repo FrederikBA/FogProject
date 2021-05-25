@@ -41,7 +41,7 @@ public class MyOrdersCommand extends CommandProtectedPage {
         //Get all orders
         List<Order> orders = orderFacade.getAllOrdersByUserId(userId);
 
-        session.setAttribute("orders", orders);
+        request.setAttribute("orders", orders);
 
         //Show Order content
         if (request.getParameter("content") != null) {

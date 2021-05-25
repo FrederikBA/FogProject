@@ -20,12 +20,10 @@
                 <h4>Din valgte Bredde: ${sessionScope.width}</h4>
                 <h4>Din valgte Længde: ${sessionScope.length}</h4>
                 <br>
-                <h3>Tag: Fladt</h3>
-                <h3>Skur: Ingen</h3>
-                <br>
                 <h3>Pris i alt: ${sessionScope.totalPrice},-</h3>
                 <br>
-                <h4>Din ordre vil kunne opfølges under "Mine ordrer".<br><br> Når din ordre er blevet bekræftet, vil du få adgang til den tilhørende stykliste.</h4>
+                <h4>Din ordre vil kunne opfølges under "Mine ordrer".<br><br> Når din ordre er blevet bekræftet, vil du
+                    få adgang til den tilhørende stykliste.</h4>
             </div>
         </form>
     </jsp:body>

@@ -154,8 +154,7 @@ public class MaterialMapper {
 
     public int deleteMaterial(int materialId) throws UserException {
         try (Connection connection = database.connect()) {
-            String sql = "DELETE FROM material WHERE id = ? ";
-
+            String sql = "DELETE FROM material WHERE id = ? AND id NOT IN (SELECT material_id FROM bom_items)";
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, materialId);
                 int rowsAffected = ps.executeUpdate();
