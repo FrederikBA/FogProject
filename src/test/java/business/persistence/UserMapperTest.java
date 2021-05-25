@@ -35,8 +35,8 @@ public class UserMapperTest {
 
             // reset test database
             try ( Statement stmt = database.connect().createStatement() ) {
-                stmt.execute("DROP TABLE  IF EXISTS USER " );
-                stmt.execute("create table " + TESTDATABASE + ".user LIKE " + DATABASE + ".user;" );
+                stmt.execute("delete from user" );
+              //  stmt.execute("create table " + TESTDATABASE + ".user LIKE " + DATABASE + ".user;" ); <--- Gives an error with drop table if exist. So keep "delete from user" line 38.
                 stmt.execute(
                     "insert into user values " +
                     "(1,'jens@somewhere.com','jensen','customer'), " +
