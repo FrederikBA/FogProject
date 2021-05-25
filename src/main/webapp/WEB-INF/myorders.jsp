@@ -25,7 +25,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="order" items="${sessionScope.orders}">
+                <c:forEach var="order" items="${requestScope.orders}">
                     <tr>
                         <td>${order.orderId}</td>
                         <td>${order.timestamp}</td>
