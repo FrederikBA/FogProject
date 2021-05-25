@@ -13,36 +13,33 @@
     </jsp:attribute>
 
     <jsp:body>
-            <div class="row">
+        <div class="row">
 
-                <h1 class="center">Kundeoversigt</h1>
+            <h1 class="center">Kundeoversigt</h1>
 
-                <div class="col-md center">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th scope="col">Bruger ID</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Rolle</th>
+            <div class="col-md center">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Bruger ID</th>
+                        <th scope="col">Email</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach var="user" items="${requestScope.userList}">
+                        <c:if test="${user.role.equals('customer')}">
+                            <tr>
+                                <td>${user.id}</td>
+                                <td>${user.email}</td>
+                            </tr>
+                        </c:if>
+                    </c:forEach>
 
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <c:forEach var="user" items="${sessionScope.userList}">
-                        <tr>
-                            <td>${user.id}</td>
-                            <td>${user.email}</td>
-                            <td>${user.role}</td>
-                        </tr>
-
-                            </c:forEach>
-
-                        </tbody>
-                    </table>
-                </div>
-
+                    </tbody>
+                </table>
             </div>
 
+        </div>
 
 
     </jsp:body>

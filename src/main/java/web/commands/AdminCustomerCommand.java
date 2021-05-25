@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-public class AdminCustomerCommand extends CommandProtectedPage{
+public class AdminCustomerCommand extends CommandProtectedPage {
     UserFacade userFacade;
 
 
@@ -20,11 +20,9 @@ public class AdminCustomerCommand extends CommandProtectedPage{
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
-        HttpSession session = request.getSession();
-
         List<User> userList = userFacade.getAllUsers();
 
-        session.setAttribute("userList", userList);
+        request.setAttribute("userList", userList);
 
         return pageToShow;
     }

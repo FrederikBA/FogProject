@@ -22,7 +22,7 @@ public class AdminProductsCommand extends CommandProtectedPage {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
-        HttpSession session = request.getSession();
+       // HttpSession session = request.getSession();
         List<Material> materials = materialFacade.getAllMaterials();
         List<Material> wood = materialFacade.getAllWood();
         List<Material> accesories = materialFacade.getAllAccesories();
@@ -39,9 +39,9 @@ public class AdminProductsCommand extends CommandProtectedPage {
                 wood = materialFacade.getAllWood();
                 accesories = materialFacade.getAllAccesories();
 
-                session.setAttribute("materials", materials);
-                session.setAttribute("wood", wood);
-                session.setAttribute("accesories", accesories);
+                request.setAttribute("materials", materials);
+                request.setAttribute("wood", wood);
+                request.setAttribute("accesories", accesories);
             }
         }
 
@@ -59,9 +59,9 @@ public class AdminProductsCommand extends CommandProtectedPage {
             wood = materialFacade.getAllWood();
             accesories = materialFacade.getAllAccesories();
 
-            session.setAttribute("materials", materials);
-            session.setAttribute("wood", wood);
-            session.setAttribute("accesories", accesories);
+            request.setAttribute("materials", materials);
+            request.setAttribute("wood", wood);
+            request.setAttribute("accesories", accesories);
             return "adminproducts";
         }
 
@@ -75,9 +75,9 @@ public class AdminProductsCommand extends CommandProtectedPage {
             accesories = materialFacade.getAllAccesories();
 
         }
-        session.setAttribute("materials", materials);
-        session.setAttribute("wood", wood);
-        session.setAttribute("accesories", accesories);
+        request.setAttribute("materials", materials);
+        request.setAttribute("wood", wood);
+        request.setAttribute("accesories", accesories);
 
         return pageToShow;
     }

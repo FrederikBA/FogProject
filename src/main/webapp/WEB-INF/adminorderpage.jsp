@@ -32,7 +32,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach var="order" items="${sessionScope.orderlist}">
+                    <c:forEach var="order" items="${requestScope.orderlist}">
                         <tr>
                             <td>${order.userId}</td>
                             <td>${order.orderId}</td>

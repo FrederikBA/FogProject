@@ -30,7 +30,7 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="material" items="${sessionScope.wood}">
+            <c:forEach var="material" items="${requestScope.wood}">
                 <tr>
                     <td>${material.materialId}</td>
                     <td>${material.description}</td>
@@ -60,7 +60,7 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="material" items="${sessionScope.accesories}">
+            <c:forEach var="material" items="${requestScope.accesories}">
                 <tr>
                     <td>${material.materialId}</td>
                     <td>${material.description}</td>
