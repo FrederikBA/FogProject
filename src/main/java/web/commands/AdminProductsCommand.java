@@ -6,10 +6,7 @@ import business.services.MaterialFacade;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.util.List;
-import java.util.Locale;
-import java.util.StringTokenizer;
 
 public class AdminProductsCommand extends CommandProtectedPage {
 
@@ -22,7 +19,6 @@ public class AdminProductsCommand extends CommandProtectedPage {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
-       // HttpSession session = request.getSession();
         List<Material> materials = materialFacade.getAllMaterials();
         List<Material> wood = materialFacade.getAllWood();
         List<Material> accesories = materialFacade.getAllAccesories();
@@ -32,9 +28,8 @@ public class AdminProductsCommand extends CommandProtectedPage {
         if (request.getParameter("update") != null) {
             String materialId = request.getParameter("materialeId");
             String MaterialPrice = request.getParameter("MaterialPrice");
-            int changePrice = materialFacade.updateMaterialById(Integer.parseInt(materialId),Double.parseDouble(MaterialPrice));
-            if (changePrice == 1)
-            {
+            int changePrice = materialFacade.updateMaterialById(Integer.parseInt(materialId), Double.parseDouble(MaterialPrice));
+            if (changePrice == 1) {
                 materials = materialFacade.getAllMaterials();
                 wood = materialFacade.getAllWood();
                 accesories = materialFacade.getAllAccesories();
@@ -53,7 +48,7 @@ public class AdminProductsCommand extends CommandProtectedPage {
             double pricePerUnit = Double.parseDouble(request.getParameter("price"));
             String type = request.getParameter("type");
 
-            materialFacade.addMaterial(new Material(description,unit,pricePerUnit,type));
+            materialFacade.addMaterial(new Material(description, unit, pricePerUnit, type));
 
             materials = materialFacade.getAllMaterials();
             wood = materialFacade.getAllWood();
@@ -66,15 +61,20 @@ public class AdminProductsCommand extends CommandProtectedPage {
         }
 
         //Delete material
-        if (request.getParameter("delete") != null){
+        if (request.getParameter("delete") != null) {
             String deleteMats = request.getParameter("delete");
 
-            materialFacade.deleteMaterial(Integer.parseInt(deleteMats));
-            materials = materialFacade.getAllMaterials();
-            wood = materialFacade.getAllWood();
-            accesories = materialFacade.getAllAccesories();
-
+            if (materialFacade.deleteMaterial(Integer.parseInt(deleteMats)) > 0) {
+                //Update lists
+                materials = materialFacade.getAllMaterials();
+                wood = materialFacade.getAllWood();
+                accesories = materialFacade.getAllAccesories();
+            } else {
+                request.setAttribute("error", "Dette materiale kan ikke fjernes da det er i brug.");
+            }
         }
+
+
         request.setAttribute("materials", materials);
         request.setAttribute("wood", wood);
         request.setAttribute("accesories", accesories);
