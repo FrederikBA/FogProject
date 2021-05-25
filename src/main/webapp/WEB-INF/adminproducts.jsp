@@ -119,11 +119,11 @@
                     </button>
                 </div>
             </div>
-
+            <br>
             <div class="row">
                 <div class="col-md">
                     <div class="form-group">
-                        <label for="description">materialeId:</label>
+                        <label for="description">ID:</label>
                         <input class="form-control" type="text" id="materialeId" name="materialeId">
                     </div>
                 </div>
@@ -142,6 +142,7 @@
                     </button>
                 </div>
             </div>
+            <br>
         </form>
     </jsp:body>
 </t:genericpage>
