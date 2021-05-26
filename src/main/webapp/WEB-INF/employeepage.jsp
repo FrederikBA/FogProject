@@ -11,7 +11,7 @@
     <jsp:body>
         <div class="center">
             <br>
-            <h1>Du er logged ind som: ${sessionScope.email} </h1>
+            <h1>Du er logget ind som: ${sessionScope.email} </h1>
             <br>
             <a href="${pageContext.request.contextPath}/fc/index">
                 <button style="width:200px;" type="submit" class="btn btn-primary">Gå til forsiden</button>

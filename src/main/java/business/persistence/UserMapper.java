@@ -51,7 +51,7 @@ public class UserMapper {
                     user.setId(id);
                     return user;
                 } else {
-                    throw new UserException("Could not validate user");
+                        throw new UserException("Could not validate user");
                 }
             } catch (SQLException ex) {
                 throw new UserException(ex.getMessage());

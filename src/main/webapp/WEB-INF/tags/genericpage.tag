@@ -65,7 +65,7 @@ example: https://getbootstrap.com/docs/5.0/examples/pricing/
                     <c:if test="${isNotLoginPage && isNotRegisterPage}">
                         <c:if test="${sessionScope.user != null }">
                             <a type="button" class="btn btn-outline-light mx-2 right"
-                               href="${pageContext.request.contextPath}/fc/logoutcommand">Log af</a>
+                               href="${pageContext.request.contextPath}/fc/logoutcommand">Log ud</a>
                         </c:if>
                         <c:if test="${sessionScope.user == null}">
                             <a type="button" class="btn btn-outline-light mx-2 right"

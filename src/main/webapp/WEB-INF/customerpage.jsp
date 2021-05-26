@@ -13,7 +13,7 @@
         <div class="center">
             <br>
             <h2>Velkommen!</h2>
-            <h2>Du er logged ind som: ${sessionScope.email}.</h2>
+            <h2>Du er logget ind som: ${sessionScope.email}.</h2>
             <br>
             <a href="${pageContext.request.contextPath}/fc/index">
                 <button style="width:200px;" type="submit" class="btn btn-primary">Gå til forsiden</button>
