@@ -116,6 +116,7 @@ public class MaterialMapper {
         }
     }
 
+    //Used to update the price of a product on the material table.
     public int updateMaterialById(int materialId, double price) throws UserException {
         try (Connection connection = database.connect()) {
             String sql = "UPDATE material SET price_per_unit = ? WHERE id = ? ";
@@ -134,6 +135,7 @@ public class MaterialMapper {
         }
     }
 
+    //Used to add new material to the list of the materials on the database material table.
     public void addMaterial(Material material) throws UserException {
         try (Connection connection = database.connect()) {
             String sql = "INSERT INTO material (description,unit,price_per_unit,type) VALUES (?,?,?,?)";
@@ -152,6 +154,7 @@ public class MaterialMapper {
         }
     }
 
+    //used to delete material from the database.
     public int deleteMaterial(int materialId) throws UserException {
         try (Connection connection = database.connect()) {
             String sql = "DELETE FROM material WHERE id = ? AND id NOT IN (SELECT material_id FROM bom_items)";

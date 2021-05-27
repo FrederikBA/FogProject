@@ -35,7 +35,6 @@ public class OrderMapper {
                 ps.setInt(4, length);
                 ps.setInt(5, width);
 
-
                 ps.executeUpdate();
                 ResultSet ids = ps.getGeneratedKeys();
                 ids.next();

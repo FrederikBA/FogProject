@@ -57,7 +57,6 @@ public class BomMapper {
                 ps.setInt(2, materialId);
                 ResultSet rs = ps.executeQuery();
                 if (rs.next()) {
-                    //public BomLine(int materialId, String name, int quantity, int length, String unit, String description, double price)
                     String name = rs.getString("name");
                     int quantity = rs.getInt("quantity");
                     int length = rs.getInt("length");
